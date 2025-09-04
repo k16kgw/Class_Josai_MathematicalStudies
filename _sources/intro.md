@@ -1,11 +1,11 @@
-# Welcome to your Jupyter Book
+# 数学研究I・II（城西大学）
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+## 講義情報
 
-Check out the content pages bundled with this sample book to see more.
+- 対象：数学科3・4年
+- 開講日：秋学期木曜日３時限
+- 教室：紀-3号棟3206
+- [シラバス](https://junavi.josai.ac.jp/camweb/slbssbdr.do?value(risyunen)=2025&value(semekikn)=1&value(kougicd)=00228681&value(crclumcd)=zz19999999)
 
 ```{tableofcontents}
 ```

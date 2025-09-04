@@ -8,4 +8,4 @@ chapters:
   - file: contents/1_mathematical_model
   - file: contents/2_physics_examples
   # - file: contents/appendix
-  
+numbered: true

@@ -15,6 +15,13 @@ latex:
   latex_documents:
     targetname: book.tex
 
+sphinx:
+  config:
+    numfig: true
+    html_theme_options:
+      use_numbered_links: true   # 目次に番号を付ける
+    nb_number_source_lines: true
+
 # Add a bibtex file so that we can create citations
 bibtex_bibfiles:
   - references.bib

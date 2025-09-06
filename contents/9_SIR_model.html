@@ -57,6 +57,8 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/9_SIR_model';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -393,11 +395,29 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sir">
 <h1>感染症モデル（SIRモデル）<a class="headerlink" href="#sir" title="Link to this heading">#</a></h1>
+<p>到達目標：</p>
+<ul class="simple">
+<li><p>感染症拡大の数理的枠組みと基本再生産数の概念を理解する．</p></li>
+<li><p>パラメタ依存性を数値的に調べ，感染拡大の条件を理解する．</p></li>
+<li><p>実データを用いてモデルの妥当性を評価する．</p></li>
+</ul>
 <section id="id1">
 <h2>モデル化<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>感染可能者<span class="math notranslate nohighlight">\(S\)</span>・感染者<span class="math notranslate nohighlight">\(I\)</span>・回復者<span class="math notranslate nohighlight">\(R\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\frac{dS}{dt} = -aSI, \quad
+\frac{dI}{dt} = aSI - bI, \quad
+\frac{dR}{dt} = bI.
+\]</div>
 </section>
 <section id="id2">
 <h2>データの取得<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>東京都の感染者数のデータ</p></li>
+</ul>
 </section>
 </section>
 

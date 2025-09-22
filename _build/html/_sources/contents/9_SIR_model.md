@@ -7,5 +7,15 @@
 
 ## モデル化
 
+- 感染可能者$S$・感染者$I$・回復者$R$
+
+$$
+\frac{dS}{dt} = -aSI, \quad
+\frac{dI}{dt} = aSI - bI, \quad
+\frac{dR}{dt} = bI.
+$$
+
 ## データの取得
+
+- 東京都の感染者数のデータ
 

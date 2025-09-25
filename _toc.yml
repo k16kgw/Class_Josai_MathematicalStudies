@@ -9,15 +9,15 @@ parts:
     numbered: true   # ← この位置！
     chapters:
       - file: contents/1_mathematical_model
-      - file: contents/2_physics_examples
-      - file: contents/3_biology_examples
-      - file: contents/4_variational_principle
-      - file: contents/5_ordinal_differential_equation
-      - file: contents/6_prey_predator_model
-      - file: contents/7_bistable
-      - file: contents/8_BZ
-      - file: contents/9_SIR_model
-      - file: contents/10_partial_differential_equation
-      - file: contents/11_wave_equation
-      - file: contents/12_reaction_diffusion
-      - file: contents/13_space
+      # - file: contents/2_physics_examples
+      # - file: contents/3_biology_examples
+      # - file: contents/4_variational_principle
+      # - file: contents/5_ordinal_differential_equation
+      # - file: contents/6_prey_predator_model
+      # - file: contents/7_bistable
+      # - file: contents/8_BZ
+      # - file: contents/9_SIR_model
+      # - file: contents/10_partial_differential_equation
+      # - file: contents/11_wave_equation
+      # - file: contents/12_reaction_diffusion
+      # - file: contents/13_space

@@ -20,7 +20,7 @@
 
 【準備学習】微分積分学の復習をする．
 
-[■2回目（数学研究I・II）](/contents/2_physics_examples.md)
+**[■2回目（数学研究I・II）](/contents/2_physics_examples.md)**
 
 【テーマ】物理学の事例：放射性崩壊と冷却現象
 

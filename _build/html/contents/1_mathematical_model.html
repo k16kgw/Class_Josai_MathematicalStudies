@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -62,7 +62,6 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/1_mathematical_model';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2. 物理学の事例" href="2_physics_examples.html" />
     <link rel="prev" title="数学研究I・II（城西大学）" href="../intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -184,18 +183,6 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">目次</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">1. 数理モデルの導入・演習</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2_physics_examples.html">2. 物理学の事例</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3_biology_examples.html">3. 生物学の事例</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4_variational_principle.html">4. 変分原理と物理モデル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="5_ordinal_differential_equation.html">5. 常微分方程式と初期値問題</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6_prey_predator_model.html">6. 捕食者・被食者モデル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="7_bistable.html">7. 2種競争モデルと双安定性</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8_BZ.html">8. BZ反応のモデル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="9_SIR_model.html">9. 感染症モデル（SIRモデル）</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10_partial_differential_equation.html">10. 偏微分方程式の導入</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11_wave_equation.html">11. 波動方程式と境界条件</a></li>
-<li class="toctree-l1"><a class="reference internal" href="12_reaction_diffusion.html">12. 反応拡散方程式とパターン形成</a></li>
-<li class="toctree-l1"><a class="reference internal" href="13_space.html">13. 空間的広がりを持つ現象のモデル</a></li>
 </ul>
 
     </div>
@@ -391,9 +378,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.1. 現実と数学の違い</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.2. 微分積分の復習</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.3. 演習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.1. 現実と数学の違い</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.1.1. 数理モデルとは</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.1.2. データ分析から数理モデリングへ</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.2. 微分積分の復習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">1.3. 演習</a></li>
 </ul>
             </nav>
         </div>
@@ -412,39 +403,115 @@ document.write(`
 <li><p>数理モデルの意義と考え方を理解する．</p></li>
 <li><p>簡単なモデルを通じて基礎力を確認する．</p></li>
 </ul>
-<p>アイデア</p>
-<ul class="simple">
-<li><p>（情報数理学科の学びと本講義の学びの関係）まだ数学科なのでここは触れなくて良い．</p></li>
-<li><p>情報とはデータ．データは現実を数値化したもの．現実をよく知ることでデータをうまく扱えるようになる．</p></li>
-<li><p>現実をよく知ることとは，どのようなメカニズムで現象が起きているのか，加えて数理的構造を理解すること．</p></li>
-<li><p>数学的に扱うには数学を自在に使えることが必要．</p></li>
-<li><p>数理モデルが一番うまくいっているのは物理学．次に数理生物学</p></li>
-</ul>
+<!-- 
+アイデア
+- （情報数理学科の学びと本講義の学びの関係）まだ数学科なのでここは触れなくて良い．
+- 情報とはデータ．データは現実を数値化したもの．現実をよく知ることでデータをうまく扱えるようになる．
+- 現実をよく知ることとは，どのようなメカニズムで現象が起きているのか，加えて数理的構造を理解すること．
+- 数学的に扱うには数学を自在に使えることが必要．
+- 数理モデルが一番うまくいっているのは物理学．次に数理生物学
+-->
 <section id="id2">
 <h2><span class="section-number">1.1. </span>現実と数学の違い<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>「モデル」とは何か
-日本語では「模型」
-広辞苑
-世の中のものは数値として観測される．その数値はどのようにして決まるのか，物理法則や統計的なルールなどによって決まる．そのルールを見出すのがモデリング．特に数学的なルールを考える場合を数理モデリングと呼び，造られる雛形を「数理モデル」と呼ぶ．</p>
-</section>
 <section id="id3">
-<h2><span class="section-number">1.2. </span>微分積分の復習<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">1.1.1. </span>数理モデルとは<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>広辞苑で「モデル」を引くと
+<br>
+②模型。雛型。
+<br>
+③現象や構造を理論的に抽象化したもの。
+<br>
+④模範。手本。</p>
+<p>同じく「模型」を引くと
+<br>
+①同形のものを造るための型。ひながた。ぼけい。
+<br>
+②実物の形に似せて造ったもの。</p>
 <ul class="simple">
-<li><p>導関数の定義</p></li>
-<li><p>積の微分</p></li>
-<li><p>合成関数の微分</p></li>
-<li><p>極小の概念</p></li>
-<li><p>積分</p></li>
+<li><p>モデルガン：実物そっくりに作った玩具の銃</p></li>
+<li><p>モデルルーム：実物と同じ作りをした見本の部屋</p></li>
 </ul>
-<p>次の関数の導関数を求めよ．</p>
+<p><span style="color:red">模型とは，何か本物があり，それを真似して作られるもの．</span></p>
+<p>本物…実現象（自然現象・社会現象・人間活動など）</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>実現象の例</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\( f(x) = (1-x)^2(1+x)^2 \)</span>とするとき，<span class="math notranslate nohighlight">\( f'(x) \)</span>を計算せよ．</p></li>
-<li><p><span class="math notranslate nohighlight">\( f(x) = e^{a x^2} \)</span>とするとき，<span class="math notranslate nohighlight">\( f'(x) \)</span>を計算せよ．</p></li>
-<li><p>関数の極小値を求めよ．</p></li>
+<li><p>ものの落下</p></li>
+<li><p>星の運行</p></li>
+<li><p>冷房による部屋の冷え方</p></li>
+<li><p>光の届き方</p></li>
+<li><p>毛穴のでき方</p></li>
+<li><p>腸内細菌叢の状況</p></li>
+<li><p>チーターの模様のでき方</p></li>
+<li><p>人口の変動</p></li>
+<li><p>感染症の流行</p></li>
+<li><p>渋滞のでき方</p></li>
+<li><p>株価の変動</p></li>
+<li><p>サッカーのフォーメーション</p></li>
 </ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>問１：ルールの気になる現象・事象</p>
+</div>
 </section>
 <section id="id4">
-<h2><span class="section-number">1.3. </span>演習<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">1.1.2. </span>データ分析から数理モデリングへ<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>世の中のものは<span style="color:red">数値</span>として観測される．
+その数値がどのようにして定まるかは，物理法則や統計的なルールなどによって決まる．</p>
+<p>そのルールを見出すのがモデリングという作業になる．
+特に数学的なルールを見出す場合を数理モデリングと呼び，それにより造られる模型を「<span style="color:red">数理モデル</span>」と呼ぶ．
+数理モデルを用いれば，現実のルールを再現しているので，未知の現象の予測に役立つことがある．</p>
+<p>しかしながら，数理モデルは現実そのまま丸ごと再現しているわけではなく<span style="color:red">人間が見出したルールのみを再現している</span>ため，見出したルール外の現象に対しては予測がうまくいかなくなる．</p>
+</section>
+</section>
+<section id="id5">
+<h2><span class="section-number">1.2. </span>微分積分の復習<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>積分</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>微分</strong></p>
+<p>次の関数<span class="math notranslate nohighlight">\(f\)</span>の導関数<span class="math notranslate nohighlight">\(f^{\prime}(x)\)</span>を求めよ．
+<br>
+(1) <span class="math notranslate nohighlight">\(\displaystyle f(x) = (1-x)^2(1+x)^2\)</span>．
+<br>
+(2) <span class="math notranslate nohighlight">\(\displaystyle f(x) = e^{2 x}\)</span>．
+<br>
+(3) <span class="math notranslate nohighlight">\(\displaystyle f(x) = \sin(2\pi x)\)</span>．
+<br>
+(4) <span class="math notranslate nohighlight">\(\displaystyle f(x) = \log\left( \dfrac{x}{2} \right)\)</span>，ただし<span class="math notranslate nohighlight">\(x &gt; 0\)</span>．
+<br>
+(5) <span class="math notranslate nohighlight">\(\displaystyle f(x) = \dfrac{1-x}{x^2}\)</span>，ただし<span class="math notranslate nohighlight">\(x \neq 0\)</span>．
+<br>
+(6) <span class="math notranslate nohighlight">\(\displaystyle f(x) = x^2 e^{3x}\)</span>
+<br>
+(7) <span class="math notranslate nohighlight">\(\displaystyle f(x) = \sin(x^2)\)</span>．</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>極大・極小</strong></p>
+<p>関数<span class="math notranslate nohighlight">\(f(x) = (1-x)^2(1+x)^2\)</span>の極大値・極小値とそれを取る <span class="math notranslate nohighlight">\(x\)</span> を全て求めよ．</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>定積分</strong></p>
+<p>次の定積分を計算せよ．</p>
+<p>(1) <span class="math notranslate nohighlight">\(\displaystyle \int_0^1 (1-x)^2 \, dx\)</span>
+<br>
+(2) <span class="math notranslate nohighlight">\(\displaystyle \int_0^{\pi} \sin(x) \, dx\)</span>
+<br>
+(3) <span class="math notranslate nohighlight">\(\displaystyle \int_{1}^{e} \dfrac{1}{x} \, dx\)</span>
+<br>
+(4) <span class="math notranslate nohighlight">\(\displaystyle \int_0^1 x e^x \, dx\)</span>
+<br>
+(5) <span class="math notranslate nohighlight">\(\displaystyle \int_0^{\pi/2} \cos^2 x \, dx\)</span></p>
+</div>
+</section>
+<section id="id6">
+<h2><span class="section-number">1.3. </span>演習<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
 \[
 \frac{du}{dt} = a u
@@ -491,15 +558,6 @@ document.write(`
         <p class="prev-next-title">数学研究I・II（城西大学）</p>
       </div>
     </a>
-    <a class="right-next"
-       href="2_physics_examples.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2. </span>物理学の事例</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -516,9 +574,13 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.1. 現実と数学の違い</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.2. 微分積分の復習</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.3. 演習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.1. 現実と数学の違い</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.1.1. 数理モデルとは</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.1.2. データ分析から数理モデリングへ</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.2. 微分積分の復習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">1.3. 演習</a></li>
 </ul>
   </nav></div>
 

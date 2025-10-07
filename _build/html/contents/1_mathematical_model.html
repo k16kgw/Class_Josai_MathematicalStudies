@@ -381,10 +381,24 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.1. 現実と数学の違い</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.1.1. 数理モデルとは</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.1.2. データ分析から数理モデリングへ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.1.3. 数理モデルの要素</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">1.1.4. モデリングの分類</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">1.1.5. 数値シミュレーション</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.2. 微分積分の復習</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">1.3. 演習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">1.2. 微分積分の復習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">1.3. 人口増加の数理モデル</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">1.4. プログラミングの準備</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">1.4.1. 作業フォルダの作成</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">1.4.2. 演習ファイルの作成</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">1.5. 関数のプロット</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">1.6. まとめ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">1.6.1. 課題</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">1.7. 復習問題解答例</a></li>
 </ul>
             </nav>
         </div>
@@ -448,12 +462,8 @@ document.write(`
 <li><p>感染症の流行</p></li>
 <li><p>渋滞のでき方</p></li>
 <li><p>株価の変動</p></li>
-<li><p>サッカーのフォーメーション</p></li>
+<li><p>サッカー選手の動き</p></li>
 </ul>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>問１：ルールの気になる現象・事象</p>
 </div>
 </section>
 <section id="id4">
@@ -463,41 +473,100 @@ document.write(`
 <p>そのルールを見出すのがモデリングという作業になる．
 特に数学的なルールを見出す場合を数理モデリングと呼び，それにより造られる模型を「<span style="color:red">数理モデル</span>」と呼ぶ．
 数理モデルを用いれば，現実のルールを再現しているので，未知の現象の予測に役立つことがある．</p>
-<p>しかしながら，数理モデルは現実そのまま丸ごと再現しているわけではなく<span style="color:red">人間が見出したルールのみを再現している</span>ため，見出したルール外の現象に対しては予測がうまくいかなくなる．</p>
-</section>
+<p>しかしながら，数理モデルは現実そのまま丸ごと再現しているわけではなく<span style="color:red">人間が見出したルールのみを再現している</span>ため，見出したルール外の現象に対しては予測がうまくいかなくなることに注意すること．</p>
 </section>
 <section id="id5">
-<h2><span class="section-number">1.2. </span>微分積分の復習<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">1.1.3. </span>数理モデルの要素<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>数理モデルは以下の３つの要素からなる．</p>
 <ul class="simple">
-<li><p>積分</p></li>
+<li><p><strong>変数</strong>：対象となる現象の状態・性質・量などを数字やラベルで表したもの．</p></li>
+<li><p><strong>数理構造</strong>：変数が従うルールを数学的に表現したもの．数理モデルの骨格．</p></li>
+<li><p><strong>パラメタ</strong>：数理モデルの表現可能性を担う定数．これを調節することでデータを説明する．</p></li>
 </ul>
+</section>
+<section id="id6">
+<h3><span class="section-number">1.1.4. </span>モデリングの分類<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p>モデリングと呼ばれる手続きは目的に応じて大きく2つに分類できる[1]．</p>
+<ul class="simple">
+<li><p><strong>理解志向型のモデリング</strong>：データの背後にあるメカニズムの理解を目指す．</p>
+<ul>
+<li><p>例：数理モデル</p></li>
+<li><p>利点</p>
+<ul>
+<li><p>メカニズムのアナロジーから他の現象へと応用しやすく，汎用性が高い．</p></li>
+<li><p>数理的構造や変数の実現象における意味を理解しやすい．</p></li>
+</ul>
+</li>
+<li><p>欠点</p>
+<ul>
+<li><p>人間の理解できるレベルまで単純化されているために現実のデータに合わないことがある．</p></li>
+<li><p>定量的な予測精度が低いことが多い．</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>応用志向型のモデリング</strong>：データを用いて未来の予測・対象の制御・新たなデータの生成を目指す．</p>
+<ul>
+<li><p>例：機械学習モデルなど</p></li>
+<li><p>利点</p>
+<ul>
+<li><p>予測・制御に直接役に立つ．</p></li>
+<li><p>複雑でメカニズムを見出しにくい場合に有効である．</p></li>
+</ul>
+</li>
+<li><p>欠点</p>
+<ul>
+<li><p>データに偏りがあると誤った結論を導くことがある．（バイアス）</p></li>
+<li><p>メカニズムが分からないために，モデルの適用範囲が曖昧になる．</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id7">
+<h3><span class="section-number">1.1.5. </span>数値シミュレーション<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p>数理モデルにおいてパラメタを変化させたときに変数の値がどのように変化するかを確かめる作業をシミュレーションと呼ぶ．
+複雑な数理モデルの構造や性質を調べる場合には，シミュレーションが有効な手段になることが多い．
+また，実験の難しい現象に対して模擬的な実験を実施することができる．</p>
+<p>特にコンピュータを用いた数値的なシミュレーションを数値シミュレーションと呼ぶ．
+数値シミュレーションを実施するためには，コンピュータ上で実行するためのアルゴリズムをプログラミング言語を用いて実装する必要がある．
+プログラミング言語には様々なものがあり，用途や目的に応じて使い分けられるが，本講義ではPythonを用いる．</p>
+</section>
+</section>
+<section id="id8">
+<h2><span class="section-number">1.2. </span>微分積分の復習<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<p>以下の5問に取り組むこと．
+始めの25分間は何も見ずに回答すること．
+次の15分間は分からなかった箇所を調べながら，青ペンで回答すること．</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>微分</strong></p>
-<p>次の関数<span class="math notranslate nohighlight">\(f\)</span>の導関数<span class="math notranslate nohighlight">\(f^{\prime}(x)\)</span>を求めよ．
+<p><strong>復習１：微分</strong></p>
+<p>次の関数 <span class="math notranslate nohighlight">\(f\)</span> の導関数 <span class="math notranslate nohighlight">\(f^{\prime}(x)\)</span> を求めよ．</p>
+<p>(1) <span class="math notranslate nohighlight">\(f(x) = (1-x)^2(1+x)^2\)</span>．
 <br>
-(1) <span class="math notranslate nohighlight">\(\displaystyle f(x) = (1-x)^2(1+x)^2\)</span>．
+(2) <span class="math notranslate nohighlight">\(f(x) = e^{2 x}\)</span>．
 <br>
-(2) <span class="math notranslate nohighlight">\(\displaystyle f(x) = e^{2 x}\)</span>．
+(3) <span class="math notranslate nohighlight">\(f(x) = \sin(2\pi x)\)</span>．
 <br>
-(3) <span class="math notranslate nohighlight">\(\displaystyle f(x) = \sin(2\pi x)\)</span>．
+(4) <span class="math notranslate nohighlight">\(f(x) = \log\left( \dfrac{x}{2} \right)\)</span>，ただし<span class="math notranslate nohighlight">\(x &gt; 0\)</span>．
 <br>
-(4) <span class="math notranslate nohighlight">\(\displaystyle f(x) = \log\left( \dfrac{x}{2} \right)\)</span>，ただし<span class="math notranslate nohighlight">\(x &gt; 0\)</span>．
+(5) <span class="math notranslate nohighlight">\(f(x) = \dfrac{1-x}{x^2}\)</span>，ただし<span class="math notranslate nohighlight">\(x \neq 0\)</span>．
 <br>
-(5) <span class="math notranslate nohighlight">\(\displaystyle f(x) = \dfrac{1-x}{x^2}\)</span>，ただし<span class="math notranslate nohighlight">\(x \neq 0\)</span>．
+(6) <span class="math notranslate nohighlight">\(f(x) = x^2 e^{3x}\)</span>
 <br>
-(6) <span class="math notranslate nohighlight">\(\displaystyle f(x) = x^2 e^{3x}\)</span>
+(7) <span class="math notranslate nohighlight">\(f(x) = x \log{x}\)</span>
 <br>
-(7) <span class="math notranslate nohighlight">\(\displaystyle f(x) = \sin(x^2)\)</span>．</p>
+(8) <span class="math notranslate nohighlight">\(f(x) = \sin(x^2)\)</span>．</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>極大・極小</strong></p>
-<p>関数<span class="math notranslate nohighlight">\(f(x) = (1-x)^2(1+x)^2\)</span>の極大値・極小値とそれを取る <span class="math notranslate nohighlight">\(x\)</span> を全て求めよ．</p>
+<p><strong>復習２：極大・極小</strong></p>
+<p>関数 <span class="math notranslate nohighlight">\(f(x) = (1-x)^2(1+x)^2\)</span> の極大値・極小値とそれを取る <span class="math notranslate nohighlight">\(x\)</span> を全て求めよ．</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>定積分</strong></p>
+<p><strong>復習３：定積分</strong></p>
 <p>次の定積分を計算せよ．</p>
 <p>(1) <span class="math notranslate nohighlight">\(\displaystyle \int_0^1 (1-x)^2 \, dx\)</span>
 <br>
@@ -509,12 +578,230 @@ document.write(`
 <br>
 (5) <span class="math notranslate nohighlight">\(\displaystyle \int_0^{\pi/2} \cos^2 x \, dx\)</span></p>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>復習４：偏微分</strong></p>
+<p>次の2変数関数 <span class="math notranslate nohighlight">\(f\)</span> の2次導関数 <span class="math notranslate nohighlight">\(\frac{\partial^2 f}{\partial x^2}\)</span>，<span class="math notranslate nohighlight">\(\frac{\partial^2 f}{\partial x \partial y}\)</span>，<span class="math notranslate nohighlight">\(\frac{\partial^2 f}{\partial y^2}\)</span> を求めよ．</p>
+<p>(1) <span class="math notranslate nohighlight">\(f(x,y) = \dfrac{y}{x^2+y^2}\)</span>，ただし<span class="math notranslate nohighlight">\((x,y) \neq (0,0)\)</span>．</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>復習５：重積分</strong></p>
+<p>次の2重積分を計算せよ．</p>
+<p>(1) <span class="math notranslate nohighlight">\(\displaystyle \iint_{D} (x+y) \, dx\,dy\)</span>，
+ただし領域は <span class="math notranslate nohighlight">\(D=\{(x,y)\mid 0\leq x\leq 1,\;0\leq y\leq 1\}\)</span> である．
+<br>
+(2) <span class="math notranslate nohighlight">\(\displaystyle \iint_{D} x^2 \, dx\,dy\)</span>，
+ただし領域は <span class="math notranslate nohighlight">\(D=\{(x,y)\mid 0\leq x\leq 1,\;0\leq y\leq x\}\)</span> である．</p>
+</div>
 </section>
-<section id="id6">
-<h2><span class="section-number">1.3. </span>演習<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<section id="id9">
+<h2><span class="section-number">1.3. </span>人口増加の数理モデル<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<p>ある都市の人口が1年で2%ずつ増えるとき，ある年 <span class="math notranslate nohighlight">\(t\)</span> の人口 <span class="math notranslate nohighlight">\(N(t)\)</span> と次の年 <span class="math notranslate nohighlight">\(t+1\)</span> の人口 <span class="math notranslate nohighlight">\(N(t+1)\)</span> とは次のような関係を満たす．</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{du}{dt} = a u
+N(t+1) = N(t) \times 1.02.
+\]</div>
+<p>単位時間あたりの増加の割合が <span class="math notranslate nohighlight">\(r\)</span> で一定のとき，ある時刻 <span class="math notranslate nohighlight">\(t\)</span> の人口 <span class="math notranslate nohighlight">\(N(t)\)</span> を用いて次の瞬間 <span class="math notranslate nohighlight">\(t+\varepsilon\)</span> の人口 <span class="math notranslate nohighlight">\(N(t+\varepsilon)\)</span> は次のように表せる．</p>
+<div class="math notranslate nohighlight">
+\[
+N(t+\varepsilon) = N(t) \times (1+r\varepsilon).
+\]</div>
+<p>ここで次のように式を操作する．</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{N(t+\varepsilon)-N(t)}{\varepsilon} = r N(t)．
+\]</div>
+<p>ここで<span class="math notranslate nohighlight">\(\varepsilon \to \infty\)</span>の極限を取れば，</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{dN}{d\varepsilon} = r N(t)
+\]</div>
+<p>となる．
+このように微分を用いて記述される方程式を微分方程式と呼ぶ．</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>単位時間あたりの人口増加の割合（増殖率，マルサス係数）が <span class="math notranslate nohighlight">\(r\)</span> のとき，時刻 <span class="math notranslate nohighlight">\(t\)</span> における人口 <span class="math notranslate nohighlight">\(N(t)\)</span> は次の微分方程式を満たす．</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{dN}{d\varepsilon} = r N(t)
+\tag{1}
+\]</div>
+</div>
+<p>この微分方程式を満たす <span class="math notranslate nohighlight">\(N(t)\)</span> を具体的に知ることができれば，全ての時刻の人口を知ることができる．
+微分方程式(1)は次のように解くことができる．</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{1}{N(t)}\frac{dN}{d\varepsilon} = r,
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{d}{dt}\log(N(t)) = r,
+\tag{2}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\log(N(t)) = rt + C,
+\]</div>
+<p>ただし <span class="math notranslate nohighlight">\(C\)</span> は積分定数．</p>
+<div class="math notranslate nohighlight">
+\[
+N(t) = e^{rt + C},
+\]</div>
+<p>まだ積分定数が決まらないため，全ての時刻の人口を知ることはできない．
+積分定数を決めるためには情報が必要．
+例えば今の時刻 <span class="math notranslate nohighlight">\(t=0\)</span> での人口がすでに <span class="math notranslate nohighlight">\(N_0\)</span> と分かっており，未来の時刻 <span class="math notranslate nohighlight">\(t\)</span> での人口を求める問題と設定し直す．
+そこで式(2)を時間について <span class="math notranslate nohighlight">\(0\)</span> から <span class="math notranslate nohighlight">\(t\)</span> まで定積分すれば，</p>
+<div class="math notranslate nohighlight">
+\[
+\log(N(t)) - \log(N_0) = rt,
+\]</div>
+<p>となる．従って</p>
+<div class="math notranslate nohighlight">
+\[
+\log\left(\frac{N(t)}{N_0}\right) = rt,
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{N(t)}{N_0} = e^{rt},
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+N(t) = N_0 e^{rt}.
+\]</div>
+<p>よってこの数理モデルに基けば，人口は時間が経つにつれて指数関数的に増大していくことが分かる．</p>
+</section>
+<section id="id10">
+<h2><span class="section-number">1.4. </span>プログラミングの準備<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<section id="id11">
+<h3><span class="section-number">1.4.1. </span>作業フォルダの作成<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<p>本講義専用の作業フォルダを作成する．
+ここではDocument（書類）以下に”mathematical_studies”フォルダを作成する．</p>
+</section>
+<section id="id12">
+<h3><span class="section-number">1.4.2. </span>演習ファイルの作成<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Anacondaを起動する．</p></li>
+<li><p>Jupyter Labを起動する．</p></li>
+<li><p>左のタブで Document/mathematical_studies フォルダを開き，演習ファイルを”1_{学籍番号}_{氏名}.ipynb”として作成する．</p></li>
+</ol>
+</section>
+</section>
+<section id="id13">
+<h2><span class="section-number">1.5. </span>関数のプロット<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<p>インポートと初期設定</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">rcParams</span>
+<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Hiragino Sans&#39;</span>
+</pre></div>
+</div>
+<p>プロット</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># FigureとAxesを生成する</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># Axesに対してプロットする</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s1">&#39;bo--&#39;</span><span class="p">)</span><span class="c1"># 青のoを点線で結ぶ</span>
+
+<span class="c1"># Axesを装飾する</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">2.1</span><span class="p">,</span> <span class="mf">2.1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X軸&#39;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y軸&#39;</span><span class="p">)</span>
+
+<span class="c1"># Figureを保存する（相対パスを指定）</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./sin.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id14">
+<h2><span class="section-number">1.6. </span>まとめ<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
+<section id="id15">
+<h3><span class="section-number">1.6.1. </span>課題<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
+<p>本日作成したipynbファイルに追記する形で次の課題に回答し，WebClassの第1回課題から提出せよ．</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>(1) 不思議に思う現象や仕組みが気になる現象を３つ挙げよ．</p>
+<p>(2) そのうち1つを選び，現象に少しでも関係しそうな変数を思いつく限り挙げよ．</p>
+<p>(3) マルサスモデルにおいて，初期値を<span class="math notranslate nohighlight">\(N_0=4\)</span>，<span class="math notranslate nohighlight">\(r=0.5\)</span>のときの人口<span class="math notranslate nohighlight">\(N(t)\)</span>のグラフをプロットせよ．</p>
+<p>(4) 本日学んだことを3つ箇条書きで述べよ．</p>
+</div>
+<p><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+</section>
+</section>
+<section id="id16">
+<h2><span class="section-number">1.7. </span>復習問題解答例<a class="headerlink" href="#id16" title="Link to this heading">#</a></h2>
+<p><strong>復習１：微分（解答例）</strong></p>
+<p>(1) <span class="math notranslate nohighlight">\( f(x) = (1-x)^2(1+x)^2 = (1-x^2)^2 \)</span>
+<br>
+　<span class="math notranslate nohighlight">\( f'(x) = 2(1-x^2)(-2x) = -4x(1-x^2) = 4x(x^2-1). \)</span></p>
+<p>(2) <span class="math notranslate nohighlight">\( f(x) = e^{2x} \)</span>
+<br>
+　<span class="math notranslate nohighlight">\( f'(x) = 2e^{2x}. \)</span></p>
+<p>(3) <span class="math notranslate nohighlight">\( f(x) = \sin(2\pi x) \)</span>
+<br>
+　<span class="math notranslate nohighlight">\( f'(x) = 2\pi \cos(2\pi x). \)</span></p>
+<p>(4) <span class="math notranslate nohighlight">\( f(x) = \log\!\left(\frac{x}{2}\right) = \log x - \log 2 \)</span>
+<br>
+　<span class="math notranslate nohighlight">\( f'(x) = \frac{1}{x} \quad (x&gt;0). \)</span></p>
+<p>(5) <span class="math notranslate nohighlight">\( f(x) = \frac{1-x}{x^2} = x^{-2} - x^{-1} \)</span>
+<br>
+　<span class="math notranslate nohighlight">\( f'(x) = -2x^{-3} + x^{-2} = \frac{x-2}{x^3} \quad (x\ne 0). \)</span></p>
+<p>(6) <span class="math notranslate nohighlight">\( f(x) = x^2 e^{3x} \)</span>
+<br>
+　<span class="math notranslate nohighlight">\( f'(x) = 2x e^{3x} + 3x^2 e^{3x} = e^{3x}(2x+3x^2). \)</span></p>
+<p>(7) <span class="math notranslate nohighlight">\( f(x) = x\log x \)</span>
+<br>
+　<span class="math notranslate nohighlight">\( f'(x) = \log x + 1 \quad (x&gt;0). \)</span></p>
+<p>(8) <span class="math notranslate nohighlight">\( f(x) = \sin(x^2) \)</span>
+<br>
+　<span class="math notranslate nohighlight">\( f'(x) = 2x\cos(x^2). \)</span></p>
+<p><strong>復習２：極大・極小（解答例）</strong></p>
+<p><span class="math notranslate nohighlight">\( f(x) = (1-x)^2(1+x)^2 = (1-x^2)^2 \)</span> に対して
+<span class="math notranslate nohighlight">\( f'(x) = 4x(x^2-1), \qquad f''(x) = 12x^2 - 4\)</span>であるから，</p>
+<ul class="simple">
+<li><p>臨界点： <span class="math notranslate nohighlight">\( x=0,\ \pm 1. \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(x=0:\ f''(0)=-4&lt;0 \Rightarrow \text{極大},\ \ f(0)=1\)</span>．</p></li>
+<li><p><span class="math notranslate nohighlight">\(x=\pm 1:\ f''(\pm 1)=8&gt;0 \Rightarrow \text{極小},\ \ f(\pm 1)=0\)</span></p></li>
+</ul>
+<p>従って <span class="math notranslate nohighlight">\(x=0\)</span>で極大値<span class="math notranslate nohighlight">\(1\)</span>，<span class="math notranslate nohighlight">\(x=\pm 1\)</span>で極小値<span class="math notranslate nohighlight">\(0\)</span>を取る．</p>
+<p><strong>復習３：定積分（解答例）</strong></p>
+<p>(1) <span class="math notranslate nohighlight">\(\displaystyle \int_0^1 (1-x)^2\,dx = \int_0^1 (1-2x+x^2)\,dx = \Big[x - x^2 + \tfrac{x^3}{3}\Big]_0^1 = \tfrac{1}{3}.\)</span></p>
+<p>(2) <span class="math notranslate nohighlight">\(\displaystyle \int_0^{\pi}\sin x\,dx = [-\cos x]_0^{\pi} = 2.\)</span></p>
+<p>(3) <span class="math notranslate nohighlight">\(\displaystyle \int_1^e \frac{1}{x}\,dx = [\log x]_1^e = 1.\)</span></p>
+<p>(4) <span class="math notranslate nohighlight">\(\displaystyle \int_0^1 x e^x\,dx = \big[(x-1)e^x\big]_0^1 = 1.\)</span></p>
+<p>(5) <span class="math notranslate nohighlight">\(\displaystyle \int_0^{\pi/2}\cos^2 x\,dx = \int_0^{\pi/2}\frac{1+\cos 2x}{2}\,dx = \frac{1}{2}\Big[x+\frac{\sin 2x}{2}\Big]_0^{\pi/2} = \frac{\pi}{4}.\)</span></p>
+<p><strong>復習４：偏微分（解答例）</strong></p>
+<p><span class="math notranslate nohighlight">\(f(x,y) = \dfrac{y}{x^2+y^2}, \qquad (x,y)\ne(0,0)\)</span> に対して，1次偏導関数は</p>
+<div class="math notranslate nohighlight">
+\[
+f_x = -\dfrac{2xy}{(x^2+y^2)^2}, \qquad f_y = \dfrac{x^2-y^2}{(x^2+y^2)^2}
+\]</div>
+<p>従って2次偏導関数は</p>
+<div class="math notranslate nohighlight">
+\[
+f_{xx} = \frac{2y(3x^2-y^2)}{(x^2+y^2)^3}, 
+f_{xy} = \frac{2x(-x^2+3y^2)}{(x^2+y^2)^3},
+f_{yy} = \frac{2y(y^2-3x^2)}{(x^2+y^2)^3}.
+\]</div>
+<p><strong>復習５：重積分（解答例）</strong></p>
+<p>(1)（領域 <span class="math notranslate nohighlight">\(D=[0,1]\times[0,1]\)</span>）</p>
+<div class="math notranslate nohighlight">
+\[
+\iint_{D} (x+y)\,dx\,dy
+= \int_0^1 \left[\int_0^1 (x+y)\,dx\right]dy
+= \int_0^1 \left(\frac{1}{2}+y\right)dy
+= \left[\frac{y}{2}+\frac{y^2}{2}\right]_0^1
+= 1.
+\]</div>
+<p>(2)（領域 <span class="math notranslate nohighlight">\(D=\{(x,y)\mid 0\le y\le x\le 1\} \)</span>）</p>
+<div class="math notranslate nohighlight">
+\[
+\iint_{D} x^2\,dx\,dy
+= \int_0^1 \left[\int_0^x x^2\,dy\right]dx
+= \int_0^1 x^2(x-0)\,dx
+= \int_0^1 x^3\,dx
+= \left[\frac{x^4}{4}\right]_0^1
+= \frac{1}{4}.
 \]</div>
 </section>
 </section>
@@ -577,10 +864,24 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.1. 現実と数学の違い</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.1.1. 数理モデルとは</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.1.2. データ分析から数理モデリングへ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.1.3. 数理モデルの要素</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">1.1.4. モデリングの分類</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">1.1.5. 数値シミュレーション</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.2. 微分積分の復習</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">1.3. 演習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">1.2. 微分積分の復習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">1.3. 人口増加の数理モデル</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">1.4. プログラミングの準備</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">1.4.1. 作業フォルダの作成</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">1.4.2. 演習ファイルの作成</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">1.5. 関数のプロット</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">1.6. まとめ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">1.6.1. 課題</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">1.7. 復習問題解答例</a></li>
 </ul>
   </nav></div>
 

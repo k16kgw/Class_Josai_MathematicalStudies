@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>9. 感染症モデル（SIRモデル） &#8212; Mathematical Studies I &amp; II</title>
+    <title>感染症モデル（SIRモデル） &#8212; Freshman Seminar II</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -62,8 +62,6 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/9_SIR_model';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="10. 偏微分方程式の導入" href="10_partial_differential_equation.html" />
-    <link rel="prev" title="8. BZ反応のモデル" href="8_BZ.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -126,6 +124,8 @@
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -155,8 +155,8 @@
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="Mathematical Studies I & II - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Mathematical Studies I & II - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Freshman Seminar II - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Freshman Seminar II - Home"/>`);</script>
   
   
 </a></div>
@@ -182,20 +182,9 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">目次</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="1_mathematical_model.html">1. 数理モデルの導入・演習</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2_physics_examples.html">2. 物理学の事例</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3_biology_examples.html">3. 生物学の事例</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4_variational_principle.html">4. 変分原理と物理モデル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="5_ordinal_differential_equation.html">5. 常微分方程式と初期値問題</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6_prey_predator_model.html">6. 捕食者・被食者モデル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="7_bistable.html">7. 2種競争モデルと双安定性</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8_BZ.html">8. BZ反応のモデル</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">9. 感染症モデル（SIRモデル）</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10_partial_differential_equation.html">10. 偏微分方程式の導入</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11_wave_equation.html">11. 波動方程式と境界条件</a></li>
-<li class="toctree-l1"><a class="reference internal" href="12_reaction_diffusion.html">12. 反応拡散方程式とパターン形成</a></li>
-<li class="toctree-l1"><a class="reference internal" href="13_space.html">13. 空間的広がりを持つ現象のモデル</a></li>
 </ul>
 
     </div>
@@ -391,8 +380,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">9.1. モデル化</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">9.2. データの取得</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">モデル化</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">データの取得</a></li>
 </ul>
             </nav>
         </div>
@@ -405,7 +394,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sir">
-<h1><span class="section-number">9. </span>感染症モデル（SIRモデル）<a class="headerlink" href="#sir" title="Link to this heading">#</a></h1>
+<h1>感染症モデル（SIRモデル）<a class="headerlink" href="#sir" title="Link to this heading">#</a></h1>
 <p>到達目標</p>
 <ul class="simple">
 <li><p>感染症拡大の数理的枠組みと基本再生産数の概念を理解する．</p></li>
@@ -417,7 +406,7 @@ document.write(`
 <li><p>各都道府県や国の公衆衛生データを取得し，SIRモデルの数値計算結果と合うようにパラメタフィッティングを行う．</p></li>
 </ul>
 <section id="id1">
-<h2><span class="section-number">9.1. </span>モデル化<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2>モデル化<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>感染可能者<span class="math notranslate nohighlight">\(S\)</span>・感染者<span class="math notranslate nohighlight">\(I\)</span>・回復者<span class="math notranslate nohighlight">\(R\)</span></p></li>
 </ul>
@@ -429,7 +418,7 @@ document.write(`
 \]</div>
 </section>
 <section id="id2">
-<h2><span class="section-number">9.2. </span>データの取得<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h2>データの取得<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>東京都の感染者数のデータ</p></li>
 </ul>
@@ -466,24 +455,6 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="8_BZ.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>BZ反応のモデル</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="10_partial_differential_equation.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">10. </span>偏微分方程式の導入</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -500,8 +471,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">9.1. モデル化</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">9.2. データの取得</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">モデル化</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">データの取得</a></li>
 </ul>
   </nav></div>
 

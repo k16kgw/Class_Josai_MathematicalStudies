@@ -1,7 +1,7 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: Mathematical Studies I & II
+title: Freshman Seminar II
 author: Keiichiro Kagawa
 logo: logo.png
 
@@ -30,3 +30,8 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+
+# Sphinx configuration
+sphinx:
+  extra_extensions:
+    - sphinxcontrib.mermaid

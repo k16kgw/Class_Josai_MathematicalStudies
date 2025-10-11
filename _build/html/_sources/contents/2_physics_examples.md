@@ -164,10 +164,6 @@ fig.savefig("./2_decay.png")
 
 [Public Domain / Wikimedia Commons](https://commons.wikimedia.org/wiki/File:GodfreyKneller-IsaacNewton-1689.jpg)
 
-<img src="/contents/figs/2/GodfreyKneller-IsaacNewton-1689.jpg" alt="ニュートン" width="40px">
-
-<img src="/contents/figs/2/GodfreyKneller-IsaacNewton-1689.jpg" style="width:10%;">
-
 - この法則は、日常的な冷却現象だけでなく、**熱伝達・気象・生体熱交換**など多くの分野で応用されている。
 
 ### 冷却現象の原理
@@ -276,14 +272,6 @@ fig.savefig("./2_cooling.png")
 <u>共通点</u>：変化率が「現在値（または現在の温度差）」に比例 → 指数関数的減衰。
 
 <u>違い</u>：冷却現象では環境との「温度差」が減衰する．
-
-```{note}
-**演習2**
-
-1. コーヒーを室温$25[{}^\circ\mathrm{C}]$の部屋に置いたところ，$90[{}^\circ\mathrm{C}]$から$60[{}^\circ\mathrm{C}]$に下がるのに$10$分要した．このときの冷却定数$k$の値を求め，さらに$20$分後の温度を求めよ．
-
-2. グラフを作成せよ．
-```
 
 ## まとめ
 

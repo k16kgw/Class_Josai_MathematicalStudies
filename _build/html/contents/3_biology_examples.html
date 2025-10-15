@@ -388,20 +388,19 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">3.2. 微分方程式の性質</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">3.2.1. 近似や極限を用いた解析</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">3.2.2. 解</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">3.2.2. 微分方程式の解</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">3.2.3. グラフのプロット</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">3.2.4. 平衡点</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">3.2.5. 平衡点の安定性解析</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">3.2.6. グラフのプロット</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">3.3. 7. まとめ</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#s">3.3.1. 💡補足：S字カーブの特徴</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">3.3. タンチョウの個体数の変化をロジスティックモデルで説明する</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">3.4. まとめ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">3.4.1. 提出課題</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">3.4. まとめ</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">3.4.1. 参考文献</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">3.5. 参考文献</a></li>
 </ul>
             </nav>
         </div>
@@ -420,16 +419,31 @@ document.write(`
 <li><p>指数的増加と飽和効果をもつ成長モデルを理解する．</p></li>
 <li><p>平衡点の解析を通じて安定性の概念を理解する．</p></li>
 </ul>
+<p>キーワード</p>
+<ul class="simple">
+<li><p>飽和効果</p></li>
+<li><p>安定性</p></li>
+</ul>
+<p>準備</p>
+<ol class="arabic simple">
+<li><p>anacondaを使用し，<span style="color:red">jupyter lab</span>を起動する．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Documents（書類）/mathematical_studies</span></code>フォルダをダブルクリックで開き<code class="docutils literal notranslate"><span class="pre">+</span></code>をクリックして新しいファイルを作成する．</p></li>
+<li><p>ファイル名を<code class="docutils literal notranslate"><span class="pre">3_{学籍番号}_{氏名}.ipynb</span></code>に変更する．例：<code class="docutils literal notranslate"><span class="pre">3_SI25999_香川渓一郎.ipynb</span></code></p></li>
+</ol>
 <section id="id2">
 <h2><span class="section-number">3.1. </span>バクテリア増殖<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <section id="id3">
 <h3><span class="section-number">3.1.1. </span>実験的事実<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>栄養が十分にある培地に1匹のバクテリアを入れると，一定時間ごとに2分裂を繰り返して増殖する．</p></li>
+<li><p>栄養が十分にある培地に1匹のバクテリアを入れると，一定時間ごとに分裂を繰り返して増殖する．</p></li>
 <li><p>時間とともに個体数 <span class="math notranslate nohighlight">\(N(t)\)</span> が急速に増加し，最初は<strong>指数関数的に増加する</strong>．</p></li>
 <li><p>しかし，資源の枯渇や老廃物の蓄積によって，最終的に増殖は<strong>飽和</strong>して一定値に近づく．</p></li>
 </ul>
-<p><img alt="動画" src="../_images/contents" /></p>
+<!-- ![バクテリアコロニーの成長を撮影した動画 [1]](/contents/figs/3/elife-48885-video1.mp4) -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/MUl1R_tho5g?si=mVkTBQoLgVBPKtSS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<p>[1]より</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/z43HNp3zVAA?si=KnnaOC3PeW-HIcpz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<p>[2]より</p>
 </section>
 <section id="id4">
 <h3><span class="section-number">3.1.2. </span>指数的増加モデルの復習<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
@@ -458,7 +472,7 @@ N(t) = N_0 e^{rt}
 \frac{dN}{dt} = r \Bigl(1 - \frac{N}{N_{\text{max}}}\Bigr) N.
 \tag{1}
 \]</div>
-<p>これを<span style="color:red">ロジスティックモデル</span>と呼ぶ．</p>
+<p>この数理モデルを<span style="color:red">ロジスティックモデル</span>と呼び，微分方程式 (1) を<span style="color:red">ロジスティック方程式</span>と呼ぶ．</p>
 </section>
 </section>
 <section id="id6">
@@ -470,16 +484,19 @@ N(t) = N_0 e^{rt}
 <thead>
 <tr class="row-odd"><th class="head"><p>条件</p></th>
 <th class="head"><p>近似・極限</p></th>
+<th class="head"><p>微分方程式</p></th>
 <th class="head"><p>結論</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><span class="math notranslate nohighlight">\(N \ll N_{\text{max}}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\((1 - \frac{N}{N_{\text{max}}}) \approx 1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{dN}{dt} = rN\)</span></p></td>
 <td><p>指数関数的増加</p></td>
 </tr>
 <tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(N \to N_{\text{max}}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\((1 - \frac{N}{N_{\text{max}}}) \to 0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{dN}{dt} = 0\)</span></p></td>
 <td><p>成長が止まる</p></td>
 </tr>
 </tbody>
@@ -487,26 +504,32 @@ N(t) = N_0 e^{rt}
 </div>
 </section>
 <section id="id8">
-<h3><span class="section-number">3.2.2. </span>解<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
-<p>微分方程式</p>
+<h3><span class="section-number">3.2.2. </span>微分方程式の解<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<p>ロジスティック方程式</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{dN}{dt} = rN\left(1 - \frac{N}{N_{\text{max}}}\right)
 \]</div>
-<p>変数分離して解く：</p>
-<p>分母を部分分数分解：</p>
+<p>を変数分離して解く．
+両辺を<span class="math notranslate nohighlight">\(N\left(1 - \frac{N}{N_{\text{max}}}\right)\)</span>で除し，
+<span class="math notranslate nohighlight">\(\frac{1}{N\left(1 - \frac{N}{N_{\text{max}}}\right)}\)</span>を部分分数分解すると</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{1}{\left(1 - \frac{N}{N_{\text{max}}}\right) N} = \frac{1}{N} + \frac{1/K}{1 - \frac{N}{N_{\text{max}}}}
+\frac{1}{N\left(1 - \frac{N}{N_{\text{max}}}\right)} = \frac{1}{N} + \frac{\frac{1}{N_{\text{max}}}}{1 - \frac{N}{N_{\text{max}}}}
 \]</div>
-<p>積分して：</p>
+<p>であるから，微分方程式は</p>
 <div class="math notranslate nohighlight">
 \[
-\int \left(\frac{1}{N} + \frac{1/K}{1 - \frac{N}{N_{\text{max}}}}\right)dN = \int rdt
+\left( \frac{1}{N} + \frac{\frac{1}{N_{\text{max}}}}{1 - \frac{N}{N_{\text{max}}}} \right) \frac{dN}{dt} = r.
+\]</div>
+<p>これを時間に関して区間<span class="math notranslate nohighlight">\((0,t)\)</span>で積分すれば</p>
+<div class="math notranslate nohighlight">
+\[
+\int_0^t \left(\frac{1}{N} + \frac{\frac{1}{N_{\text{max}}}}{1 - \frac{N}{N_{\text{max}}}}\right)dN = \int_0^t rdt
 \]</div>
 <div class="math notranslate nohighlight">
 \[
-\left(\log|N(t)| - \log|N_{\text{max}} - N(t)|\right) - \left(\log|N_0| - \log|N_{\text{max}} - N_0|\right) = rt.
+\Bigl(\log|N(t)| - \log|1 - \frac{N(t)}{N_{\text{max}}}|\Bigr) - \Bigl(\log|N_0| - \log|1 - \frac{N_0}{N_{\text{max}}}|\Bigr) = rt.
 \]</div>
 <p>従って</p>
 <div class="math notranslate nohighlight">
@@ -531,58 +554,62 @@ N(t) = \frac{N_{\text{max}}}{1 + \left(\frac{N_{\text{max}} - N_0}{N_0}\right)e^
 </pre></div>
 </div>
 <p>プロット</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
-<span class="n">N</span> <span class="o">=</span> <span class="n">K</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="p">((</span><span class="n">K</span> <span class="o">-</span> <span class="n">N0</span><span class="p">)</span><span class="o">/</span><span class="n">N0</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span> <span class="o">*</span> <span class="n">t</span><span class="p">))</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">N</span> <span class="o">=</span> <span class="n">Nmax</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="p">((</span><span class="n">Nmax</span> <span class="o">-</span> <span class="n">N0</span><span class="p">)</span><span class="o">/</span><span class="n">N0</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span> <span class="o">*</span> <span class="n">t</span><span class="p">))</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ロジスティック成長&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;平衡点 $N=K$&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;時間 [h]&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;個体数 $N(t)$&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;./3_logistic_growth.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">Nmax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;$N=Nmax=</span><span class="si">{</span><span class="n">Nmax</span><span class="si">}</span><span class="s2">$&quot;</span><span class="p">)</span> <span class="c1"># Nmaxのラインを描画</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;時刻 $t$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;個体数 $N(t)$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span> <span class="c1"># labelの表示</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># 格子の表示</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span> <span class="c1"># レイアウトを調整</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;./3_logistic_growth.png&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><img alt="グラフのプロット" src="../_images/logistic_growth.png" /></p>
+<p>ここで示した曲線を<span style="color:red">ロジスティック曲線</span>と呼ぶ．</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>演習1</strong></p>
 <ol class="arabic simple">
-<li><p>次のパラメータを用いて，時刻 <span class="math notranslate nohighlight">\(t=0\)</span> から <span class="math notranslate nohighlight">\(t=500\)</span> までのロジスティック成長曲線を描け．</p>
+<li><p>次のパラメタの下でロジスティック成長曲線を描け．ただし時刻は<span class="math notranslate nohighlight">\(t=0\)</span>から成長が停止したと思われる時刻までを自分で設定せよ．</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">r</span> <span class="pre">=</span> <span class="pre">0.01</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Nmax</span> <span class="pre">=</span> <span class="pre">500</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">N_0</span> <span class="pre">=</span> <span class="pre">5</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">N0</span> <span class="pre">=</span> <span class="pre">5</span></code></p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">r</span></code> の値を2倍，<code class="docutils literal notranslate"><span class="pre">Nmax</span></code> の値を半分にしたとき，成長曲線の形はどう変化するか．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">r</span></code> の値を2倍，<code class="docutils literal notranslate"><span class="pre">Nmax</span></code> の値を半分にしたとき，成長曲線の形はどう変化するか．グラフを2つ重ねて描画して比較せよ．</p></li>
 </ol>
 </div>
 </section>
 <section id="id10">
 <h3><span class="section-number">3.2.4. </span>平衡点<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
-<p>平衡点（steady state）とは，成長が止まる点，すなわち</p>
+<p>平衡点（steady state）：成長が止まる点，すなわち<span class="math notranslate nohighlight">\(\frac{dN}{dt} = 0\)</span>を満たす <span class="math notranslate nohighlight">\(N=N_{\text{eq}}\)</span>．</p>
+<p>ロジスティック方程式 (1) の平衡点は</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{dN}{dt} = 0
+r\left(1 - \frac{N}{N_{\text{max}}}\right)N = 0
 \]</div>
-<p>を満たす <span class="math notranslate nohighlight">\(N\)</span> を指す．
-これは，式(1)より</p>
+<p>を満たす <span class="math notranslate nohighlight">\(N\)</span> であるから，</p>
 <div class="math notranslate nohighlight">
 \[
-r(1 - \frac{N}{N_{\text{max}}})N = 0,
+N_{\text{eq}} = 0 \quad \text{または} \quad N = N_{\text{max}}
 \]</div>
-<p>であるから，これを満たす <span class="math notranslate nohighlight">\(N\)</span> は</p>
-<div class="math notranslate nohighlight">
-\[
-N = 0 \quad \text{または} \quad N = N_{\text{max}}
-\]</div>
-<p>の2つ存在する．</p>
+<p>の2つである．</p>
 </section>
 <section id="id11">
 <h3><span class="section-number">3.2.5. </span>平衡点の安定性解析<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
-<p>平衡点の安定性を調べるには，微分方程式の右辺の符号を調べる：</p>
+<p>微分方程式の平衡点は，<strong>安定性</strong>の観点から2種類に分類できる．</p>
+<ul class="simple">
+<li><p><span style="color:red">安定平衡点</span>：そこから僅かにズレた値を初期値とすると，解は安定平衡点に限りなく近づく．</p></li>
+<li><p><span style="color:red">不安定平衡点</span>：そこから僅かにズレた値を初期値とすると，解は不安定平衡点から離れていく．</p></li>
+</ul>
+<p>平衡点の安定性を調べるには，微分方程式の右辺の符号を調べれば良い．
+右辺を次のように<span class="math notranslate nohighlight">\(f(N)\)</span>と置く．</p>
 <div class="math notranslate nohighlight">
 \[
 f(N) = rN(1 - \frac{N}{N_{\text{max}}})
@@ -590,44 +617,78 @@ f(N) = rN(1 - \frac{N}{N_{\text{max}}})
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>区間</p></th>
-<th class="head"><p>(f(N)) の符号</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(f(N)\)</span>の符号</p></th>
 <th class="head"><p>(N(t)) の変化</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>(N &lt; 0)</p></td>
-<td><p>(f(N) &gt; 0)</p></td>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(N &lt; 0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(f(N) &gt; 0\)</span></p></td>
 <td><p>増加（モデル外）</p></td>
 </tr>
-<tr class="row-odd"><td><p>(0 &lt; N &lt; K)</p></td>
-<td><p>(f(N) &gt; 0)</p></td>
-<td><p>(N) は増加</p></td>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(0 &lt; N &lt; N_{\text{max}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(f(N) &gt; 0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(N\)</span>は増加</p></td>
 </tr>
-<tr class="row-even"><td><p>(N &gt; K)</p></td>
-<td><p>(f(N) &lt; 0)</p></td>
-<td><p>(N) は減少</p></td>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(N_{\text{max}} &lt; N\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(f(N) &lt; 0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(N\)</span>は減少</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>→ 図で示すと，(N=K) に向かって矢印が集まる．</p>
-<p>したがって：</p>
+<p>→ 増減の方向を図で示すと，<span class="math notranslate nohighlight">\(N=0\)</span>からは離れる方向に<span class="math notranslate nohighlight">\(N\)</span>は変化し，<span class="math notranslate nohighlight">\(N=N_{\text{max}}\)</span>に近づく方向に<span class="math notranslate nohighlight">\(N\)</span>は変化することが分かる．</p>
+<p>従って</p>
 <ul class="simple">
-<li><p>(N=0)：<strong>不安定平衡点</strong>（少し増えると増殖へ）</p></li>
-<li><p>(N=K)：<strong>安定平衡点</strong>（収束点，飽和状態）</p></li>
+<li><p><span class="math notranslate nohighlight">\(N=0\)</span>：<strong>不安定平衡点</strong>（少し増えると増殖へ）</p></li>
+<li><p><span class="math notranslate nohighlight">\(N=N_{\text{max}}\)</span>：<strong>安定平衡点</strong>（少し減らしても収束する．飽和状態）</p></li>
 </ul>
+</section>
+<section id="id12">
+<h3><span class="section-number">3.2.6. </span>グラフのプロット<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<p>複数の値の初期値<span class="math notranslate nohighlight">\(N_0\)</span>についてロジスティック曲線をプロットし，曲線が <span class="math notranslate nohighlight">\(N=0\)</span> から離れ，<span class="math notranslate nohighlight">\(N=N_{\text{max}}\)</span> に漸近することを確認する．</p>
+<p>変数の設定</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="mf">0.02</span>    <span class="c1"># 成長率</span>
+<span class="n">Nmax</span> <span class="o">=</span> <span class="mi">1000</span>    <span class="c1"># 環境収容力</span>
+<span class="n">N0_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">900</span><span class="p">,</span> <span class="mi">990</span><span class="p">,</span> <span class="mi">999</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>グラフのプロット</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">Nmax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span> <span class="c1"># Nmaxのラインを描画</span>
+
+<span class="k">for</span> <span class="n">N0</span> <span class="ow">in</span> <span class="n">N0_list</span><span class="p">:</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="n">Nmax</span><span class="o">*</span><span class="n">N0</span> <span class="o">/</span> <span class="p">(</span><span class="n">N0</span> <span class="o">+</span> <span class="p">(</span><span class="n">Nmax</span> <span class="o">-</span> <span class="n">N0</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span> <span class="o">*</span> <span class="n">t</span><span class="p">))</span>
+    <span class="c1"># ax.plot(t, N, label=f&quot;$N0={N0}$&quot;, color=cmap(norm(N0)))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;$N0=</span><span class="si">{</span><span class="n">N0</span><span class="si">}</span><span class="s2">$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;時刻 $t$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;個体数 $N(t)$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span> <span class="c1"># labelの表示</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># 格子の表示</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span> <span class="c1"># レイアウトを調整</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;./3_multi_logistic_growth.png&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><img alt="複数の初期値に対するロジスティック曲線" src="../_images/multi_logistic_growth.png" /></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>演習2</strong></p>
-<ol class="arabic simple">
-<li><p>平衡点 <span class="math notranslate nohighlight">\(N=0\)</span> と <span class="math notranslate nohighlight">\(N=N_{\text{max}}\)</span> の安定性を，グラフ上の矢印や <span class="math notranslate nohighlight">\(f(N)\)</span> の符号を使って説明せよ．</p></li>
-</ol>
+<p>次のパラメタの下で，初期値<span class="math notranslate nohighlight">\(N_0\)</span>を複数の値でプロットし，平衡点 <span class="math notranslate nohighlight">\(N=0\)</span> と <span class="math notranslate nohighlight">\(N=N_{\text{max}}\)</span> の安定性を曲線の形から確認せよ，
+- <code class="docutils literal notranslate"><span class="pre">r</span> <span class="pre">=</span> <span class="pre">0.01</span></code>
+- <code class="docutils literal notranslate"><span class="pre">Nmax</span> <span class="pre">=</span> <span class="pre">500</span></code></p>
 </div>
 </section>
 </section>
-<hr class="docutils" />
-<section id="id12">
-<h2><span class="section-number">3.3. </span>7. まとめ<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
+<section id="id13">
+<h2><span class="section-number">3.3. </span>タンチョウの個体数の変化をロジスティックモデルで説明する<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<p><img alt="タンチョウの個体数の変化" src="../_images/tancho.png" /></p>
+</section>
+<section id="id14">
+<h2><span class="section-number">3.4. </span>まとめ<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>項目</p></th>
@@ -636,19 +697,19 @@ f(N) = rN(1 - \frac{N}{N_{\text{max}}})
 </thead>
 <tbody>
 <tr class="row-even"><td><p>モデル</p></td>
-<td><p>(\displaystyle \frac{dN}{dt} = rN\left(1 - \frac{N}{K}\right))</p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle \frac{dN}{dt} = rN\left(1 - \frac{N}{N_{\text{max}}}\right)\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p>パラメータ</p></td>
-<td><p>(r)：成長率，(K)：環境収容力</p></td>
+<tr class="row-odd"><td><p>パラメタ</p></td>
+<td><p><span class="math notranslate nohighlight">\(r\)</span>：成長率，<span class="math notranslate nohighlight">\(N_{\text{max}}\)</span>：環境収容力</p></td>
 </tr>
 <tr class="row-even"><td><p>平衡点</p></td>
-<td><p>(N=0)（不安定），(N=K)（安定）</p></td>
+<td><p><span class="math notranslate nohighlight">\(N=0\)</span>（不安定），<span class="math notranslate nohighlight">\(N=N_{\text{max}}\)</span>（安定）</p></td>
 </tr>
 <tr class="row-odd"><td><p>解</p></td>
-<td><p>(\displaystyle N(t) = \frac{K}{1 + \left(\frac{K - N_0}{N_0}\right)e^{-rt}})</p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle N(t) = \frac{N_{\text{max}}}{1 + \left(\frac{N_{\text{max}} - N_0}{N_0}\right)e^{-rt}}\)</span></p></td>
 </tr>
 <tr class="row-even"><td><p>振る舞い</p></td>
-<td><p>初期は指数増加，後に飽和（S字型曲線）</p></td>
+<td><p>初期は指数関数的増加，後に飽和し，S字型曲線をなす．</p></td>
 </tr>
 <tr class="row-odd"><td><p>意義</p></td>
 <td><p>生物集団の増殖・感染拡大・資源利用などの基本モデル</p></td>
@@ -656,33 +717,19 @@ f(N) = rN(1 - \frac{N}{N_{\text{max}}})
 </tbody>
 </table>
 </div>
-<hr class="docutils" />
-<section id="s">
-<h3><span class="section-number">3.3.1. </span>💡補足：S字カーブの特徴<a class="headerlink" href="#s" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>初期：資源が豊富 → 指数的増加</p></li>
-<li><p>中期：競争・制限効果 → 増加が緩やか</p></li>
-<li><p>後期：飽和 → 定常状態 (N=K)</p></li>
-</ul>
+<section id="id15">
+<h3><span class="section-number">3.4.1. </span>提出課題<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>本日作成したipynbファイルをWebClassの「第3回課題」から提出せよ．</p></li>
+</ol>
 </section>
 </section>
-<hr class="docutils" />
-<section id="id13">
-<h2><span class="section-number">3.4. </span>まとめ<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
-<p>本日作成したipynbファイルに追記する形で次の課題に回答し，WebClassの第3回課題から提出せよ．</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><strong>復習</strong></p>
-<p>(1) 本日学んだことを3つ箇条書きで述べよ．</p>
-</div>
-<section id="id14">
-<h3><span class="section-number">3.4.1. </span>参考文献<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>P.F. Verhulst, <em>Notice sur la loi que la population poursuit dans son accroissement</em>, 1838.</p></li>
-<li><p>M. Murray, <em>Mathematical Biology</em>, Springer.</p></li>
-<li><p>伊藤清三『数理生物学入門』東京大学出版会.</p></li>
-</ul>
-</section>
+<section id="id16">
+<h2><span class="section-number">3.5. </span>参考文献<a class="headerlink" href="#id16" title="Link to this heading">#</a></h2>
+<p>[1] Liyang Xiong, Yuansheng Cao, Robert Cooper, Wouter-Jan Rappel, Jeff Hasty, Lev Tsimring, “Flower-like patterns in multi-species bacterial colonies,” eLife, 9 (2020) e48885.</p>
+<p>[2] HHMI BioInteractive Video, “Bacterial Growth,” URL:<a class="reference external" href="https://www.biointeractive.org/classroom-resources/bacterial-growth">https://www.biointeractive.org/classroom-resources/bacterial-growth</a> （閲覧日：2025.10.15）</p>
+<p>[3] 小寺隆幸, 数学で考える環境間題, 明治図書 (2004).</p>
+<p>[4] 梅野善雄, “タンチョウの個体数変化とロジスティック曲線,” 数学教育学会誌, 50 (2009) 5–13. <a class="reference external" href="https://doi.org/10.34323/mesj.50.1-2_5">https://doi.org/10.34323/mesj.50.1-2_5</a>.</p>
 </section>
 </section>
 
@@ -749,20 +796,19 @@ f(N) = rN(1 - \frac{N}{N_{\text{max}}})
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">3.2. 微分方程式の性質</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">3.2.1. 近似や極限を用いた解析</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">3.2.2. 解</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">3.2.2. 微分方程式の解</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">3.2.3. グラフのプロット</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">3.2.4. 平衡点</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">3.2.5. 平衡点の安定性解析</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">3.2.6. グラフのプロット</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">3.3. 7. まとめ</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#s">3.3.1. 💡補足：S字カーブの特徴</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">3.3. タンチョウの個体数の変化をロジスティックモデルで説明する</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">3.4. まとめ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">3.4.1. 提出課題</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">3.4. まとめ</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">3.4.1. 参考文献</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">3.5. 参考文献</a></li>
 </ul>
   </nav></div>
 

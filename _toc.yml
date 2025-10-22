@@ -11,7 +11,7 @@ parts:
       - file: contents/1_mathematical_model
       - file: contents/2_physics_examples
       - file: contents/3_biology_examples
-      # - file: contents/4_variational_principle
+      - file: contents/4_variational_principle
       # - file: contents/5_ordinal_differential_equation
       # - file: contents/6_prey_predator_model
       # - file: contents/7_bistable

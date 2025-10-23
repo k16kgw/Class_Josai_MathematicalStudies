@@ -508,14 +508,16 @@ n_1 \sin\theta_1 = n_2 \sin\theta_2
 </li>
 <li><p>極値条件 (<span class="math notranslate nohighlight">\(\frac{dT}{dx}=0\)</span>) を計算すると</p>
 <div class="math notranslate nohighlight">
-\[
+\[\begin{split}
+  &amp;\quad
   \frac{n_1 (x-x_A)}{\sqrt{(x-x_A)^2+y_A^2}}
   =
   \frac{n_2 (x_B-x)}{\sqrt{(x_B-x)^2+y_B^2}}
-  \leftrightarrow
-  n_1\sin\theta_1 = n_2\sin\theta_2.
-  \]</div>
-<p>ここで分子／分母は三角比になり，<strong>スネルの法則</strong>を得る．</p>
+  \\
+  &amp;\Longleftrightarrow
+  n_1\sin\theta_1 = n_2\sin\theta_2,
+  \end{split}\]</div>
+<p>となり，<strong>スネルの法則</strong>を得る．</p>
 </li>
 </ul>
 <!-- 
@@ -619,12 +621,12 @@ $$
 </pre></div>
 </div>
 <p>ここの<span class="math notranslate nohighlight">\(T\)</span>が最小になる<span class="math notranslate nohighlight">\(x\)</span>を見つける．</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">i_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">Ts</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">i_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">Ts</span><span class="p">)</span> <span class="c1"># Tsの中で最小の値を取るindexを取得する</span>
 <span class="n">x_star</span> <span class="o">=</span> <span class="n">xs</span><span class="p">[</span><span class="n">i_min</span><span class="p">]</span>
 <span class="n">T_star</span> <span class="o">=</span> <span class="n">Ts</span><span class="p">[</span><span class="n">i_min</span><span class="p">]</span>
 
-<span class="n">AP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="n">x_star</span> <span class="o">-</span> <span class="n">xA</span><span class="p">,</span> <span class="n">yA</span><span class="p">)</span>   <span class="c1"># ベクトルの長さの取得</span>
-<span class="n">PB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="n">xB</span> <span class="o">-</span> <span class="n">x_star</span><span class="p">,</span> <span class="o">-</span><span class="n">yB</span><span class="p">)</span>  <span class="c1"># yB&lt;0 を考慮</span>
+<span class="n">AP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="n">x_star</span> <span class="o">-</span> <span class="n">xA</span><span class="p">,</span> <span class="n">yA</span><span class="p">)</span>   <span class="c1"># A側の経路の長さ</span>
+<span class="n">PB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="n">xB</span> <span class="o">-</span> <span class="n">x_star</span><span class="p">,</span> <span class="o">-</span><span class="n">yB</span><span class="p">)</span>  <span class="c1"># yB&lt;0 を考慮した，B側の経路の長さ</span>
 <span class="n">sin1</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x_star</span> <span class="o">-</span> <span class="n">xA</span><span class="p">)</span> <span class="o">/</span> <span class="n">AP</span>
 <span class="n">sin2</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">xB</span> <span class="o">-</span> <span class="n">x_star</span><span class="p">)</span> <span class="o">/</span> <span class="n">PB</span>
 
@@ -676,6 +678,8 @@ $$
   \]</div>
 <p>経路 (<span class="math notranslate nohighlight">\(q(t)\)</span>) 全体に対し「<span style="color:red">どれだけ無駄なく動けたか</span>」を測る量．</p>
 </li>
+<li><p><strong>オイラー＝ラグランジュ方程式</strong></p></li>
+<li><p><strong>最小作用の原理</strong>：作用を最小化する条件の下で得られるオイラー＝ラグランジュ方程式に従って現象が起きているとする考え方</p></li>
 </ul>
 <!-- 
 - **単位**：作用の単位はエネルギー×時間（J·s）．量子論で出てくるプランク定数 (h) も同じ単位．
@@ -1051,7 +1055,7 @@ $$
 <section id="id17">
 <h3><span class="section-number">4.5.1. </span>提出課題<a class="headerlink" href="#id17" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p>本日作成したipynbファイルをWebClassの「第3回課題」から提出せよ．</p></li>
+<li><p>本日作成したipynbファイルをWebClassの「第4回課題」から提出せよ．</p></li>
 </ol>
 <!-- 
 ```{note}

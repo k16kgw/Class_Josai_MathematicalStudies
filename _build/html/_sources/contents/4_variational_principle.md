@@ -77,14 +77,16 @@ $$
 - 極値条件 ($\frac{dT}{dx}=0$) を計算すると
 
   $$
+  &\quad
   \frac{n_1 (x-x_A)}{\sqrt{(x-x_A)^2+y_A^2}}
   =
   \frac{n_2 (x_B-x)}{\sqrt{(x_B-x)^2+y_B^2}}
-  \leftrightarrow
-  n_1\sin\theta_1 = n_2\sin\theta_2.
+  \\
+  &\Longleftrightarrow
+  n_1\sin\theta_1 = n_2\sin\theta_2,
   $$
 
-  ここで分子／分母は三角比になり，**スネルの法則**を得る．
+  となり，**スネルの法則**を得る．
 
 <!-- 
 ### 波としての見方（ホイヘンス原理）
@@ -189,12 +191,12 @@ plt.show()
 
 ここの$T$が最小になる$x$を見つける．
 ```python
-i_min = np.argmin(Ts)
+i_min = np.argmin(Ts) # Tsの中で最小の値を取るindexを取得する
 x_star = xs[i_min]
 T_star = Ts[i_min]
 
-AP = np.hypot(x_star - xA, yA)   # ベクトルの長さの取得
-PB = np.hypot(xB - x_star, -yB)  # yB<0 を考慮
+AP = np.hypot(x_star - xA, yA)   # A側の経路の長さ
+PB = np.hypot(xB - x_star, -yB)  # yB<0 を考慮した，B側の経路の長さ
 sin1 = abs(x_star - xA) / AP
 sin2 = abs(xB - x_star) / PB
 
@@ -243,7 +245,12 @@ plt.show()
   $$
   S[q]=\int_{t_0}^{t_1} L\bigl(q(t),\dot q(t),t\bigr)dt
   $$
+
   経路 ($q(t)$) 全体に対し「<span style="color:red">どれだけ無駄なく動けたか</span>」を測る量．
+
+- **オイラー＝ラグランジュ方程式**
+
+- **最小作用の原理**：作用を最小化する条件の下で得られるオイラー＝ラグランジュ方程式に従って現象が起きているとする考え方
 
 <!-- 
 - **単位**：作用の単位はエネルギー×時間（J·s）．量子論で出てくるプランク定数 (h) も同じ単位．
@@ -592,7 +599,7 @@ $$
 
 ### 提出課題
 
-1. 本日作成したipynbファイルをWebClassの「第3回課題」から提出せよ．
+1. 本日作成したipynbファイルをWebClassの「第4回課題」から提出せよ．
 
 <!-- 
 ```{note}

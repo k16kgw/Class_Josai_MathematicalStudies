@@ -77,14 +77,16 @@ $$
 - 極値条件 ($\frac{dT}{dx}=0$) を計算すると
 
   $$
+  &\quad
   \frac{n_1 (x-x_A)}{\sqrt{(x-x_A)^2+y_A^2}}
   =
   \frac{n_2 (x_B-x)}{\sqrt{(x_B-x)^2+y_B^2}}
-  \leftrightarrow
-  n_1\sin\theta_1 = n_2\sin\theta_2.
+  \\
+  &\Leftrightarrow
+  n_1\sin\theta_1 = n_2\sin\theta_2,
   $$
 
-  ここで分子／分母は三角比になり，**スネルの法則**を得る．
+  となり，**スネルの法則**を得る．
 
 <!-- 
 ### 波としての見方（ホイヘンス原理）
@@ -189,12 +191,12 @@ plt.show()
 
 ここの$T$が最小になる$x$を見つける．
 ```python
-i_min = np.argmin(Ts)
+i_min = np.argmin(Ts) # Tsの中で最小の値を取るindexを取得する
 x_star = xs[i_min]
 T_star = Ts[i_min]
 
-AP = np.hypot(x_star - xA, yA)   # ベクトルの長さの取得
-PB = np.hypot(xB - x_star, -yB)  # yB<0 を考慮
+AP = np.hypot(x_star - xA, yA)   # A側の経路の長さ
+PB = np.hypot(xB - x_star, -yB)  # yB<0 を考慮した，B側の経路の長さ
 sin1 = abs(x_star - xA) / AP
 sin2 = abs(xB - x_star) / PB
 
@@ -227,6 +229,8 @@ plt.show()
 
 ## オイラー＝ラグランジュ方程式（Euler--Lagrange equation）
 
+### 設定
+
 - 一般化座標 $q$（座標の取り方に依らない）
 - 一般化運動量 $\dot q$
 - ポテンシャルエネルギー $V(q)$：$q$が大きいほど大きくなる
@@ -243,7 +247,23 @@ plt.show()
   $$
   S[q]=\int_{t_0}^{t_1} L\bigl(q(t),\dot q(t),t\bigr)dt
   $$
+
   経路 ($q(t)$) 全体に対し「<span style="color:red">どれだけ無駄なく動けたか</span>」を測る量．
+
+### オイラー＝ラグランジュ方程式
+
+ある時刻$t_0$で位置$q(t_0)=q_0$，$t_1$で$q(t_1)=q_1$を満たす何らかの現象を考える．
+ここで**最小作用の原理**に基づき，作用を最小化する条件の下で得られるオイラー＝ラグランジュ方程式に従って現象が起きていると考える．
+$q(t_0)=q_0$，$q(t_1)=q_1$を満たす現象$q(t)$が得られているとするとき，現象$q(t)$を僅かにずらしたときの作用の変化$\delta S$について$\delta S=0$を満たす$q$の方程式が求めるオイラー＝ラグランジュ方程式である．
+
+任意の滑らかな関数$\eta(t)$で$\eta(t_0)=\eta(t_1)=0$を満たすものを取り，微小量$\varepsilon>0$について$q_\varepsilon(t) = q(t)+\varepsilon\eta(t)$とする．
+このとき$q(t)$から$q_\varepsilon(t)$へずらしたときの$S[q]$の変化量$\delta S$（**変分**と呼ぶ）は
+
+$$
+\delta S &= S[q_\varepsilon] - S[q]
+\\
+&= \int_{t_0}^{t_1} L\bigl(q_\varepsilon(t),\dot q_\varepsilon(t),t\bigr)dt - \int_{t_0}^{t_1} L\bigl(q(t),\dot q(t),t\bigr)dt
+$$
 
 <!-- 
 - **単位**：作用の単位はエネルギー×時間（J·s）．量子論で出てくるプランク定数 (h) も同じ単位．

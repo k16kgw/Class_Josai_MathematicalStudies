@@ -146,7 +146,6 @@ $$
 - 光ファイバー
 - 異常震域
 - 蜃気楼
-
 ### 屈折の経路の導出
 
 準備
@@ -168,6 +167,7 @@ n2 = 1.33   # 下側
 c  = 3e8    # 真空中の光速（定数．相対比較なので消えてもOK）
 ```
 
+<!-- 
 ```python
 def travel_time(x):
     # 境界上の通過点 P=(x, 0)
@@ -225,7 +225,8 @@ ax.grid(True)
 ax.legend()
 plt.tight_layout()
 plt.show()
-```
+``` -->
+
 
 ## オイラー＝ラグランジュ方程式（Euler--Lagrange equation）
 
@@ -263,7 +264,48 @@ $$
 \delta S &= S[q_\varepsilon] - S[q]
 \\
 &= \int_{t_0}^{t_1} L\bigl(q_\varepsilon(t),\dot q_\varepsilon(t),t\bigr)dt - \int_{t_0}^{t_1} L\bigl(q(t),\dot q(t),t\bigr)dt
+\\
+&= \int_{t_0}^{t_1} L\bigl(q(t)+\varepsilon\eta(t),\dot q(t)+\varepsilon\dot \eta(t),t\bigr) - L\bigl(q(t),\dot q(t),t\bigr)dt
+\\
+&\sim \int_{t_0}^{t_1} \Bigl[ L\bigl(q(t),\dot q(t),t\bigr) + \frac{\partial L}{\partial q}\varepsilon\eta(t) + \frac{\partial L}{\partial \dot q}\varepsilon\dot \eta(t) \Bigr] - L\bigl(q(t),\dot q(t),t\bigr)dt
+\\
+&= \int_{t_0}^{t_1} \frac{\partial L}{\partial q}\varepsilon\eta(t) + \frac{\partial L}{\partial \dot q}\varepsilon\dot \eta(t) dt
 $$
+
+ここで右辺第2項は部分積分すれば，$\eta(t_0)=\eta(t_1)=0$より
+
+$$
+\int_{t_0}^{t_1} \frac{\partial L}{\partial \dot q}\varepsilon\dot \eta(t) dt
+&= \int_{t_0}^{t_1} \frac{d}{dt}\left[ \frac{\partial L}{\partial \dot q}\varepsilon\eta(t) \right] dt
+- \int_{t_0}^{t_1} \frac{d}{dt}\left[ \frac{\partial L}{\partial \dot q} \right] \varepsilon\eta(t) dt
+\\
+&= - \int_{t_0}^{t_1} \frac{d}{dt}\left[ \frac{\partial L}{\partial \dot q} \right] \varepsilon\eta(t) dt.
+$$
+
+従って
+
+$$
+\delta S &= 
+\int_{t_0}^{t_1} \frac{\partial L}{\partial q}\varepsilon\eta(t) + \frac{d}{dt}\left[ \frac{\partial L}{\partial \dot q} \right] \varepsilon\eta(t) dt
+\\
+&= \int_{t_0}^{t_1} \left[ \frac{\partial L}{\partial q} + \frac{d}{dt} \frac{\partial L}{\partial \dot q} \right] \varepsilon\eta(t) dt.
+$$
+
+$q(t)$において作用が最小（極小）であれば，任意の$\eta(t)$に対して$\delta S = 0$であるから，ここに変分法の基本補題を適用すれば
+
+$$
+\frac{\partial L}{\partial q} + \frac{d}{dt} \frac{\partial L}{\partial \dot q} = 0
+$$
+
+を得る．
+これがオイラー＝ラグランジュ方程式である．
+
+### ラグランジアンから支配方程式を導く手続き
+
+1. 作用 $S[q]=\int_{t_0}^{t_1}L(q,\dot q,t)dt$ を定める（関数空間・端点条件を明示）．
+2. 変分 $q_\varepsilon=q+\varepsilon\eta$ を入れて$\delta S$を一次まで展開する．
+3. $\dot\eta$ を含む項を部分積分し，端点条件で境界項を落とす．
+4. $\displaystyle \delta S=\int (\cdots)\varepsilon\eta dt$が任意の$\eta$に対してゼロであることから，変分法の基本補題よりオイラー＝ラグランジュ方程式を得る．
 
 <!-- 
 - **単位**：作用の単位はエネルギー×時間（J·s）．量子論で出てくるプランク定数 (h) も同じ単位．
@@ -294,7 +336,9 @@ $$
   L=T-V.
   $$
 
-### 運動方程式（E-L）
+### オイラー＝ラグランジュ方程式
+
+前記のラグランジアンから得られるオイラー＝ラグランジュ方程式は運動方程式そのものとなる．
 
 $$
 \frac{d}{dt}(m\ell^2\dot\theta)+mg\ell\sin\theta=0
@@ -305,13 +349,15 @@ $$
 ### 平衡と安定・不安定
 
 - ポテンシャル
+
   $$
   V(\theta)=mg\ell(1-\cos\theta)
   $$
+
   の極値：
 
-  - (\theta=0)（極小）→ **安定平衡**（ボウルの底）．
-  - (\theta=\pi)（極大）→ **不安定平衡**（伏せたボウル頂上）．
+  - $\theta=0$で極小→ **安定平衡**
+  - $\theta=\pi$で極大→ **不安定平衡**
 
 ### エネルギー保存・位相平面
 
@@ -344,7 +390,7 @@ $$
 - 厳密周期は**完全楕円積分**で
 
   $$
-  T(\theta_{\max}) = 4\sqrt{\frac{\ell}{g}};K(k),
+  T(\theta_{\max}) = 4\sqrt{\frac{\ell}{g}} K(k),
   \quad
   k=\sin\frac{\theta_{\max}}{2},
   $$
@@ -359,7 +405,7 @@ $$
   $$
 
   ⇒ 振幅が大きいほど周期は**長く**なる．
-
+<!-- 
 ### 線形モデルと非線形モデルの比較
 
 準備
@@ -434,12 +480,14 @@ for deg in [5, 15, 30, 60]:
     th, om = rk4(A, 0.0)
     T_est = estimate_period(th, t)
     print(f"初期振幅 {deg:>2}°: 推定周期 ≈ {T_est:.4f} s, 小角 {2*np.pi/w0:.4f} s")
-```
+``` -->
+
+
 <!-- 
 期待される出力：振幅が大きいほど推定周期が**小角周期より長く**なる．
  -->
 
-<!-- 
+
 ## 石鹸膜の形状
 
 ### 設定
@@ -447,11 +495,11 @@ for deg in [5, 15, 30, 60]:
 - 2つの平行な円環を結ぶ石鹸膜の形状を求める．
 - 半径 $R$ の円環ワイヤを $z=\pm \tfrac{L}{2}$ に平行に固定する．
 - 両円環を結ぶ石鹸膜は**回転対称**とみなせるので，半径 $r=r(z)$ の回転面として表せる．
-- 面積を$\mathcal{A} = \mathcal{A}[r]$は
+- 面積$\mathcal{A} = \mathcal{A}[r]$は
 
 $$
-\mathcal{A}[r]= 2\pi \int_{-L/2}^{L/2} r(z),\sqrt{1+r'(z)^2}dz,
-\qquad r!\left(\pm \tfrac{L}{2}\right)=R.
+\mathcal{A}[r]= 2\pi \int_{-L/2}^{L/2} r(z)\sqrt{1+r'(z)^2}dz,
+\qquad r\left(\pm \tfrac{L}{2}\right)=R.
 $$
 
 ### 解説（導出）
@@ -459,7 +507,7 @@ $$
 汎関数の被積分関数を
 
 $$
-\mathcal{L}(r,r')= r,\sqrt{1+r'^2}
+\mathcal{L}(r,r')= r\sqrt{1+r'^2}
 $$
 
 とおく．
@@ -472,7 +520,7 @@ $$
 計算すると
 
 $$
-r\sqrt{1+r'^2} - r',\frac{r,r'}{\sqrt{1+r'^2}}
+r\sqrt{1+r'^2} - r'\frac{rr'}{\sqrt{1+r'^2}}
 = \frac{r}{\sqrt{1+r'^2}} = C.
 $$
 
@@ -489,13 +537,13 @@ $$
 $$
 \int \frac{dr}{\sqrt{r^2-C^2}} = \int \frac{dz}{C}
 \quad\Rightarrow\quad
-\operatorname{arcosh}!\left(\frac{r}{C}\right) = \frac{z-z_0}{C}.
+\operatorname{arcosh}\left(\frac{r}{C}\right) = \frac{z-z_0}{C}.
 $$
 
 したがって解は
 
 $$
-\boxed{\ r(z)= a,\cosh!\left(\frac{z-z_0}{a}\right)\ }, \qquad a(=C)>0.
+\boxed{\ r(z)= a\cosh\left(\frac{z-z_0}{a}\right)\ }, \qquad a(=C)>0.
 $$
 
 これが**カテノイド（catenoid）**：回転最小曲面の代表例．
@@ -507,13 +555,14 @@ $$
 
 を満たす $a$ が決まる．
 
+<!-- 
 ### 面積の閉形式
 
 $r=a\cosh(z/a)$, $r'=\sinh(z/a)$, $\sqrt{1+r'^2}=\cosh(z/a)$ より
 
 $$
 \mathcal{A}*{\text{cat}}
-= 2\pi \int*{-L/2}^{L/2} a,\cosh^2!\left(\frac{z}{a}\right) dz
+= 2\pi \int*{-L/2}^{L/2} a\cosh^2\left(\frac{z}{a}\right) dz
 = 2\pi a^2\left[\sinh u \cosh u + u\right],
 \quad u:=\frac{L}{2a}.
 $$
@@ -538,7 +587,7 @@ $$
 $$
 
 この**臨界比**を超えると，カテノイドは存在しなくなり，石鹸膜は**2枚の円板**に「はじけて」移行します（実験で観察可能）． 
--->
+ -->
 
 <!-- 
 ## 演習問題
@@ -613,6 +662,7 @@ $$
 ### 提出課題
 
 1. 本日作成したipynbファイルをWebClassの「第4回課題」から提出せよ．
+2. 身近な物理的な現象を一つ挙げ，それを支配する方程式を調べよ．また，その方程式を導出するラグランジアンを調べよ．
 
 <!-- 
 ```{note}
@@ -631,4 +681,8 @@ $$
 **演習4（発展：自然境界条件）**  
 端点の位置ではなく「接線方向」が固定される最短曲線変分を考え，境界条件 \(\partial L/\partial \dot q=0\) がどのように現れるかを説明せよ．
 ```
+ -->
+
+<!-- 
+単振り子で位相平面を描くpythonのコードを作成してください．
  -->

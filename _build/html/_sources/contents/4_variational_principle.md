@@ -1,7 +1,3 @@
-第3回（ロジスティック成長）の体裁に合わせつつ，**第4回「変分原理と物理モデル」**の講義資料案を作りました．第3回で扱った「安定・不安定（ボウルの比喩）」を**ポテンシャル地形**に結び付け，そこから**最小作用の原理 → 単振り子**へ自然に橋渡しします．数式はそのままコピペで使えるようにしてあります．
-
----
-
 # 変分原理と物理モデル
 
 到達目標
@@ -53,6 +49,8 @@ $$
 ここに$c$は真空中の光速，$v$は媒質中の位相速度．
 
 遅い媒質へ入るときは法線側へ曲がり，速い媒質へは法線から離れる．
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5VrnU6WhBk4?si=76JpBTk74rfcXDJ9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ### 物理的な意味
 
@@ -167,7 +165,7 @@ n2 = 1.33   # 下側
 c  = 3e8    # 真空中の光速（定数．相対比較なので消えてもOK）
 ```
 
-<!-- 
+
 ```python
 def travel_time(x):
     # 境界上の通過点 P=(x, 0)
@@ -225,7 +223,7 @@ ax.grid(True)
 ax.legend()
 plt.tight_layout()
 plt.show()
-``` -->
+```
 
 
 ## オイラー＝ラグランジュ方程式（Euler--Lagrange equation）
@@ -395,7 +393,7 @@ $$
   k=\sin\frac{\theta_{\max}}{2},
   $$
 
-  ここで (K) は第1種完全楕円積分．
+  ここで $K$ は第1種完全楕円積分．
 
 - 小振幅展開：
 
@@ -405,7 +403,8 @@ $$
   $$
 
   ⇒ 振幅が大きいほど周期は**長く**なる．
-<!-- 
+
+
 ### 線形モデルと非線形モデルの比較
 
 準備
@@ -432,7 +431,7 @@ t = np.arange(0, t_max, dt)
 def theta_lin(t, A, phi=0.0):
     return A*np.cos(w0*t + phi)
 ```
-
+<!-- 
 非線形の数値解（4次の古典RK）
 ```python
 def pend_rhs(theta, omega):
@@ -453,6 +452,23 @@ def rk4(theta0, omega0):
 
 A = np.deg2rad(30)  # 30°
 theta_nl, omega_nl = rk4(A, 0.0)
+theta_l = theta_lin(t, A, 0.0)
+```
+ -->
+
+```python
+def euler(theta0, omega0):
+    th = np.empty_like(t); om = np.empty_like(t)
+    th[0], om[0] = theta0, omega0
+    for k in range(len(t)-1):
+        # 右辺（時刻 t_k の値）で評価して前進更新
+        dth = om[k]
+        dom = -(g/ell) * np.sin(th[k])
+        th[k+1] = th[k] + dt * dth
+        om[k+1] = om[k] + dt * dom
+    return th, om
+A = np.deg2rad(30)  # 30°
+theta_nl, omega_nl = euler(A, 0.0)
 theta_l = theta_lin(t, A, 0.0)
 ```
 
@@ -480,7 +496,8 @@ for deg in [5, 15, 30, 60]:
     th, om = rk4(A, 0.0)
     T_est = estimate_period(th, t)
     print(f"初期振幅 {deg:>2}°: 推定周期 ≈ {T_est:.4f} s, 小角 {2*np.pi/w0:.4f} s")
-``` -->
+```
+
 
 
 <!-- 
@@ -662,7 +679,18 @@ $$
 ### 提出課題
 
 1. 本日作成したipynbファイルをWebClassの「第4回課題」から提出せよ．
-2. 身近な物理的な現象を一つ挙げ，それを支配する方程式を調べよ．また，その方程式を導出するラグランジアンを調べよ．
+2. 身近な物理的な現象を一つ挙げ，その現象において最小化する物理量，可能ならばラグランジアンとそれを支配する方程式を調べよ．
+
+※ キーワード：変分法・変分問題・変分原理
+
+```{tip}
+**例**
+
+- 現象：光の屈折
+- 最小化するもの：到達時間
+- ラグランジアン：
+- 支配方程式：スネルの法則
+```
 
 <!-- 
 ```{note}

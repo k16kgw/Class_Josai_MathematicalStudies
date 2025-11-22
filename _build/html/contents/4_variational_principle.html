@@ -62,6 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/4_variational_principle';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5. 常微分方程式と初期値問題" href="5_ordinal_differential_equation.html" />
     <link rel="prev" title="3. 生物学の事例" href="3_biology_examples.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -186,6 +187,7 @@
 <li class="toctree-l1"><a class="reference internal" href="2_physics_examples.html">2. 物理学の事例</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3_biology_examples.html">3. 生物学の事例</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">4. 変分原理と物理モデル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_ordinal_differential_equation.html">5. 常微分方程式と初期値問題</a></li>
 </ul>
 
     </div>
@@ -405,15 +407,16 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">4.4.4. エネルギー保存・位相平面</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">4.4.5. 線形近似（小振幅）</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">4.4.6. 非線形性の影響（大振幅：周期は伸びる）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">4.4.7. 線形モデルと非線形モデルの比較</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">4.5. 石鹸膜の形状</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">4.5.1. 設定</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">4.5.2. 解説（導出）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">4.5. 石鹸膜の形状</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">4.5.1. 設定</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">4.5.2. 解説（導出）</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">4.6. まとめ</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">4.6.1. 提出課題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">4.6. まとめ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">4.6.1. 提出課題</a></li>
 </ul>
 </li>
 </ul>
@@ -427,9 +430,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p>第3回（ロジスティック成長）の体裁に合わせつつ，<strong>第4回「変分原理と物理モデル」<strong>の講義資料案を作りました．第3回で扱った「安定・不安定（ボウルの比喩）」を</strong>ポテンシャル地形</strong>に結び付け，そこから<strong>最小作用の原理 → 単振り子</strong>へ自然に橋渡しします．数式はそのままコピペで使えるようにしてあります．</p>
-<hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="id1">
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">4. </span>変分原理と物理モデル<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p>到達目標</p>
 <ul class="simple">
@@ -492,6 +493,7 @@ n_1 \sin\theta_1 = n_2 \sin\theta_2
 <p>屈折率は<span class="math notranslate nohighlight">\(n := \dfrac{c}{v}\)</span>で定義される．
 ここに<span class="math notranslate nohighlight">\(c\)</span>は真空中の光速，<span class="math notranslate nohighlight">\(v\)</span>は媒質中の位相速度．</p>
 <p>遅い媒質へ入るときは法線側へ曲がり，速い媒質へは法線から離れる．</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5VrnU6WhBk4?si=76JpBTk74rfcXDJ9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <section id="id5">
 <h3><span class="section-number">4.2.1. </span>物理的な意味<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <ul>
@@ -609,65 +611,62 @@ $$
 <span class="n">c</span>  <span class="o">=</span> <span class="mf">3e8</span>    <span class="c1"># 真空中の光速（定数．相対比較なので消えてもOK）</span>
 </pre></div>
 </div>
-<!-- 
-```python
-def travel_time(x):
-    # 境界上の通過点 P=(x, 0)
-    AP = np.hypot(x - xA, 0 - yA)  # 距離
-    PB = np.hypot(xB - x, yB - 0)
-    return (n1*AP + n2*PB) / c
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">travel_time</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="c1"># 境界上の通過点 P=(x, 0)</span>
+    <span class="n">AP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">xA</span><span class="p">,</span> <span class="mi">0</span> <span class="o">-</span> <span class="n">yA</span><span class="p">)</span>  <span class="c1"># 距離</span>
+    <span class="n">PB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="n">xB</span> <span class="o">-</span> <span class="n">x</span><span class="p">,</span> <span class="n">yB</span> <span class="o">-</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">n1</span><span class="o">*</span><span class="n">AP</span> <span class="o">+</span> <span class="n">n2</span><span class="o">*</span><span class="n">PB</span><span class="p">)</span> <span class="o">/</span> <span class="n">c</span>
 
-# 点列を走査
-xs = np.linspace(min(xA, xB) - 3, max(xA, xB) + 3, 500)
-Ts = np.array([travel_time(x) for x in xs])
+<span class="c1"># 点列を走査</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">xA</span><span class="p">,</span> <span class="n">xB</span><span class="p">)</span> <span class="o">-</span> <span class="mi">3</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">xA</span><span class="p">,</span> <span class="n">xB</span><span class="p">)</span> <span class="o">+</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">Ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">travel_time</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">])</span>
 
-fig, ax = plt.subplots(figsize=(5,3))
-ax.plot(xs, Ts)
-ax.set_xlabel("境界上の位置 x")
-ax.set_ylabel("到達時間 T(x) [任意単位]")
-ax.set_title("到達時間 T(x) のプロファイル（凸な1谷型）")
-ax.grid(True, alpha=0.3)
-plt.tight_layout()
-plt.show()
-```
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">Ts</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;境界上の位置 x&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;到達時間 T(x) [任意単位]&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;到達時間 T(x) のプロファイル（凸な1谷型）&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>ここの<span class="math notranslate nohighlight">\(T\)</span>が最小になる<span class="math notranslate nohighlight">\(x\)</span>を見つける．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">i_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">Ts</span><span class="p">)</span> <span class="c1"># Tsの中で最小の値を取るindexを取得する</span>
+<span class="n">x_star</span> <span class="o">=</span> <span class="n">xs</span><span class="p">[</span><span class="n">i_min</span><span class="p">]</span>
+<span class="n">T_star</span> <span class="o">=</span> <span class="n">Ts</span><span class="p">[</span><span class="n">i_min</span><span class="p">]</span>
 
-ここの$T$が最小になる$x$を見つける．
-```python
-i_min = np.argmin(Ts) # Tsの中で最小の値を取るindexを取得する
-x_star = xs[i_min]
-T_star = Ts[i_min]
+<span class="n">AP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="n">x_star</span> <span class="o">-</span> <span class="n">xA</span><span class="p">,</span> <span class="n">yA</span><span class="p">)</span>   <span class="c1"># A側の経路の長さ</span>
+<span class="n">PB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="n">xB</span> <span class="o">-</span> <span class="n">x_star</span><span class="p">,</span> <span class="o">-</span><span class="n">yB</span><span class="p">)</span>  <span class="c1"># yB&lt;0 を考慮した，B側の経路の長さ</span>
+<span class="n">sin1</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x_star</span> <span class="o">-</span> <span class="n">xA</span><span class="p">)</span> <span class="o">/</span> <span class="n">AP</span>
+<span class="n">sin2</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">xB</span> <span class="o">-</span> <span class="n">x_star</span><span class="p">)</span> <span class="o">/</span> <span class="n">PB</span>
 
-AP = np.hypot(x_star - xA, yA)   # A側の経路の長さ
-PB = np.hypot(xB - x_star, -yB)  # yB<0 を考慮した，B側の経路の長さ
-sin1 = abs(x_star - xA) / AP
-sin2 = abs(xB - x_star) / PB
+<span class="n">lhs</span> <span class="o">=</span> <span class="n">n1</span> <span class="o">*</span> <span class="n">sin1</span>
+<span class="n">rhs</span> <span class="o">=</span> <span class="n">n2</span> <span class="o">*</span> <span class="n">sin2</span>
+</pre></div>
+</div>
+<p>経路を示す図の出力</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="c1"># 境界</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># 点と最適通過点</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">xA</span><span class="p">],</span> <span class="p">[</span><span class="n">yA</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">xB</span><span class="p">],</span> <span class="p">[</span><span class="n">yB</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x_star</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;P* (最適)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
 
-lhs = n1 * sin1
-rhs = n2 * sin2
-```
+<span class="c1"># 経路</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">xA</span><span class="p">,</span> <span class="n">x_star</span><span class="p">],</span> <span class="p">[</span><span class="n">yA</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x_star</span><span class="p">,</span> <span class="n">xB</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">yB</span><span class="p">],</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
 
-経路を示す図の出力
-```python
-fig, ax = plt.subplots()
-# 境界
-ax.axhline(0, color='k', lw=1)
-# 点と最適通過点
-ax.plot([xA], [yA], 'o', label='A', color='blue')
-ax.plot([xB], [yB], 'o', label='B', color='orange')
-ax.plot([x_star], [0], 'o', label='P* (最適)', color='red')
-
-# 経路
-ax.plot([xA, x_star], [yA, 0], '-', color='blue')
-ax.plot([x_star, xB], [0, yB], '-', color='orange')
-
-ax.set_aspect('equal', adjustable='box')
-ax.set_xlabel('x')
-ax.set_ylabel('y')
-ax.grid(True)
-ax.legend()
-plt.tight_layout()
-plt.show()
-``` -->
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span> <span class="n">adjustable</span><span class="o">=</span><span class="s1">&#39;box&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
 </section>
 </section>
 <section id="euler-lagrange-equation">
@@ -847,7 +846,7 @@ plt.show()
   \quad
   k=\sin\frac{\theta_{\max}}{2},
   \]</div>
-<p>ここで (K) は第1種完全楕円積分．</p>
+<p>ここで <span class="math notranslate nohighlight">\(K\)</span> は第1種完全楕円積分．</p>
 </li>
 <li><p>小振幅展開：</p>
 <div class="math notranslate nohighlight">
@@ -858,34 +857,32 @@ plt.show()
 <p>⇒ 振幅が大きいほど周期は<strong>長く</strong>なる．</p>
 </li>
 </ul>
+</section>
+<section id="id19">
+<h3><span class="section-number">4.4.7. </span>線形モデルと非線形モデルの比較<a class="headerlink" href="#id19" title="Link to this heading">#</a></h3>
+<p>準備</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">rcParams</span>
+<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Hiragino Sans&#39;</span>
+</pre></div>
+</div>
+<p>パラメタと時間軸</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="mf">9.8</span>
+<span class="n">ell</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">w0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">g</span><span class="o">/</span><span class="n">ell</span><span class="p">)</span>
+
+<span class="n">t_max</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">1e-3</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_max</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>小角近似の解</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">theta_lin</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">phi</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">A</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">w0</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="n">phi</span><span class="p">)</span>
+</pre></div>
+</div>
 <!-- 
-### 線形モデルと非線形モデルの比較
-
-準備
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib import rcParams
-rcParams['font.family'] = 'Hiragino Sans'
-```
-
-パラメタと時間軸
-```python
-g = 9.8
-ell = 1.0
-w0 = np.sqrt(g/ell)
-
-t_max = 12
-dt = 1e-3
-t = np.arange(0, t_max, dt)
-```
-
-小角近似の解
-```python
-def theta_lin(t, A, phi=0.0):
-    return A*np.cos(w0*t + phi)
-```
-
 非線形の数値解（4次の古典RK）
 ```python
 def pend_rhs(theta, omega):
@@ -908,41 +905,55 @@ A = np.deg2rad(30)  # 30°
 theta_nl, omega_nl = rk4(A, 0.0)
 theta_l = theta_lin(t, A, 0.0)
 ```
+ -->
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">euler</span><span class="p">(</span><span class="n">theta0</span><span class="p">,</span> <span class="n">omega0</span><span class="p">):</span>
+    <span class="n">th</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">t</span><span class="p">);</span> <span class="n">om</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">th</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">om</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">theta0</span><span class="p">,</span> <span class="n">omega0</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="c1"># 右辺（時刻 t_k の値）で評価して前進更新</span>
+        <span class="n">dth</span> <span class="o">=</span> <span class="n">om</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+        <span class="n">dom</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">g</span><span class="o">/</span><span class="n">ell</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">th</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+        <span class="n">th</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">th</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">dth</span>
+        <span class="n">om</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">om</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">dom</span>
+    <span class="k">return</span> <span class="n">th</span><span class="p">,</span> <span class="n">om</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>  <span class="c1"># 30°</span>
+<span class="n">theta_nl</span><span class="p">,</span> <span class="n">omega_nl</span> <span class="o">=</span> <span class="n">euler</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">theta_l</span> <span class="o">=</span> <span class="n">theta_lin</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>比較可視化</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">theta_l</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;小角近似&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">theta_nl</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;非線形（数値）&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;時間 [s]&quot;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;角度 $\theta(t)$ [rad]&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;./4_pend_compare.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>周期の推定（ゼロクロス法）</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">estimate_period</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="c1"># 0 を上向きに通過する時刻を拾う</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">theta</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">theta</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span> <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="n">t1</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">idx</span><span class="p">[</span><span class="mi">0</span><span class="p">]];</span> <span class="n">t2</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">idx</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+    <span class="k">return</span> <span class="n">t2</span> <span class="o">-</span> <span class="n">t1</span>
 
-比較可視化
-```python
-fig, ax = plt.subplots(figsize=(5,3))
-ax.plot(t, theta_l, label="小角近似", lw=1.5)
-ax.plot(t, theta_nl, label="非線形（数値）", lw=1.5, alpha=0.9)
-ax.set_xlabel("時間 [s]"); ax.set_ylabel(r"角度 $\theta(t)$ [rad]")
-ax.legend(); ax.grid(True, alpha=0.3)
-plt.tight_layout(); fig.savefig("./4_pend_compare.png", dpi=300); plt.show()
-```
-
-周期の推定（ゼロクロス法）
-```python
-def estimate_period(theta, t):
-    # 0 を上向きに通過する時刻を拾う
-    idx = np.where((theta[:-1] < 0) & (theta[1:] >= 0))[0]
-    if len(idx) < 2: return np.nan
-    t1 = t[idx[0]]; t2 = t[idx[1]]
-    return t2 - t1
-
-for deg in [5, 15, 30, 60]:
-    A = np.deg2rad(deg)
-    th, om = rk4(A, 0.0)
-    T_est = estimate_period(th, t)
-    print(f"初期振幅 {deg:>2}°: 推定周期 ≈ {T_est:.4f} s, 小角 {2*np.pi/w0:.4f} s")
-``` -->
+<span class="k">for</span> <span class="n">deg</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">60</span><span class="p">]:</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">deg</span><span class="p">)</span>
+    <span class="n">th</span><span class="p">,</span> <span class="n">om</span> <span class="o">=</span> <span class="n">rk4</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+    <span class="n">T_est</span> <span class="o">=</span> <span class="n">estimate_period</span><span class="p">(</span><span class="n">th</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;初期振幅 </span><span class="si">{</span><span class="n">deg</span><span class="si">:</span><span class="s2">&gt;2</span><span class="si">}</span><span class="s2">°: 推定周期 ≈ </span><span class="si">{</span><span class="n">T_est</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> s, 小角 </span><span class="si">{</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="n">w0</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> s&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 <!-- 
 期待される出力：振幅が大きいほど推定周期が**小角周期より長く**なる．
  -->
 </section>
 </section>
-<section id="id19">
-<h2><span class="section-number">4.5. </span>石鹸膜の形状<a class="headerlink" href="#id19" title="Link to this heading">#</a></h2>
 <section id="id20">
-<h3><span class="section-number">4.5.1. </span>設定<a class="headerlink" href="#id20" title="Link to this heading">#</a></h3>
+<h2><span class="section-number">4.5. </span>石鹸膜の形状<a class="headerlink" href="#id20" title="Link to this heading">#</a></h2>
+<section id="id21">
+<h3><span class="section-number">4.5.1. </span>設定<a class="headerlink" href="#id21" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>2つの平行な円環を結ぶ石鹸膜の形状を求める．</p></li>
 <li><p>半径 <span class="math notranslate nohighlight">\(R\)</span> の円環ワイヤを <span class="math notranslate nohighlight">\(z=\pm \tfrac{L}{2}\)</span> に平行に固定する．</p></li>
@@ -955,8 +966,8 @@ for deg in [5, 15, 30, 60]:
 \qquad r\left(\pm \tfrac{L}{2}\right)=R.
 \]</div>
 </section>
-<section id="id21">
-<h3><span class="section-number">4.5.2. </span>解説（導出）<a class="headerlink" href="#id21" title="Link to this heading">#</a></h3>
+<section id="id22">
+<h3><span class="section-number">4.5.2. </span>解説（導出）<a class="headerlink" href="#id22" title="Link to this heading">#</a></h3>
 <p>汎関数の被積分関数を</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1094,8 +1105,8 @@ $$
  -->
 </section>
 </section>
-<section id="id22">
-<h2><span class="section-number">4.6. </span>まとめ<a class="headerlink" href="#id22" title="Link to this heading">#</a></h2>
+<section id="id23">
+<h2><span class="section-number">4.6. </span>まとめ<a class="headerlink" href="#id23" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>観点</p></th>
@@ -1121,12 +1132,23 @@ $$
 </tbody>
 </table>
 </div>
-<section id="id23">
-<h3><span class="section-number">4.6.1. </span>提出課題<a class="headerlink" href="#id23" title="Link to this heading">#</a></h3>
+<section id="id24">
+<h3><span class="section-number">4.6.1. </span>提出課題<a class="headerlink" href="#id24" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>本日作成したipynbファイルをWebClassの「第4回課題」から提出せよ．</p></li>
-<li><p>身近な物理的な現象を一つ挙げ，それを支配する方程式を調べよ．また，その方程式を導出するラグランジアンを調べよ．</p></li>
+<li><p>身近な物理的な現象を一つ挙げ，その現象において最小化する物理量，可能ならばラグランジアンとそれを支配する方程式を調べよ．</p></li>
 </ol>
+<p>※ キーワード：変分法・変分問題・変分原理</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>例</strong></p>
+<ul class="simple">
+<li><p>現象：光の屈折</p></li>
+<li><p>最小化するもの：到達時間</p></li>
+<li><p>ラグランジアン：</p></li>
+<li><p>支配方程式：スネルの法則</p></li>
+</ul>
+</div>
 <!-- 
 ```{note}
 **演習1（紙と鉛筆）**  
@@ -1191,6 +1213,15 @@ $$
         <p class="prev-next-title"><span class="section-number">3. </span>生物学の事例</p>
       </div>
     </a>
+    <a class="right-next"
+       href="5_ordinal_differential_equation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>常微分方程式と初期値問題</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -1231,15 +1262,16 @@ $$
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">4.4.4. エネルギー保存・位相平面</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">4.4.5. 線形近似（小振幅）</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">4.4.6. 非線形性の影響（大振幅：周期は伸びる）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">4.4.7. 線形モデルと非線形モデルの比較</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">4.5. 石鹸膜の形状</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">4.5.1. 設定</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">4.5.2. 解説（導出）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">4.5. 石鹸膜の形状</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">4.5.1. 設定</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">4.5.2. 解説（導出）</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">4.6. まとめ</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">4.6.1. 提出課題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">4.6. まとめ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">4.6.1. 提出課題</a></li>
 </ul>
 </li>
 </ul>

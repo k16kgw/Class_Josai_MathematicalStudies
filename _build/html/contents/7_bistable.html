@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>2種競争モデルと双安定性 &#8212; Mathematical Studies I・II</title>
+    <title>7. 2種競争モデルと双安定性 &#8212; Mathematical Studies I・II</title>
   
   
   
@@ -57,9 +57,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/7_bistable';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="6. 捕食者・被食者モデル" href="6_prey_predator_model.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +125,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -180,11 +181,14 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">目次</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="1_mathematical_model.html">1. 数理モデルの導入・演習</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2_physics_examples.html">2. 物理学の事例</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3_biology_examples.html">3. 生物学の事例</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4_variational_principle.html">4. 変分原理と物理モデル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_ordinal_differential_equation.html">5. 常微分方程式と初期値問題</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_prey_predator_model.html">6. 捕食者・被食者モデル</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. 2種競争モデルと双安定性</a></li>
 </ul>
 
     </div>
@@ -357,7 +361,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -373,6 +379,32 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">7.1. 2種競争モデル</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">7.1.1. 生態系の競争関係</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gause">7.1.2. 競争排除則（Gauseの法則）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">7.1.3. モデルの定式化</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">7.2. 平衡点とその分類</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">7.2.1. 平衡条件</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">7.2.2. 平衡点の候補</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">7.2.3. 共存条件</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">7.3. 相平面解析</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">7.4. 双安定現象</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">7.4.1. 相図による視覚的理解</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">7.4.2. 平衡点の安定性の解析</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">7.5. まとめ</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -383,12 +415,275 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>2種競争モデルと双安定性<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">7. </span>2種競争モデルと双安定性<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p>到達目標</p>
 <ul class="simple">
 <li><p>競争系における双安定現象を理解する．</p></li>
 <li><p>相平面解析を行い安定性を評価する．</p></li>
 </ul>
+<section id="id2">
+<h2><span class="section-number">7.1. </span>2種競争モデル<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<section id="id3">
+<h3><span class="section-number">7.1.1. </span>生態系の競争関係<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>一つの資源を2種以上の生物同士が奪い合う状況を扱う．</p></li>
+<li><p>例：</p>
+<ul>
+<li><p>2種類の細菌が同じ栄養源を奪い合う．</p></li>
+<li><p>草原で2種の植物が日光を取り合う．</p></li>
+<li><p>2つの企業が同じ市場でシェア（客）を奪い合う．</p></li>
+</ul>
+</li>
+</ul>
+<p>→ このような<strong>競争系</strong>では，<strong>一方が優勢になると他方が衰退する</strong>現象が生じる．</p>
+</section>
+<section id="gause">
+<h3><span class="section-number">7.1.2. </span>競争排除則（Gauseの法則）<a class="headerlink" href="#gause" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>同じニッチ（生態的地位，まとまった環境要因）を占める2種は，長期的に共存できない．</p></li>
+<li><p>ただし，パラメータによっては「共存」や「多安定」もあり得る．</p></li>
+</ul>
+<p>→ 代表例として**双安定現象（bistability）**を扱う．</p>
+</section>
+<section id="id4">
+<h3><span class="section-number">7.1.3. </span>モデルの定式化<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>ロジスティック成長を基にモデルを考える．</p>
+<p>単一種のロジスティック方程式は次のように導入される．</p>
+<div class="math notranslate nohighlight">
+\[
+\dfrac{dx}{dt} = r_1 x \left(1-\dfrac{x}{K_1}\right)
+\]</div>
+<p>これを2種 (x,y) が競合する場合に拡張する．</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{cases}
+    \dfrac{dx}{dt} = r_1 x \left(1-\dfrac{x}{K_1}-\dfrac{\alpha y}{K_1}\right)
+    \\
+    \dfrac{dy}{dt} = r_2 y \left(1-\dfrac{y}{K_2}-\dfrac{\beta x}{K_2}\right)
+\end{cases}
+\end{split}\]</div>
+<p>ここに</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(r_i\)</span>：種 <span class="math notranslate nohighlight">\(i\)</span> の成長率</p></li>
+<li><p><span class="math notranslate nohighlight">\(K_i\)</span>：種 <span class="math notranslate nohighlight">\(i\)</span> の環境収容量</p></li>
+<li><p><span class="math notranslate nohighlight">\(b_{ij}&gt;0\)</span>：種 <span class="math notranslate nohighlight">\(j\)</span> が種 <span class="math notranslate nohighlight">\(i\)</span> に及ぼす競争効果（資源利用の強さ）</p></li>
+</ul>
+<p><strong>解釈</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x\)</span> が増えると <span class="math notranslate nohighlight">\(y\)</span> の成長が抑えられる（<span class="math notranslate nohighlight">\(\beta x\)</span>）</p></li>
+<li><p><span class="math notranslate nohighlight">\(y\)</span> が増えると <span class="math notranslate nohighlight">\(x\)</span> の成長が抑えられる（<span class="math notranslate nohighlight">\(\alpha y\)</span>）</p></li>
+<li><p>強い競争ではどちらかが勝ち残り，弱い競争では共存も可能．</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id5">
+<h2><span class="section-number">7.2. </span>平衡点とその分類<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<section id="id6">
+<h3><span class="section-number">7.2.1. </span>平衡条件<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(\dfrac{dx}{dt}=\dfrac{dy}{dt}=0\)</span>より</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{cases}
+    x=0 \text{ または } 1-\dfrac{x}{K_1}-\dfrac{\alpha y}{K_1}=0,
+    \\
+    y=0 \text{ または } 1-\dfrac{y}{K_2}-\dfrac{\beta x}{K_2}=0.
+\end{cases}
+\end{split}\]</div>
+<p>ここで簡単のため <span class="math notranslate nohighlight">\(r_1=r_2=1,\ K_1=K_2=1\)</span> にスケーリングして考えると：</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{cases}
+    \dot x = x(1 - x - \alpha y)
+    \\
+    \dot y = y(1 - y - \beta x)
+\end{cases}
+\end{split}\]</div>
+</section>
+<section id="id7">
+<h3><span class="section-number">7.2.2. </span>平衡点の候補<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(E_1=(0,0)\)</span>：両方絶滅</p></li>
+<li><p><span class="math notranslate nohighlight">\(E_2=(1,0)\)</span>：種1のみ生存</p></li>
+<li><p><span class="math notranslate nohighlight">\(E_3=(0,1)\)</span>：種2のみ生存</p></li>
+<li><p><span class="math notranslate nohighlight">\(E_4=\left(\dfrac{1-\alpha}{1-\alpha\beta}, \dfrac{1-\beta}{1-\alpha\beta}\right)\)</span>：共存状態（ただし存在条件あり）</p></li>
+</ol>
+</section>
+<section id="id8">
+<h3><span class="section-number">7.2.3. </span>共存条件<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<p>共存点が正（第1象限内）に存在するための条件は</p>
+<div class="math notranslate nohighlight">
+\[
+1-\alpha&gt;0,\quad 1-\beta&gt;0 \quad\Rightarrow\quad \alpha&lt;1,\ \beta&lt;1.
+\]</div>
+<p>→ 相互作用が弱ければ共存可能．</p>
+<p>逆に <span class="math notranslate nohighlight">\(\alpha&gt;1,\ \beta&gt;1\)</span> では，共存点は第1象限外になり，**排他（双安定）**が起きる．</p>
+</section>
+</section>
+<section id="id9">
+<h2><span class="section-number">7.3. </span>相平面解析<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<p><strong>設定</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">rcParams</span>
+<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Hiragino Sans&#39;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>演習1</strong></p>
+<p>次のコード内で2種競争モデルの右辺を計算する関数<code class="docutils literal notranslate"><span class="pre">competition_rhs</span></code>を実装せよ．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span> <span class="o">=</span> <span class="mf">1.3</span><span class="p">,</span> <span class="mf">1.4</span>  <span class="c1"># 強い競争</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">competition_rhs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    ここを埋める．</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dydt</span>
+</pre></div>
+</div>
+</div>
+<!-- 
+```python
+alpha, beta = 1.3, 1.4  # 強い競争
+def competition_rhs(x, y):
+    dx = x*(1 - x - alpha*y)
+    dy = y*(1 - y - beta*x)
+    return dx, dy
+```
+ -->
+<p><strong>ベクトル場の描画</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">U</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">competition_rhs</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;種1の個体数 x&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;種2の個体数 y&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;2種競争モデルの方向場&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>時間発展と軌道（オイラー法）</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">euler_comp</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">t</span><span class="p">);</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">dxdt</span><span class="p">,</span> <span class="n">dydt</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+        <span class="n">X</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span><span class="o">*</span><span class="n">dxdt</span>
+        <span class="n">Y</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">Y</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span><span class="o">*</span><span class="n">dydt</span>
+    <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="n">x0</span><span class="p">,</span> <span class="n">y0</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">1.0</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">euler_comp</span><span class="p">(</span><span class="n">competition_rhs</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>相平面上の軌道</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;軌道&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="s1">&#39;k-&#39;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="s1">&#39;k-&#39;</span><span class="p">)</span>  <span class="c1"># 軸</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x (種1)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;y (種2)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;競争系の相平面軌道（双安定）&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>演習2</strong></p>
+<p>いくつか異なる初期値について軌道を観察することで，<span class="math notranslate nohighlight">\(E_2=(1,0)\)</span>に収束する場合と<span class="math notranslate nohighlight">\(E_3=(0,1)\)</span>に収束する場合との条件の仮説を立てよ．</p>
+<!-- 
+- 種1の初期値が大きいと $x\to 1, y\to 0$．
+- 種2が優勢なら $x\to 0, y\to 1$．
+- 中間値からの出発では，**どちらに偏るかが初期条件に依存**する．
+
+→ これを**双安定（bistability）**と呼ぶ．
+ -->
+</div>
+</section>
+<section id="id10">
+<h2><span class="section-number">7.4. </span>双安定現象<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>系が <strong>2つの安定平衡点</strong> を持つとき，そのどちらにも収束し得る現象をいう．</p></li>
+<li><p>初期条件のわずかな違いで最終状態が異なる．</p></li>
+</ul>
+<section id="id11">
+<h3><span class="section-number">7.4.1. </span>相図による視覚的理解<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>境界（セパラトリクス）を挟んで，軌道が異なる安定平衡点に吸い込まれる．</p></li>
+<li><p>実世界では：</p>
+<ul>
+<li><p>競争種の<strong>どちらが勝つか</strong></p></li>
+<li><p>化学反応での<strong>スイッチング挙動</strong></p></li>
+<li><p>生物細胞の<strong>分化</strong> などに対応する．</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id12">
+<h3><span class="section-number">7.4.2. </span>平衡点の安定性の解析<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+J=
+\begin{pmatrix}
+    1-2x-\alpha y   &amp; -\alpha x
+    \\
+    -\beta y        &amp; 1-2y-\beta x
+\end{pmatrix}
+\end{split}\]</div>
+<p>各平衡点に代入して固有値の符号を確認すると</p>
+<p>| 平衡点           | 固有値の符号 | 安定性         | 意味            |
+| ——— 　    | ——     | ——–      | ———      |
+| (1,0)     　    | 負・正      | 安定（種1のみ） | 種1が優勢        |
+| (0,1)     　    | 正・負      | 安定（種2のみ） | 種2が優勢        |
+| (0,0)     　    | 正・正      | 不安定        | 両者増える        |
+| 共存点（存在せず） | －         | －            | 強い競争のため消失 |</p>
+<p>2つの安定平衡<span class="math notranslate nohighlight">\((1,0)\)</span>と<span class="math notranslate nohighlight">\((0,1)\)</span>が存在：<strong>双安定系</strong>．</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>演習3</strong></p>
+<ol class="arabic simple">
+<li><p>弱い競争（<span class="math notranslate nohighlight">\(\alpha=0.5, \beta=0.6\)</span>）に変更し，共存点が出現することを確認せよ．</p></li>
+<li><p>初期条件を変えて軌道がどちらの平衡点へ向かうかを可視化せよ．</p></li>
+</ol>
+<!-- 3. （発展）ヤコビ行列の固有値を数値的に計算し，安定性を評価せよ． -->
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id13">
+<h2><span class="section-number">7.5. </span>まとめ<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>項目</p></th>
+<th class="head"><p>内容</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>モデル</p></td>
+<td><p>2種競争モデル（ロジスティック型）</p></td>
+</tr>
+<tr class="row-odd"><td><p>双安定性</p></td>
+<td><p>初期条件により異なる安定平衡に収束</p></td>
+</tr>
+<tr class="row-even"><td><p>安定性解析</p></td>
+<td><p>ヤコビ行列の固有値の符号で判断</p></td>
+</tr>
+<tr class="row-odd"><td><p>相平面解析</p></td>
+<td><p>境界を挟んで異なる方向に流れるベクトル場</p></td>
+</tr>
+<tr class="row-even"><td><p>応用例</p></td>
+<td><p>種間競争，化学反応のスイッチング，神経モデル，細胞分化モデルなど</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -421,12 +716,54 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="6_prey_predator_model.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>捕食者・被食者モデル</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">7.1. 2種競争モデル</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">7.1.1. 生態系の競争関係</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gause">7.1.2. 競争排除則（Gauseの法則）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">7.1.3. モデルの定式化</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">7.2. 平衡点とその分類</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">7.2.1. 平衡条件</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">7.2.2. 平衡点の候補</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">7.2.3. 共存条件</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">7.3. 相平面解析</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">7.4. 双安定現象</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">7.4.1. 相図による視覚的理解</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">7.4.2. 平衡点の安定性の解析</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">7.5. まとめ</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

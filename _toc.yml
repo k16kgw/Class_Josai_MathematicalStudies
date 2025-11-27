@@ -14,7 +14,7 @@ parts:
       - file: contents/4_variational_principle
       - file: contents/5_ordinal_differential_equation
       - file: contents/6_prey_predator_model
-      # - file: contents/7_bistable
+      - file: contents/7_bistable
       # - file: contents/8_BZ
       # - file: contents/9_SIR_model
       # - file: contents/10_partial_differential_equation

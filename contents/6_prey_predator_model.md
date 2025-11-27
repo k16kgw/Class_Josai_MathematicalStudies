@@ -15,7 +15,7 @@
 準備
 1. anaconda を使用し，<span style="color:red">jupyter lab</span> を起動する．
 2. `Documents（書類）/mathematical_studies` フォルダを開き，新規ノートブックを作成．
-3. ファイル名を `4_{学籍番号}_{氏名}.ipynb` に変更（例：`4_SI25999_香川渓一郎.ipynb`）．
+3. ファイル名を `6_{学籍番号}_{氏名}.ipynb` に変更（例：`6_SI25999_香川渓一郎.ipynb`）．
 
 <!-- 
 ## 生態系の数理モデル

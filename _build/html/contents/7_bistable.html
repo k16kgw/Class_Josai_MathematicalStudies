@@ -396,13 +396,17 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">7.2.3. 共存条件</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">7.3. 相平面解析</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">7.4. 双安定現象</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">7.4.1. 相図による視覚的理解</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">7.4.2. 平衡点の安定性の解析</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">7.3. 相平面解析</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">7.3.1. ヌルクライン</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">7.3.2. 数値的な解析</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">7.5. まとめ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">7.4. 双安定現象</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">7.4.1. 相図による視覚的理解</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">7.4.2. 平衡点の安定性の解析</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">7.5. まとめ</a></li>
 </ul>
             </nav>
         </div>
@@ -443,7 +447,7 @@ document.write(`
 <li><p>同じニッチ（生態的地位，まとまった環境要因）を占める2種は，長期的に共存できない．</p></li>
 <li><p>ただし，パラメータによっては「共存」や「多安定」もあり得る．</p></li>
 </ul>
-<p>→ 代表例として**双安定現象（bistability）**を扱う．</p>
+<p>→ 代表例として<strong>双安定現象</strong>（bistability）を扱う．</p>
 </section>
 <section id="id4">
 <h3><span class="section-number">7.1.3. </span>モデルの定式化<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
@@ -466,7 +470,8 @@ document.write(`
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(r_i\)</span>：種 <span class="math notranslate nohighlight">\(i\)</span> の成長率</p></li>
 <li><p><span class="math notranslate nohighlight">\(K_i\)</span>：種 <span class="math notranslate nohighlight">\(i\)</span> の環境収容量</p></li>
-<li><p><span class="math notranslate nohighlight">\(b_{ij}&gt;0\)</span>：種 <span class="math notranslate nohighlight">\(j\)</span> が種 <span class="math notranslate nohighlight">\(i\)</span> に及ぼす競争効果（資源利用の強さ）</p></li>
+<li><p><span class="math notranslate nohighlight">\(\alpha&gt;0\)</span>：種1が種2に及ぼす競争効果（資源利用の強さ）</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta&gt;0\)</span>：種2が種1に及ぼす競争効果（資源利用の強さ）</p></li>
 </ul>
 <p><strong>解釈</strong></p>
 <ul class="simple">
@@ -490,14 +495,21 @@ document.write(`
     y=0 \text{ または } 1-\dfrac{y}{K_2}-\dfrac{\beta x}{K_2}=0.
 \end{cases}
 \end{split}\]</div>
-<p>ここで簡単のため <span class="math notranslate nohighlight">\(r_1=r_2=1,\ K_1=K_2=1\)</span> にスケーリングして考えると：</p>
+<p>ここで簡単のため <span class="math notranslate nohighlight">\(r_1=r_2=1,\ K_1=K_2=1\)</span> として考えると：</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{cases}
-    \dot x = x(1 - x - \alpha y)
+    \dfrac{dx}{dt} = x(1 - x - \alpha y)
     \\
-    \dot y = y(1 - y - \beta x)
+    \dfrac{dy}{dt} = y(1 - y - \beta x)
 \end{cases}
+\end{split}\]</div>
+<p>ここで第1・2式の右辺を<span class="math notranslate nohighlight">\(f_1, f_2\)</span>と置く．つまり</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+&amp;f_1 = x(1 - x - \alpha y)
+\\
+&amp;f_2 = y(1 - y - \beta x)
 \end{split}\]</div>
 </section>
 <section id="id7">
@@ -517,11 +529,36 @@ document.write(`
 1-\alpha&gt;0,\quad 1-\beta&gt;0 \quad\Rightarrow\quad \alpha&lt;1,\ \beta&lt;1.
 \]</div>
 <p>→ 相互作用が弱ければ共存可能．</p>
-<p>逆に <span class="math notranslate nohighlight">\(\alpha&gt;1,\ \beta&gt;1\)</span> では，共存点は第1象限外になり，**排他（双安定）**が起きる．</p>
+<p>逆に <span class="math notranslate nohighlight">\(\alpha&gt;1,\ \beta&gt;1\)</span> では，共存点は第1象限外になり，<strong>排除</strong>（双安定）が起きる．</p>
 </section>
 </section>
 <section id="id9">
 <h2><span class="section-number">7.3. </span>相平面解析<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<section id="id10">
+<h3><span class="section-number">7.3.1. </span>ヌルクライン<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(\dfrac{dx}{dt}=0, \dfrac{dy}{dt}=0\)</span>を満たす<span class="math notranslate nohighlight">\((x,y)\)</span>の関係式（曲線）を<span class="math notranslate nohighlight">\(xy\)</span>平面に描画することで，相平面内の軌道の大まかな挙動を予測することができる．
+この曲線は</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+&amp;f_1 = x(1 - x - \alpha y) = 0
+\\
+&amp;f_2 = y(1 - y - \beta x) = 0
+\end{split}\]</div>
+<p>より</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+&amp;x = 0
+\\
+&amp;y = - \dfrac{1}{\alpha} x + \dfrac{1}{\alpha}
+\\
+&amp;y = 0
+\\
+&amp;y = - \beta x + 1
+\end{split}\]</div>
+<p>と表せる．この曲線を境に<span class="math notranslate nohighlight">\(\dfrac{dx}{dt}\)</span>と<span class="math notranslate nohighlight">\(\dfrac{dy}{dt}\)</span>の正負の値が変わり，<span class="math notranslate nohighlight">\(x,y\)</span>の増減が決まる．</p>
+</section>
+<section id="id11">
+<h3><span class="section-number">7.3.2. </span>数値的な解析<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
 <p><strong>設定</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
@@ -585,7 +622,7 @@ def competition_rhs(x, y):
 <p><strong>相平面上の軌道</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;軌道&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="s1">&#39;k-&#39;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="s1">&#39;k-&#39;</span><span class="p">)</span>  <span class="c1"># 軸</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x (種1)&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;y (種2)&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;競争系の相平面軌道（双安定）&quot;</span><span class="p">)</span>
@@ -602,18 +639,19 @@ def competition_rhs(x, y):
 - 種2が優勢なら $x\to 0, y\to 1$．
 - 中間値からの出発では，**どちらに偏るかが初期条件に依存**する．
 
-→ これを**双安定（bistability）**と呼ぶ．
+→ これを**双安定**（bistability）と呼ぶ．
  -->
 </div>
 </section>
-<section id="id10">
-<h2><span class="section-number">7.4. </span>双安定現象<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+</section>
+<section id="id12">
+<h2><span class="section-number">7.4. </span>双安定現象<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>系が <strong>2つの安定平衡点</strong> を持つとき，そのどちらにも収束し得る現象をいう．</p></li>
 <li><p>初期条件のわずかな違いで最終状態が異なる．</p></li>
 </ul>
-<section id="id11">
-<h3><span class="section-number">7.4.1. </span>相図による視覚的理解<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<section id="id13">
+<h3><span class="section-number">7.4.1. </span>相図による視覚的理解<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>境界（セパラトリクス）を挟んで，軌道が異なる安定平衡点に吸い込まれる．</p></li>
 <li><p>実世界では：</p>
@@ -625,8 +663,8 @@ def competition_rhs(x, y):
 </li>
 </ul>
 </section>
-<section id="id12">
-<h3><span class="section-number">7.4.2. </span>平衡点の安定性の解析<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<section id="id14">
+<h3><span class="section-number">7.4.2. </span>平衡点の安定性の解析<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 J=
@@ -637,12 +675,38 @@ J=
 \end{pmatrix}
 \end{split}\]</div>
 <p>各平衡点に代入して固有値の符号を確認すると</p>
-<p>| 平衡点           | 固有値の符号 | 安定性         | 意味            |
-| ——— 　    | ——     | ——–      | ———      |
-| (1,0)     　    | 負・正      | 安定（種1のみ） | 種1が優勢        |
-| (0,1)     　    | 正・負      | 安定（種2のみ） | 種2が優勢        |
-| (0,0)     　    | 正・正      | 不安定        | 両者増える        |
-| 共存点（存在せず） | －         | －            | 強い競争のため消失 |</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>平衡点</p></th>
+<th class="head text-center"><p>固有値の符号</p></th>
+<th class="head text-left"><p>安定性</p></th>
+<th class="head text-left"><p>意味</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>(1,0)</p></td>
+<td class="text-center"><p>負・正</p></td>
+<td class="text-left"><p>安定（種1のみ）</p></td>
+<td class="text-left"><p>種1が優勢</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>(0,1)</p></td>
+<td class="text-center"><p>正・負</p></td>
+<td class="text-left"><p>安定（種2のみ）</p></td>
+<td class="text-left"><p>種2が優勢</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>(0,0)</p></td>
+<td class="text-center"><p>正・正</p></td>
+<td class="text-left"><p>不安定</p></td>
+<td class="text-left"><p>両者増える</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>共存点</p></td>
+<td class="text-center"><p>なし</p></td>
+<td class="text-left"><p>なし</p></td>
+<td class="text-left"><p>強い競争のため消失</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 <p>2つの安定平衡<span class="math notranslate nohighlight">\((1,0)\)</span>と<span class="math notranslate nohighlight">\((0,1)\)</span>が存在：<strong>双安定系</strong>．</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -656,8 +720,8 @@ J=
 </section>
 </section>
 <hr class="docutils" />
-<section id="id13">
-<h2><span class="section-number">7.5. </span>まとめ<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<section id="id15">
+<h2><span class="section-number">7.5. </span>まとめ<a class="headerlink" href="#id15" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>項目</p></th>
@@ -753,13 +817,17 @@ J=
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">7.2.3. 共存条件</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">7.3. 相平面解析</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">7.4. 双安定現象</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">7.4.1. 相図による視覚的理解</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">7.4.2. 平衡点の安定性の解析</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">7.3. 相平面解析</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">7.3.1. ヌルクライン</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">7.3.2. 数値的な解析</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">7.5. まとめ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">7.4. 双安定現象</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">7.4.1. 相図による視覚的理解</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">7.4.2. 平衡点の安定性の解析</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">7.5. まとめ</a></li>
 </ul>
   </nav></div>
 

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>BZ反応のモデル &#8212; Mathematical Studies I・II</title>
+    <title>8. BZ反応のモデル &#8212; Mathematical Studies I・II</title>
   
   
   
@@ -57,9 +57,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/8_BZ';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="7. 2種競争モデルと双安定性" href="7_bistable.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +125,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -180,11 +181,15 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">目次</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="1_mathematical_model.html">1. 数理モデルの導入・演習</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2_physics_examples.html">2. 物理学の事例</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3_biology_examples.html">3. 生物学の事例</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4_variational_principle.html">4. 変分原理と物理モデル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_ordinal_differential_equation.html">5. 常微分方程式と初期値問題</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_prey_predator_model.html">6. 捕食者・被食者モデル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_bistable.html">7. 2種競争モデルと双安定性</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. BZ反応のモデル</a></li>
 </ul>
 
     </div>
@@ -380,7 +385,25 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">BZ反応</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bz-belousovzhabotinsky-reaction">8.1. BZ反応（Belousov–Zhabotinsky reaction）</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">8.1.1. 実験動画</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">8.2. 化学反応系と非線形性</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oregonator">8.3. Oregonatorモデル</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">8.4. 平衡点の解析</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">8.5. 数値シミュレーション</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">8.6. リミットサイクルの数学的特徴</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">8.7. 応用</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">8.7.1. 自律振動</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">8.7.2. 化学パターン形成</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">8.7.3. 脳科学・計算科学への応用</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">8.8. まとめ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">8.8.1. 課題</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -393,21 +416,236 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="bz">
-<h1>BZ反応のモデル<a class="headerlink" href="#bz" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">8. </span>BZ反応のモデル<a class="headerlink" href="#bz" title="Link to this heading">#</a></h1>
 <p>到達目標</p>
 <ul class="simple">
 <li><p>BZ反応に代表されるリミットサイクル振動を理解する．</p></li>
 <li><p>数値シミュレーションを活用して周期解を理解する．</p></li>
 </ul>
-<p>アイデア</p>
+<p>準備</p>
+<ol class="arabic simple">
+<li><p>anacondaを使用し，<span style="color:red">jupyter lab</span>を起動する．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Documents（書類）/mathematical_studies</span></code>フォルダをダブルクリックで開き<code class="docutils literal notranslate"><span class="pre">+</span></code>をクリックして新しいファイルを作成する．</p></li>
+<li><p>ファイル名を<code class="docutils literal notranslate"><span class="pre">8_{学籍番号}_{氏名}.ipynb</span></code>に変更する．例：<code class="docutils literal notranslate"><span class="pre">3_SI25999_香川渓一郎.ipynb</span></code></p></li>
+</ol>
+<section id="bz-belousovzhabotinsky-reaction">
+<h2><span class="section-number">8.1. </span>BZ反応（Belousov–Zhabotinsky reaction）<a class="headerlink" href="#bz-belousovzhabotinsky-reaction" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>BZ反応の実験を見せてみる？</p></li>
+<li><p>同じ溶液の中にある化学反応が<strong>周期的に色を変え続ける現象</strong>．</p></li>
+<li><p>1950年代に発見される．</p></li>
+<li><p>多くの化学反応は「反応物が減り生成物が増えたら終わる」が，BZ反応は<strong>外部入力なしでも勝手に振動</strong>する．</p></li>
 </ul>
 <section id="id1">
-<h2>BZ反応<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">8.1.1. </span>実験動画<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Nrwc8Ojvnxk?si=cKTVk1W7Grgsnzs1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<p><a class="reference external" href="https://vcpteam.hatenablog.com/entry/2022/07/05/215333">「振動反応　～BZ(ベローゾフ・ジャボチンスキー)反応～」VCPteam’s blog</a></p>
+</section>
+</section>
+<section id="id2">
+<h2><span class="section-number">8.2. </span>化学反応系と非線形性<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>化学反応系の速度方程式は一般に：</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d\mathbf{x}}{dt} = \mathbf{f}(\mathbf{x})
+\]</div>
+<p>となる．</p>
+<!-- BZ反応が周期的に変動するのは反応速度の中に **強い非線形項** が存在するため． -->
+<p>代表的なモデル</p>
 <ul class="simple">
-<li><p>BZ反応とは</p></li>
+<li><p>オレゴネータ(Oregonator)モデル</p></li>
+<li><p>Field–Körös–Noyes（FKN）機構</p></li>
+<li><p>単純化すれば2次元の非線形常微分方程式でも振動が出る．</p></li>
 </ul>
+</section>
+<section id="oregonator">
+<h2><span class="section-number">8.3. </span>Oregonatorモデル<a class="headerlink" href="#oregonator" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x(t)\)</span>：中間体 HBrO<span class="math notranslate nohighlight">\(_2\)</span> の濃度</p></li>
+<li><p><span class="math notranslate nohighlight">\(y(t)\)</span>：還元剤の濃度</p></li>
+<li><p><span class="math notranslate nohighlight">\(z(t)\)</span>：触媒の酸化状態に対応する変数</p></li>
+</ul>
+<p>ここでは次の簡略版Oregonatorモデルを考える．</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{cases}
+\dot x = q y - x y + x(1 - x),
+\\
+\dot y = - q y - x y + f,
+\end{cases}
+\end{split}\]</div>
+<p>ここに</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(q&gt;0\)</span>：反応比</p></li>
+<li><p><span class="math notranslate nohighlight">\(f&gt;0\)</span>：供給（定数）</p></li>
+<li><p>非線形項は<span class="math notranslate nohighlight">\(xy\)</span>, <span class="math notranslate nohighlight">\(x^2\)</span>の2つ</p></li>
+<li><p>適切なパラメタのもとでは，静止せずに閉じた軌道（リミットサイクル）に沿って動く．</p></li>
+</ul>
+</section>
+<section id="id3">
+<h2><span class="section-number">8.4. </span>平衡点の解析<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>平衡点は<span class="math notranslate nohighlight">\(\dot x=\dot y=0\)</span>で求まるが，ここでは表式が複雑になるため数値的に求める．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">mpmath</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mp</span>
+
+<span class="n">q</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="mf">0.002</span><span class="p">,</span> <span class="mf">1.1</span>
+<span class="n">f1</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">X</span><span class="p">:</span> <span class="n">q</span><span class="o">*</span><span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">f2</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">X</span><span class="p">:</span> <span class="o">-</span><span class="n">q</span><span class="o">*</span><span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">f</span>
+
+<span class="n">fpsol</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">findroot</span><span class="p">([</span><span class="k">lambda</span> <span class="n">X</span><span class="p">:</span> <span class="n">f1</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="k">lambda</span> <span class="n">X</span><span class="p">:</span> <span class="n">f2</span><span class="p">(</span><span class="n">X</span><span class="p">)],</span> <span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>この平衡点は近くを初期値とすると</p>
+<ul class="simple">
+<li><p>内側からは外へ</p></li>
+<li><p>外側からは内へ
+と向かい，<strong>ある閉じた軌道に吸い込まれていく</strong>．
+この軌道を<span style="color:red">リミットサイクル</span>と呼ぶ．</p></li>
+</ul>
+</section>
+<section id="id4">
+<h2><span class="section-number">8.5. </span>数値シミュレーション<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>右辺の実装</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">q</span> <span class="o">=</span> <span class="mf">0.002</span>
+<span class="n">f</span> <span class="o">=</span> <span class="mf">1.1</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">oregonator_rhs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">dx</span> <span class="o">=</span> <span class="n">q</span><span class="o">*</span><span class="n">y</span> <span class="o">-</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="n">x</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">dy</span> <span class="o">=</span> <span class="o">-</span><span class="n">q</span><span class="o">*</span><span class="n">y</span> <span class="o">-</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="n">f</span>
+    <span class="k">return</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">rk4_oregonator</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">t</span><span class="p">);</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">k1x</span><span class="p">,</span> <span class="n">k1y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+        <span class="n">k2x</span><span class="p">,</span> <span class="n">k2y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span><span class="o">*</span><span class="n">k1x</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">Y</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span><span class="o">*</span><span class="n">k1y</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">k3x</span><span class="p">,</span> <span class="n">k3y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span><span class="o">*</span><span class="n">k2x</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">Y</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span><span class="o">*</span><span class="n">k2y</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">k4x</span><span class="p">,</span> <span class="n">k4y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span><span class="o">*</span><span class="n">k3x</span><span class="p">,</span>   <span class="n">Y</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span><span class="o">*</span><span class="n">k3y</span><span class="p">)</span>
+        <span class="n">X</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">h</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">k1x</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">k2x</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">k3x</span> <span class="o">+</span> <span class="n">k4x</span><span class="p">)</span>
+        <span class="n">Y</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">Y</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">h</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">k1y</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">k2y</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">k3y</span> <span class="o">+</span> <span class="n">k4y</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span>
+</pre></div>
+</div>
+<p>計算の実施</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+<span class="n">x0</span><span class="p">,</span> <span class="n">y0</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">1.2</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">rk4_oregonator</span><span class="p">(</span><span class="n">oregonator_rhs</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>可視化（相平面）</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Oregonator (BZ reaction) のリミットサイクル&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>内側の軌道は外側に発散</p></li>
+<li><p>外側の軌道は内側へ収束</p></li>
+<li><p>最終的に一定の閉じたループへ吸い込まれる：リミットサイクル（limit cycle）</p></li>
+</ul>
+<p>時系列表示</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;x(t)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;y(t)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;濃度&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;BZ反応の濃度振動&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>結果：</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x(t)\)</span>と<span class="math notranslate nohighlight">\(y(t)\)</span>は周期的に振動する．</p></li>
+<li><p>化学反応が時間に関して周期的な挙動を示す現象に相当する．</p></li>
+</ul>
+</section>
+<section id="id5">
+<h2><span class="section-number">8.6. </span>リミットサイクルの数学的特徴<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>リミットサイクルは</p>
+<div class="math notranslate nohighlight">
+\[
+  \gamma(t):\mathbb{R}\to\mathbb{R}^2,\quad \gamma(t+T)=\gamma(t)
+  \]</div>
+<p>という周期解で，その軌道の近くにある点が時間とともに<strong>吸い寄せられる</strong>（安定極限周期）．</p>
+</li>
+<li><p>BZ反応は非線形項とフィードバックによって，この構造を内包している．</p></li>
+</ul>
+<p>構造</p>
+<ul class="simple">
+<li><p>内側からくる軌道：外へ押される（不安定）</p></li>
+<li><p>外側からくる軌道：内側へ引っ張られる（安定）</p></li>
+<li><p>両者の境界として閉曲線（安定なリミットサイクル）が出現</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id6">
+<h2><span class="section-number">8.7. </span>応用<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<section id="id7">
+<h3><span class="section-number">8.7.1. </span>自律振動<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p>外部入力なしでも周期運動が起きる
+→ 生体リズム（心臓鼓動，概日リズム）の研究モデル</p>
+</section>
+<section id="id8">
+<h3><span class="section-number">8.7.2. </span>化学パターン形成<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<p>BZ反応に空間的な構造も含めて考えると</p>
+<ul class="simple">
+<li><p>同心円波</p></li>
+<li><p>スパイラル波</p></li>
+<li><p>迷路状パターン
+が自発的に形成される．</p></li>
+</ul>
+<p><img alt="「研究内容」末松　J.　信彦" src="https://www.isc.meiji.ac.jp/~suematsu/research/pattern.html" /></p>
+</section>
+<section id="id9">
+<h3><span class="section-number">8.7.3. </span>脳科学・計算科学への応用<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>神経活動のモデル化</p></li>
+<li><p>パターン形成と自己組織化の概念学習</p></li>
+<li><p>ケミカルコンピューティング（cf.<a class="reference external" href="https://takinoue-lab.jp/research/research-computing/">「物質を使った新しい計算原理に関する情報科学 (Physical and Chemical Computing &amp; Molecular Intelligence)」瀧ノ上研究室</a>）</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id10">
+<h2><span class="section-number">8.8. </span>まとめ<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>項目</p></th>
+<th class="head"><p>内容</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>BZ反応</p></td>
+<td><p>化学的非平衡系で生じる自律振動</p></td>
+</tr>
+<tr class="row-odd"><td><p>Oregonator</p></td>
+<td><p>BZ反応を説明する簡略モデル</p></td>
+</tr>
+<tr class="row-even"><td><p>リミットサイクル</p></td>
+<td><p>吸引性を持つ周期軌道</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="id11">
+<h3><span class="section-number">8.8.1. </span>課題<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Oregonator の2変数モデルを使って、異なる初期値から出発しても同じリミットサイクルに収束することを示せ。</p></li>
+<li><p>パラメタ (q) と (f) を変化させ、安定なリミットサイクルが消滅・出現する様子を調べよ（ホップ分岐の観察）。</p></li>
+<li><p>（発展）数値的に周期 (T) を推定せよ（ゼロクロス法など）。</p></li>
+</ol>
+</section>
 </section>
 </section>
 
@@ -441,6 +679,15 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="7_bistable.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>2種競争モデルと双安定性</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
@@ -457,7 +704,25 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">BZ反応</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bz-belousovzhabotinsky-reaction">8.1. BZ反応（Belousov–Zhabotinsky reaction）</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">8.1.1. 実験動画</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">8.2. 化学反応系と非線形性</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oregonator">8.3. Oregonatorモデル</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">8.4. 平衡点の解析</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">8.5. 数値シミュレーション</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">8.6. リミットサイクルの数学的特徴</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">8.7. 応用</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">8.7.1. 自律振動</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">8.7.2. 化学パターン形成</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">8.7.3. 脳科学・計算科学への応用</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">8.8. まとめ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">8.8.1. 課題</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

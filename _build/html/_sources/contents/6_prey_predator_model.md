@@ -273,6 +273,14 @@ $$
 \end{cases}
 $$
 
+$$
+\begin{align}
+  \dfrac{dx}{dt} = \alpha x - \beta x y,
+  \\
+  \dfrac{dy}{dt} = \delta x y - \gamma y.
+\end{align}
+$$
+
 - $\alpha,\beta,\gamma,\delta>0$：正の定数．
 - 捕食による効果が**非線形項** $xy$ で表される．
   

@@ -65,12 +65,29 @@ $$
 
 ```python
 import mpmath as mp
-
 q, f = 0.002, 1.1
-f1 = lambda X: q*X[1] - X[0]*X[1] + X[0]*(1-X[0])
-f2 = lambda X: -q*X[1] - X[0]*X[1] + f
 
-fpsol = mp.findroot([lambda X: f1(X), lambda X: f2(X)], (0.2, 1.0))
+# f1(x, y) = 0, f2(x, y) = 0 を解きたい
+def f1(x, y):
+    return q*y - x*y + x*(1 - x)
+def f2(x, y):
+    return -q*y - x*y + f
+# 初期値 (x0, y0) = (0.2, 1.0) からニュートン法で解く
+x_star, y_star = mp.findroot((f1, f2), (0.2, 1.0))
+
+print("平衡点: x* =", x_star, ", y* =", y_star)
+```
+
+```python
+import mpmath as mp
+q, f = 0.002, 1.1
+
+x_star, y_star = mp.findroot(
+    (lambda x, y: q*y - x*y + x*(1-x),
+     lambda x, y: -q*y - x*y + f),
+    (0.2, 1.0)
+)
+print("平衡点: x* =", x_star, ", y* =", y_star)
 ```
 
 この平衡点は近くを初期値とすると
@@ -97,27 +114,24 @@ def oregonator_rhs(x, y):
 
 
 ```python
-def rk4_oregonator(f, x0, y0, t):
+def euler_oregonator(f, x0, y0, t):
     X = np.empty_like(t); Y = np.empty_like(t)
     X[0], Y[0] = x0, y0
-    h = t[1]-t[0]
+    h = t[1] - t[0]
 
-    for k in range(len(t)-1):
-        k1x, k1y = f(X[k], Y[k])
-        k2x, k2y = f(X[k] + h*k1x/2, Y[k] + h*k1y/2)
-        k3x, k3y = f(X[k] + h*k2x/2, Y[k] + h*k2y/2)
-        k4x, k4y = f(X[k] + h*k3x,   Y[k] + h*k3y)
-        X[k+1] = X[k] + (h/6)*(k1x + 2*k2x + 2*k3x + k4x)
-        Y[k+1] = Y[k] + (h/6)*(k1y + 2*k2y + 2*k3y + k4y)
+    for k in range(len(t) - 1):
+        dx, dy = f(X[k], Y[k])   # 現在値で傾きを評価
+        X[k+1] = X[k] + h * dx   # x を更新
+        Y[k+1] = Y[k] + h * dy   # y を更新
 
     return X, Y
 ```
 
 計算の実施
 ```python
-t = np.linspace(0, 200, 10000)
+t = np.linspace(0, 200, 10000)  # h が小さめになるように刻みをとる
 x0, y0 = 0.2, 1.2
-X, Y = rk4_oregonator(oregonator_rhs, x0, y0, t)
+X, Y = euler_oregonator(oregonator_rhs, x0, y0, t)
 ```
 
 可視化（相平面）
@@ -162,10 +176,22 @@ plt.show()
 - BZ反応は非線形項とフィードバックによって，この構造を内包している．
 
 構造
-
 - 内側からくる軌道：外へ押される（不安定）
 - 外側からくる軌道：内側へ引っ張られる（安定）
 - 両者の境界として閉曲線（安定なリミットサイクル）が出現
+
+
+```{note}
+**演習1**
+
+Oregonatorモデルを用いて異なる初期値から出発しても同じリミットサイクルに収束することを示せ．
+```
+
+```{note}
+**演習2**
+
+パラメタ$q$と$f$の値によっては安定なリミットサイクルが消滅することがある．パラメタ$q$と$f$を変化させ，安定なリミットサイクルが消滅・出現する様子を調べよ．
+```
 
 ---
 
@@ -202,10 +228,7 @@ BZ反応に空間的な構造も含めて考えると
 | Oregonator | BZ反応を説明する簡略モデル          |
 | リミットサイクル   | 吸引性を持つ周期軌道              |
 
-### 課題
-
-1. Oregonator の2変数モデルを使って、異なる初期値から出発しても同じリミットサイクルに収束することを示せ。
-2. パラメタ (q) と (f) を変化させ、安定なリミットサイクルが消滅・出現する様子を調べよ（ホップ分岐の観察）。
+パラメタ$q$と$f$の値によっては安定なリミットサイクルが消滅することがある．パラメタ$q$と$f$を変化させ，安定なリミットサイクルが消滅・出現する様子を調べよ．
 3. （発展）数値的に周期 (T) を推定せよ（ゼロクロス法など）。
 
 

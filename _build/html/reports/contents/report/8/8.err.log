@@ -36,21 +36,27 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib import rcParams
-rcParams['font.family'] = 'Hiragino Sans'
+import mpmath as mp
+q, f = 0.2, 2.0
 
+# f1(x, y) = 0, f2(x, y) = 0 を解きたい
+def f1(x, y):
+    return q*y - x*y + x*(1 - x)
+def f2(x, y):
+    return -q*y - x*y + f
+# 初期値 (x0, y0) = (0.2, 1.0) からニュートン法で解く
+x_star, y_star = mp.findroot((f1, f2), (0.5, 0.5))
+
+print("平衡点: x* =", x_star, ", y* =", y_star)
 ------------------
 
 
 [31m---------------------------------------------------------------------------[39m
 [31mModuleNotFoundError[39m                       Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 2[39m
-[32m      1[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mnumpy[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mnp[39;00m
-[32m----> [39m[32m2[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mmatplotlib[39;00m[34;01m.[39;00m[34;01mpyplot[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mplt[39;00m
-[32m      3[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mmatplotlib[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m rcParams
-[32m      4[39m rcParams[[33m'[39m[33mfont.family[39m[33m'[39m] = [33m'[39m[33mHiragino Sans[39m[33m'[39m
+[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 1[39m
+[32m----> [39m[32m1[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mmpmath[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mmp[39;00m
+[32m      2[39m q, f = [32m0.2[39m, [32m2.0[39m
+[32m      4[39m [38;5;66;03m# f1(x, y) = 0, f2(x, y) = 0 を解きたい[39;00m
 
-[31mModuleNotFoundError[39m: No module named 'matplotlib'
+[31mModuleNotFoundError[39m: No module named 'mpmath'
 

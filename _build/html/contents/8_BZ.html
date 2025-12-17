@@ -392,14 +392,17 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fkn">8.2. FKNモデル</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oregonator">8.3. Oregonatorモデル</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keener-tyson">8.4. Keener–Tysonモデル</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">8.5. 応用</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">8.5.1. 自律振動</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">8.5.2. 化学パターン形成</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">8.5.3. 脳科学・計算科学への応用</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keenertyson">8.4. Keener–Tysonモデル</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">8.4.1. 課題</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">8.6. まとめ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">8.5. 応用</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">8.5.1. 自律振動</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">8.5.2. 化学パターン形成</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">8.5.3. 脳科学・計算科学への応用</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">8.6. まとめ</a></li>
 </ul>
             </nav>
         </div>
@@ -452,7 +455,7 @@ document.write(`
 \[\begin{split}
 &amp; X = \mathrm{HBrO_2}, 
 \quad Y = \mathrm{Br^{-}},
-\quad Z = Ce^{4+},
+\quad Z = \mathrm{Ce^{4+}},
 \\
 &amp; A = \mathrm{BrO_3^{-}},
 \quad P = \mathrm{HOBr},
@@ -476,7 +479,7 @@ document.write(`
 <h2><span class="section-number">8.3. </span>Oregonatorモデル<a class="headerlink" href="#oregonator" title="Link to this heading">#</a></h2>
 <p>FKNモデルを3つの成分に帰着したモデル．
 Fieldらがオレゴン大学で研究していたことから名付けられた．</p>
-<p><span class="math notranslate nohighlight">\(X=\mathrm{HBrO_2}\)</span>，<span class="math notranslate nohighlight">\(Y=\mathrm{Br^{-}}\)</span>，<span class="math notranslate nohighlight">\(Z=\mathrm{Ce^{4+}}\)</span>の3成分に注目し，それぞれの濃度を次のようにおく．</p>
+<p><span class="math notranslate nohighlight">\(X=\mathrm{HBrO_2}\)</span>，<span class="math notranslate nohighlight">\(Y=\mathrm{Br^{-}}\)</span>，<span class="math notranslate nohighlight">\(Z=\mathrm{Ce^{4+}}\)</span>の3成分に注目し，時刻<span class="math notranslate nohighlight">\(t\)</span>におけるそれぞれの濃度を次のようにおく．</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(x(t)\)</span>：中間体<span class="math notranslate nohighlight">\(\mathrm{HBrO_2}\)</span>の濃度</p></li>
 <li><p><span class="math notranslate nohighlight">\(y(t)\)</span>：還元剤<span class="math notranslate nohighlight">\(\mathrm{Br^{-}}\)</span>の濃度</p></li>
@@ -650,9 +653,9 @@ Oregonatorモデルを用いて異なる初期値から出発しても同じリ�
 ```
  -->
 </section>
-<section id="keener-tyson">
-<h2><span class="section-number">8.4. </span>Keener–Tysonモデル<a class="headerlink" href="#keener-tyson" title="Link to this heading">#</a></h2>
-<p>Oregonatorモデルで特異摂動と呼ばれる手続きによって変数<span class="math notranslate nohighlight">\(y\)</span>の時間変化が</p>
+<section id="keenertyson">
+<h2><span class="section-number">8.4. </span>Keener–Tysonモデル<a class="headerlink" href="#keenertyson" title="Link to this heading">#</a></h2>
+<p>特異摂動と呼ばれる手続きによって変数<span class="math notranslate nohighlight">\(y\)</span>の時間変化が分からないほど遅いとすることで，Oregonatorモデルは次のように簡略化（縮約）することができる．</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{cases}
@@ -661,22 +664,22 @@ Oregonatorモデルを用いて異なる初期値から出発しても同じリ�
 \dfrac{dz}{dt} = x - z,
 \end{cases}
 \end{split}\]</div>
+<p>この2変数系について数値シミュレーションによって解のダイナミクスを調べてみる．</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">rcParams</span>
 <span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Hiragino Sans&#39;</span>
 
-<span class="n">vareps</span> <span class="o">=</span> <span class="mf">0.01</span>
-<span class="n">q</span> <span class="o">=</span> <span class="mf">0.002</span>
-<span class="n">f</span> <span class="o">=</span> <span class="mf">1.1</span>
+<span class="n">eps</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">q</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">f</span> <span class="o">=</span> <span class="mf">0.8</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">kt_rhs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="n">dx</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span><span class="o">*</span><span class="n">z</span><span class="o">*</span><span class="p">(</span><span class="n">q</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">q</span><span class="o">+</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">x</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">))</span><span class="o">/</span><span class="n">vareps</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">kt_rhs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+    <span class="n">dx</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span><span class="o">*</span><span class="n">z</span><span class="o">*</span><span class="p">(</span><span class="n">q</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">q</span><span class="o">+</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">x</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">))</span><span class="o">/</span><span class="n">eps</span>
     <span class="n">dz</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">z</span>
     <span class="k">return</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dz</span>
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">euler_kt</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">z0</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">euler_kt</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">z0</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
     <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">t</span><span class="p">);</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
     <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Z</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x0</span><span class="p">,</span> <span class="n">z0</span>
     <span class="n">h</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -689,49 +692,89 @@ Oregonatorモデルを用いて異なる初期値から出発しても同じリ�
     <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">Z</span>
 </pre></div>
 </div>
-<p>計算の実施</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>  <span class="c1"># h が小さめになるように刻みをとる</span>
-<span class="n">x0</span><span class="p">,</span> <span class="n">z0</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">1.2</span>
-<span class="n">X</span><span class="p">,</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">euler_kt</span><span class="p">(</span><span class="n">kt_rhs</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">z0</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+<p>相図の作成</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+<span class="n">U</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">kt_rhs</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Z</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;KTモデルの相図&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;8_kt_phase_eps=</span><span class="si">{</span><span class="n">eps</span><span class="si">}</span><span class="s2">_q=</span><span class="si">{</span><span class="n">q</span><span class="si">}</span><span class="s2">_f=</span><span class="si">{</span><span class="n">f</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>可視化（相平面）</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<p>計算の実施と軌道のプロット</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">)</span> <span class="c1"># 分割幅が小さくなるよう注意</span>
+<span class="n">x0</span><span class="p">,</span> <span class="n">z0</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">1.2</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">euler_kt</span><span class="p">(</span><span class="n">kt_rhs</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">z0</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">z0</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;z&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Keener--Tysonモデルのリミットサイクル&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Keener–Tysonモデルのリミットサイクル&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;8_kt_xz_orbit_eps=</span><span class="si">{</span><span class="n">eps</span><span class="si">}</span><span class="s2">_q=</span><span class="si">{</span><span class="n">q</span><span class="si">}</span><span class="s2">_f=</span><span class="si">{</span><span class="n">f</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p>上記コードを実行すると次のような図が得られる．</p>
+<p><img alt="リミットサイクル" src="../_images/8_kt_xz_orbit_eps%3D0.01_q%3D0.01_f%3D0.8_x0%3D0.2_z0%3D0.2.png" /></p>
 <ul class="simple">
-<li><p>内側の軌道は外側に発散</p></li>
-<li><p>外側の軌道は内側へ収束</p></li>
-<li><p>最終的に一定の閉じたループへ吸い込まれる：リミットサイクル（limit cycle）</p></li>
+<li><p><span class="math notranslate nohighlight">\(xz\)</span>平面内で初期値から始まった解の軌道はある一定の閉じたループへ吸い込まれる様子が見られる．</p></li>
+<li><p>このループを<span style="color:red">リミットサイクル</span>(limit cycle)と呼ぶ．</p></li>
 </ul>
-<p>時系列表示</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><span style="color:red"><strong>課題1</strong></span></p>
+<p>上記，軌道をプロットするコードで，<code class="docutils literal notranslate"><span class="pre">x0</span></code>，<code class="docutils literal notranslate"><span class="pre">z0</span></code>の値を変えても同じループに吸い込まれることを確認せよ．</p>
+<p>特にループの外側の点を初期値とした場合にループの外側から吸い込まれる図を出力せよ．</p>
+</div>
+<p><span class="math notranslate nohighlight">\(x\)</span>と<span class="math notranslate nohighlight">\(z\)</span>の時間変化</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;x(t)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;z(t)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;濃度&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Keener--Tysonモデルの濃度振動&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Keener–Tysonモデルの濃度振動&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;8_kt_t-xz_eps=</span><span class="si">{</span><span class="n">eps</span><span class="si">}</span><span class="s2">_q=</span><span class="si">{</span><span class="n">q</span><span class="si">}</span><span class="s2">_f=</span><span class="si">{</span><span class="n">f</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p>上記コードを実行すると次のような図が得られる．</p>
+<p><img alt="リミットサイクル" src="../_images/8_kt_t-xz_eps%3D0.01_q%3D0.01_f%3D0.8_x0%3D0.2_z0%3D0.2.png" /></p>
+<p>解の時間変化をプロットすると上の図のように周期的に振動していることが確認できる．
+この周期的な挙動が，解がリミットサイクル上を回転していることに対応している．</p>
+<section id="id3">
+<h3><span class="section-number">8.4.1. </span>課題<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><span style="color:red"><strong>課題2</strong></span></p>
+<p>Keener–Tysonモデルでは<code class="docutils literal notranslate"><span class="pre">eps</span></code>，<code class="docutils literal notranslate"><span class="pre">q</span></code>，<code class="docutils literal notranslate"><span class="pre">r</span></code>の3つのパラメタが存在するが，このパラメタの値を変化させることで解の軌道がどのように変化するかを確かめるために，次の3つの問いに答えよ．</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">eps</span></code>の値を<span class="math notranslate nohighlight">\(0.01\)</span>から<span class="math notranslate nohighlight">\(0.1, 1, 10\)</span>と変化させたときの軌道と時間変化がどのように変化するか，図と共に述べよ．ただし，<code class="docutils literal notranslate"><span class="pre">q=0.01,</span> <span class="pre">r=0.8</span></code>とする．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">q</span></code>の値を<span class="math notranslate nohighlight">\(0.03, 0.05, 0.061, 0.07\)</span>と変化させたときの軌道と時間変化がどのように変化するか，図と共に述べよ．ただし，<code class="docutils literal notranslate"><span class="pre">eps=0.01,</span> <span class="pre">r=0.8</span></code>とする．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">r</span></code>の値を自由に変化させ，リミットサイクルが得られる値の範囲を調べよ．<code class="docutils literal notranslate"><span class="pre">r</span></code>の値を動かすのは小数点以下第一位までで良い．ただし，<code class="docutils literal notranslate"><span class="pre">eps=0.01,</span> <span class="pre">q=0.01</span></code>とする．</p></li>
+</ol>
+</div>
+</section>
 </section>
 <hr class="docutils" />
-<section id="id3">
-<h2><span class="section-number">8.5. </span>応用<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <section id="id4">
-<h3><span class="section-number">8.5.1. </span>自律振動<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<h2><span class="section-number">8.5. </span>応用<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<section id="id5">
+<h3><span class="section-number">8.5.1. </span>自律振動<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <p>外部入力なしでも周期運動が起きる
 → 生体リズム（心臓鼓動，概日リズム）の研究モデル</p>
 </section>
-<section id="id5">
-<h3><span class="section-number">8.5.2. </span>化学パターン形成<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<section id="id6">
+<h3><span class="section-number">8.5.2. </span>化学パターン形成<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <p>BZ反応に空間的な構造も含めて考えると</p>
 <ul class="simple">
 <li><p>同心円波</p></li>
@@ -739,10 +782,10 @@ Oregonatorモデルを用いて異なる初期値から出発しても同じリ�
 <li><p>迷路状パターン
 が自発的に形成される．</p></li>
 </ul>
-<p><img alt="「研究内容」末松　J.　信彦" src="https://www.isc.meiji.ac.jp/~suematsu/research/pattern.html" /></p>
+<p><a class="reference external" href="https://www.isc.meiji.ac.jp/~suematsu/research/pattern.html">「研究内容」末松　J.　信彦</a></p>
 </section>
-<section id="id6">
-<h3><span class="section-number">8.5.3. </span>脳科学・計算科学への応用<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<section id="id7">
+<h3><span class="section-number">8.5.3. </span>脳科学・計算科学への応用<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>神経活動のモデル化</p></li>
 <li><p>パターン形成と自己組織化の概念学習</p></li>
@@ -751,8 +794,8 @@ Oregonatorモデルを用いて異なる初期値から出発しても同じリ�
 </section>
 </section>
 <hr class="docutils" />
-<section id="id7">
-<h2><span class="section-number">8.6. </span>まとめ<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<section id="id8">
+<h2><span class="section-number">8.6. </span>まとめ<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>項目</p></th>
@@ -839,14 +882,17 @@ Oregonatorモデルを用いて異なる初期値から出発しても同じリ�
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fkn">8.2. FKNモデル</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oregonator">8.3. Oregonatorモデル</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keener-tyson">8.4. Keener–Tysonモデル</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">8.5. 応用</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">8.5.1. 自律振動</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">8.5.2. 化学パターン形成</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">8.5.3. 脳科学・計算科学への応用</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keenertyson">8.4. Keener–Tysonモデル</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">8.4.1. 課題</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">8.6. まとめ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">8.5. 応用</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">8.5.1. 自律振動</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">8.5.2. 化学パターン形成</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">8.5.3. 脳科学・計算科学への応用</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">8.6. まとめ</a></li>
 </ul>
   </nav></div>
 

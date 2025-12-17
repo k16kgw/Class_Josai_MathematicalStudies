@@ -25,7 +25,7 @@
 
 - Field–Körös–Noyes(FKN)モデル
 - オレゴネータ(Oregonator)モデル
-- Keener--Tysonモデル
+- Keener–Tysonモデル
 
 ## FKNモデル
 
@@ -34,7 +34,7 @@
 $$
 & X = \mathrm{HBrO_2}, 
 \quad Y = \mathrm{Br^{-}},
-\quad Z = Ce^{4+},
+\quad Z = \mathrm{Ce^{4+}},
 \\
 & A = \mathrm{BrO_3^{-}},
 \quad P = \mathrm{HOBr},
@@ -61,7 +61,7 @@ $$
 FKNモデルを3つの成分に帰着したモデル．
 Fieldらがオレゴン大学で研究していたことから名付けられた．
 
-$X=\mathrm{HBrO_2}$，$Y=\mathrm{Br^{-}}$，$Z=\mathrm{Ce^{4+}}$の3成分に注目し，それぞれの濃度を次のようにおく．
+$X=\mathrm{HBrO_2}$，$Y=\mathrm{Br^{-}}$，$Z=\mathrm{Ce^{4+}}$の3成分に注目し，時刻$t$におけるそれぞれの濃度を次のようにおく．
 - $x(t)$：中間体$\mathrm{HBrO_2}$の濃度
 - $y(t)$：還元剤$\mathrm{Br^{-}}$の濃度
 - $z(t)$：触媒$\mathrm{Ce^{4+}}$の濃度
@@ -235,9 +235,9 @@ Oregonatorモデルを用いて異なる初期値から出発しても同じリ�
 ```
  -->
 
-## Keener--Tysonモデル
+## Keener–Tysonモデル
 
-Oregonatorモデルで特異摂動と呼ばれる手続きによって変数$y$の時間変化が
+特異摂動と呼ばれる手続きによって変数$y$の時間変化が分からないほど遅いとすることで，Oregonatorモデルは次のように簡略化（縮約）することができる．
 
 $$
 \begin{cases}
@@ -247,23 +247,23 @@ $$
 \end{cases}
 $$
 
+この2変数系について数値シミュレーションによって解のダイナミクスを調べてみる．
+
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import rcParams
 rcParams['font.family'] = 'Hiragino Sans'
 
-vareps = 0.01
-q = 0.002
-f = 1.1
+eps = 0.01
+q = 0.01
+f = 0.8
 
-def kt_rhs(x, y):
-    dx = (f*z*(q-x)*(q+x) + x*(1-x))/vareps
+def kt_rhs(x, z):
+    dx = (f*z*(q-x)/(q+x) + x*(1-x))/eps
     dz = x - z
     return dx, dz
-```
 
-```python
 def euler_kt(f, x0, z0, t):
     X = np.empty_like(t); Z = np.empty_like(t)
     X[0], Z[0] = x0, z0
@@ -277,38 +277,84 @@ def euler_kt(f, x0, z0, t):
     return X, Z
 ```
 
-計算の実施
+相図の作成
 ```python
-t = np.linspace(0, 200, 10000)  # h が小さめになるように刻みをとる
-x0, z0 = 0.2, 1.2
-X, Z = euler_kt(kt_rhs, x0, z0, t)
+x = np.linspace(0, 1.2, 25)
+z = np.linspace(0, 0.4, 25)
+X, Z = np.meshgrid(x, z)
+U, V = kt_rhs(X, Z)
+
+fig, ax = plt.subplots(figsize=(5,4))
+ax.quiver(X, Z, U, V, color='gray', angles='xy')
+ax.set_xlabel("x")
+ax.set_ylabel("y")
+ax.set_title("KTモデルの相図")
+ax.grid(True, alpha=0.3)
+plt.savefig(f"8_kt_phase_eps={eps}_q={q}_f={f}.png")
+plt.show()
 ```
 
-可視化（相平面）
+計算の実施と軌道のプロット
 ```python
+t = np.linspace(0, 20, 1000000) # 分割幅が小さくなるよう注意
+x0, z0 = 0.2, 1.2
+X, Z = euler_kt(kt_rhs, x0, z0, t)
+
 plt.figure(figsize=(5,4))
 plt.plot(X, Z, 'b-')
 plt.scatter(x0, z0, c='r')
 plt.xlabel("x")
 plt.ylabel("z")
-plt.title("Keener--Tysonモデルのリミットサイクル")
+plt.title("Keener–Tysonモデルのリミットサイクル")
 plt.grid(True, alpha=0.3)
+plt.savefig(f"8_kt_xz_orbit_eps={eps}_q={q}_f={f}.png")
 plt.show()
 ```
 
-- 内側の軌道は外側に発散
-- 外側の軌道は内側へ収束
-- 最終的に一定の閉じたループへ吸い込まれる：リミットサイクル（limit cycle）
+上記コードを実行すると次のような図が得られる．
 
-時系列表示
+![リミットサイクル](/contents/report/8/8_kt_xz_orbit_eps=0.01_q=0.01_f=0.8_x0=0.2_z0=0.2.png)
+
+- $xz$平面内で初期値から始まった解の軌道はある一定の閉じたループへ吸い込まれる様子が見られる．
+- このループを<span style="color:red">リミットサイクル</span>(limit cycle)と呼ぶ．
+
+```{note}
+<span style="color:red">**課題1**</span>
+
+上記，軌道をプロットするコードで，`x0`，`z0`の値を変えても同じループに吸い込まれることを確認せよ．
+
+特にループの外側の点を初期値とした場合にループの外側から吸い込まれる図を出力せよ．
+```
+
+$x$と$z$の時間変化
 ```python
 plt.figure(figsize=(6,3))
 plt.plot(t, X, label="x(t)")
 plt.plot(t, Z, label="z(t)")
 plt.xlabel("t"); plt.ylabel("濃度")
 plt.legend(); plt.grid(True, alpha=0.3)
-plt.title("Keener--Tysonモデルの濃度振動")
+plt.title("Keener–Tysonモデルの濃度振動")
+plt.savefig(f"8_kt_t-xz_eps={eps}_q={q}_f={f}.png")
 plt.show()
+```
+
+上記コードを実行すると次のような図が得られる．
+
+![リミットサイクル](/contents/report/8/8_kt_t-xz_eps=0.01_q=0.01_f=0.8_x0=0.2_z0=0.2.png)
+
+解の時間変化をプロットすると上の図のように周期的に振動していることが確認できる．
+この周期的な挙動が，解がリミットサイクル上を回転していることに対応している．
+
+### 課題
+
+```{note}
+<span style="color:red">**課題2**</span>
+
+Keener–Tysonモデルでは`eps`，`q`，`r`の3つのパラメタが存在するが，このパラメタの値を変化させることで解の軌道がどのように変化するかを確かめるために，次の3つの問いに答えよ．
+
+1. `eps`の値を$0.01$から$0.1, 1, 10$と変化させたときの軌道と時間変化がどのように変化するか，図と共に述べよ．ただし，`q=0.01, r=0.8`とする．
+2. `q`の値を$0.03, 0.05, 0.061, 0.07$と変化させたときの軌道と時間変化がどのように変化するか，図と共に述べよ．ただし，`eps=0.01, r=0.8`とする．
+3. `r`の値を自由に変化させ，リミットサイクルが得られる値の範囲を調べよ．`r`の値を動かすのは小数点以下第一位までで良い．ただし，`eps=0.01, q=0.01`とする．
 ```
 
 ---
@@ -328,7 +374,7 @@ BZ反応に空間的な構造も含めて考えると
 - 迷路状パターン
 が自発的に形成される．
 
-![「研究内容」末松　J.　信彦](https://www.isc.meiji.ac.jp/~suematsu/research/pattern.html)
+[「研究内容」末松　J.　信彦](https://www.isc.meiji.ac.jp/~suematsu/research/pattern.html)
 
 ### 脳科学・計算科学への応用
 

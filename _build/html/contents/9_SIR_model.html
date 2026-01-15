@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>感染症モデル（SIRモデル） &#8212; Mathematical Studies I・II</title>
+    <title>9. 感染症モデル（SIRモデル） &#8212; Mathematical Studies I・II</title>
   
   
   
@@ -62,6 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/9_SIR_model';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="8. BZ反応のモデル" href="8_BZ.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -124,8 +125,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -182,11 +181,16 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">目次</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="1_mathematical_model.html">1. 数理モデルの導入・演習</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2_physics_examples.html">2. 物理学の事例</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3_biology_examples.html">3. 生物学の事例</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4_variational_principle.html">4. 変分原理と物理モデル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_ordinal_differential_equation.html">5. 常微分方程式と初期値問題</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_prey_predator_model.html">6. 捕食者・被食者モデル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_bistable.html">7. 2種競争モデルと双安定性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_BZ.html">8. BZ反応のモデル</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">9. 感染症モデル（SIRモデル）</a></li>
 </ul>
 
     </div>
@@ -382,8 +386,37 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">モデル化</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">データの取得</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">9.1. 感染症を数理モデルで捉える</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#s-t">9.1.1. <span class="math notranslate nohighlight">\(S(t)\)</span>：感受性を持つ人の数</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i-t">9.1.2. <span class="math notranslate nohighlight">\(I(t)\)</span>：感染性を持つ人の数</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#r-t-removed">9.1.3. <span class="math notranslate nohighlight">\(R(t)\)</span>：除去された人（Removed）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">9.1.4. 観測できる量</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">9.2. SIRモデルの導出</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">9.2.1. モデルの仮定（現象論）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">9.2.2. SIRモデル</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">9.3. 力学系としての基本構造（解析の入口）</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">9.3.1. 正不変性（非負性）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">9.3.2. 保存則</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">9.3.3. 単調性</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">9.4. 閾値理論</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">9.4.1. 初期段階の近似</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-size-equation">9.5. 最終感染規模方程式（Final size equation）</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">9.5.1. 数値的に最終規模方程式を解く</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">9.6. SIRモデルの限界</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">9.6.1. SIRの数値解</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">9.7. 現実のデータを見る</a></li>
 </ul>
             </nav>
         </div>
@@ -396,34 +429,818 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sir">
-<h1>感染症モデル（SIRモデル）<a class="headerlink" href="#sir" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">9. </span>感染症モデル（SIRモデル）<a class="headerlink" href="#sir" title="Link to this heading">#</a></h1>
 <p>到達目標</p>
 <ul class="simple">
-<li><p>感染症拡大の数理的枠組みと基本再生産数の概念を理解する．</p></li>
-<li><p>パラメタ依存性を数値的に調べ，感染拡大の条件を理解する．</p></li>
-<li><p>実データを用いてモデルの妥当性を評価する．</p></li>
+<li><p>SIRモデルの各変数 <span class="math notranslate nohighlight">\(S,I,R\)</span> が<strong>現実の何を表すか</strong>を明確に説明できる．</p></li>
+<li><p>SIRモデルの基本構造（不変集合・閾値・最終感染規模）を解析的に導出できる．</p></li>
+<li><p>実データとモデルの比較を「観測モデル＋パラメータ同定（逆問題）」として定式化できる．</p></li>
+<li><p>モデルが実データを再現できない場合に，その原因を数理的に分類できる．</p></li>
 </ul>
-<p>アイデア</p>
+<p>キーワード</p>
 <ul class="simple">
-<li><p>各都道府県や国の公衆衛生データを取得し，SIRモデルの数値計算結果と合うようにパラメタフィッティングを行う．</p></li>
+<li><p>コンパートメントモデル（区分モデル）</p></li>
+<li><p>正不変性・保存則・単調性</p></li>
+<li><p>基本再生産数 <span class="math notranslate nohighlight">\(R_0\)</span></p></li>
+<li><p>最終感染規模方程式（final size equation）</p></li>
+<li><p>観測モデル・報告率・逆問題（同定）</p></li>
+<li><p>モデル誤差（model discrepancy）</p></li>
 </ul>
+<p>準備</p>
+<ol class="arabic simple">
+<li><p>anacondaを使用し，<span style="color:red">jupyter lab</span>を起動する．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Documents（書類）/mathematical_studies</span></code>フォルダをダブルクリックで開き<code class="docutils literal notranslate"><span class="pre">+</span></code>をクリックして新しいファイルを作成する．</p></li>
+<li><p>ファイル名を<code class="docutils literal notranslate"><span class="pre">9_{学籍番号}_{氏名}.ipynb</span></code>に変更する．例：<code class="docutils literal notranslate"><span class="pre">9_SI25999_香川渓一郎.ipynb</span></code></p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">rcParams</span>
+<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Hiragino Sans&#39;</span>
+</pre></div>
+</div>
+<hr class="docutils" />
 <section id="id1">
-<h2>モデル化<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.1. </span>感染症を数理モデルで捉える<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>新型コロナウイルスの感染拡大をデータで見返す．</p>
+<p><img alt="感染者数" src="../_images/count.png" /></p>
+<p>※ 日本経済新聞「チャートで見る日本の感染状況 新型コロナウイルス」2025年1月8日閲覧．<a class="reference external" href="https://vdata.nikkei.com/newsgraphics/coronavirus-japan-chart/">https://vdata.nikkei.com/newsgraphics/coronavirus-japan-chart/</a></p>
+<p>感染症の拡大は個体間の接触によって起こる感染が連鎖することによって進む．</p>
 <ul class="simple">
-<li><p>感染可能者<span class="math notranslate nohighlight">\(S\)</span>・感染者<span class="math notranslate nohighlight">\(I\)</span>・回復者<span class="math notranslate nohighlight">\(R\)</span></p></li>
+<li><p>感染性をもつAさんと感受性をもつBさんが接触する．</p>
+<ul>
+<li><p>感染性：他人にウイルスを感染させる性質</p></li>
+<li><p>感受性：他人からウイルスを感染させられる性質（まだ感染しておらず，免疫を持たない）</p></li>
 </ul>
-<div class="math notranslate nohighlight">
-\[
-\frac{dS}{dt} = -aSI, \quad
-\frac{dI}{dt} = aSI - bI, \quad
-\frac{dR}{dt} = bI.
-\]</div>
+</li>
+<li><p>一定の確率でBさんが感染する．</p></li>
+</ul>
+<p>この現象を数理モデルで捉える．</p>
+<ul class="simple">
+<li><p>これは本質的に<strong>確率過程</strong>であり，厳密に扱うなら個体をノードとしたネットワーク上の感染伝播を考えることになる．</p></li>
+<li><p>ただしそのままでは次の困難が生じる．</p>
+<ul>
+<li><p>個体数が多すぎる．</p></li>
+<li><p>接触ネットワークが未知である．</p></li>
+<li><p>データから推定する自由度が大きすぎる．</p></li>
+</ul>
+</li>
+<li><p>そこで，「個体の詳細は捨て，集団全体を平均化して記述する」方向で数理モデル化を試みる．</p></li>
+</ul>
+<p>感染症の拡大において，人々を次の3種類に大別する．</p>
+<ul class="simple">
+<li><p>感受性を持つ人（Susceptible）</p></li>
+<li><p>感染性を持つ人（Infectious）</p></li>
+<li><p>除去された人（Removed）</p></li>
+</ul>
+<p>これらの頭文字を取って<span style="color:red">SIRモデル</span>と呼ばれる．</p>
+<section id="s-t">
+<h3><span class="section-number">9.1.1. </span><span class="math notranslate nohighlight">\(S(t)\)</span>：感受性を持つ人の数<a class="headerlink" href="#s-t" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>まだ感染しておらず，<strong>感染する可能性がある人</strong>の数．</p></li>
+<li><p>“免疫がない（十分でない）人” と読み替えてよい．</p></li>
+<li><p>現実には，ワクチン・既感染・年齢層などで「感受性」は層構造を持つが，SIRでは<strong>全部まとめて1つ</strong>にする．</p></li>
+</ul>
+</section>
+<section id="i-t">
+<h3><span class="section-number">9.1.2. </span><span class="math notranslate nohighlight">\(I(t)\)</span>：感染性を持つ人の数<a class="headerlink" href="#i-t" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>他者へ<strong>ウイルスを移し得る状態にいる人</strong>の数．</p></li>
+<li><p>検査で陽性になった人数ではないことに注意．</p></li>
+<li><p>「無症状」でも感染性があればこれに分類される．</p></li>
+<li><p>観測されるデータ（報告感染者数）は多くの場合，感染性を持つ人の一部に過ぎない．</p></li>
+</ul>
+</section>
+<section id="r-t-removed">
+<h3><span class="section-number">9.1.3. </span><span class="math notranslate nohighlight">\(R(t)\)</span>：除去された人（Removed）<a class="headerlink" href="#r-t-removed" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>以下のように<strong>感染連鎖から外れた人</strong>をまとめて表すことが多い．</p>
+<ul>
+<li><p>回復して免疫を得た（再感染）</p></li>
+<li><p>死亡した</p></li>
+<li><p>隔離された</p></li>
+<li><p>入院して接触しない</p></li>
+</ul>
+</li>
+</ul>
 </section>
 <section id="id2">
-<h2>データの取得<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">9.1.4. </span>観測できる量<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>現実のデータは次のようなものがある：</p>
 <ul class="simple">
-<li><p>東京都の感染者数のデータ</p></li>
+<li><p>日次新規感染者（incidence）</p></li>
+<li><p>検査陽性者数（reported cases）</p></li>
+<li><p>入院者数・重症者数</p></li>
+<li><p>死亡者数</p></li>
 </ul>
+<p>しかし，これらは <span class="math notranslate nohighlight">\(S,I,R\)</span> のどれかを“直接”見ているわけではない．</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id3">
+<h2><span class="section-number">9.2. </span>SIRモデルの導出<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<section id="id4">
+<h3><span class="section-number">9.2.1. </span>モデルの仮定（現象論）<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>時刻 <span class="math notranslate nohighlight">\(t\)</span> における感染機会の総数は，感受性者<span class="math notranslate nohighlight">\(S\)</span>と感染者<span class="math notranslate nohighlight">\(I\)</span>の<strong>組み合わせ</strong>に比例すると考える．</p></li>
+<li><p>1人の感染者が単位時間に作る接触の回数×感染確率をまとめて <span class="math notranslate nohighlight">\(\beta\)</span> と置く．</p></li>
+<li><p>除去は感染者に比例し，比例定数を <span class="math notranslate nohighlight">\(\gamma\)</span> と置く．</p></li>
+</ul>
+</section>
+<section id="id5">
+<h3><span class="section-number">9.2.2. </span>SIRモデル<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+    \frac{dS}{dt} &amp;= -\beta SI,
+    \\
+    \frac{dI}{dt} &amp;= \beta SI-\gamma I,
+    \\
+    \frac{dR}{dt} &amp;= \gamma I.
+\end{aligned}
+\end{split}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\beta\)</span>：感染が起きる速さ（社会的接触・対策の影響が強い）</p></li>
+<li><p><span class="math notranslate nohighlight">\(\gamma\)</span>：除去の速さ（回復・隔離の速さ）</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id6">
+<h2><span class="section-number">9.3. </span>力学系としての基本構造（解析の入口）<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<section id="id7">
+<h3><span class="section-number">9.3.1. </span>正不変性（非負性）<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p>初期値が <span class="math notranslate nohighlight">\(S,I,R\ge 0\)</span> なら，時間発展で負にならない．</p>
+<p>→ 「人数を表しているのに負になる」という破綻は起こらない．</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>初期値が</p>
+<div class="math notranslate nohighlight">
+\[
+S(0)\ge 0,\quad I(0)\ge 0,\quad R(0)\ge 0
+\]</div>
+<p>を満たすとき，解が存在する限り</p>
+<div class="math notranslate nohighlight">
+\[
+S(t)\ge 0,\quad I(t)\ge 0,\quad R(t)\ge 0\qquad (\forall t\ge 0)
+\]</div>
+<p>が成り立つ。すなわち</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{R}^3_{\ge 0}=\{(S,I,R)\mid S\ge0,\ I\ge0,\ R\ge0\}
+\]</div>
+<p>は <strong>正不変集合</strong>である。</p>
+</div>
+<p><em>証明</em></p>
+<p>ベクトル場</p>
+<div class="math notranslate nohighlight">
+\[
+F(S,I,R)=(-\beta SI,\ \beta SI-\gamma I,\ \gamma I)
+\]</div>
+<p>を考える．</p>
+<p><strong>(i) 平面 <span class="math notranslate nohighlight">\(S=0\)</span> 上</strong></p>
+<p><span class="math notranslate nohighlight">\(S=0\)</span> なら</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{dS}{dt}=-\beta\cdot 0\cdot I = 0.
+\]</div>
+<p>よって，軌道は<span class="math notranslate nohighlight">\(S=0\)</span>を横切って<span class="math notranslate nohighlight">\(S&lt;0\)</span>側へ出ていくことはない（少なくとも<span class="math notranslate nohighlight">\(S\)</span>成分は負方向に進めない）．</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><span style="color:red"><strong>演習1</strong></span></p>
+<p>平面 <span class="math notranslate nohighlight">\(I=0\)</span>，<span class="math notranslate nohighlight">\(R=0\)</span> についても軌道が<span class="math notranslate nohighlight">\(I&lt;0\)</span>，<span class="math notranslate nohighlight">\(R&lt;0\)</span>へと出ていかないことを確かめよ．</p>
+</div>
+<!-- 
+**(ii) 平面 $I=0$ 上**
+
+$I=0$ なら
+
+$$
+\frac{dI}{dt}=\beta S\cdot 0-\gamma\cdot 0 = 0.
+$$
+
+よって，軌道は $I=0$ を横切って $I<0$ 側へ出ていくことはない．
+
+**(iii) 平面 $R=0$ 上**
+
+$R$ の式は $R$ 自体を含まず
+
+$$
+\frac{dR}{dt}=\gamma I\ge 0 \quad (I\ge 0)
+$$
+
+だから，非負領域内では $R$ は減らず，$R<0$ に落ちることはない．
+
+以上より，非負直交体の境界から外（負の方向）へ向かう成分が存在しないため，初期値が非負なら解は常に非負に留まる．□
+ -->
+</section>
+<section id="id8">
+<h3><span class="section-number">9.3.2. </span>保存則<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+\frac{dS}{dt} + \frac{dI}{dt} + \frac{dR}{dt} = 0.
+\]</div>
+<p>より</p>
+<div class="math notranslate nohighlight">
+\[
+S(t)+I(t)+R(t)=N=\mathrm{const.}
+\]</div>
+<p>3変数から2変数に減らすことができる．</p>
+</section>
+<section id="id9">
+<h3><span class="section-number">9.3.3. </span>単調性<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>次が成り立つ．</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\frac{dS}{dt} \le 0,
+\\
+\frac{dR}{dt} \ge 0.
+\end{split}\]</div>
+<p>すなわち</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(S(t)\)</span>は単調減少</p></li>
+<li><p><span class="math notranslate nohighlight">\(R(t)\)</span>は単調増加</p></li>
+</ul>
+</div>
+<p><em>証明</em></p>
+<p><strong>(i) <span class="math notranslate nohighlight">\(S(t)\)</span> は単調減少する．</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\frac{dS}{dt}=-\beta S I \le 0
+\qquad(\beta&gt;0,\ S\ge0,\ I\ge0).
+\]</div>
+<p>従って <span class="math notranslate nohighlight">\(S(t)\)</span> は単調非減少する．</p>
+<!-- - さらに (S(t)) が一定になるのは，区間上で $SI\equiv 0$（つまり $S\equiv 0$ または $I\equiv 0$）のときに限られる。 -->
+<p><strong>(2) <span class="math notranslate nohighlight">\(R(t)\)</span> は単調増加する</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\frac{dR}{dt}=\gamma I \ge 0
+\qquad(\gamma&gt;0,\ I\ge0).
+\]</div>
+<p>従って <span class="math notranslate nohighlight">\(R(t)\)</span> は単調増加する．</p>
+<!-- - $R(t)$ が一定なのは $I\equiv 0$ のときに限られる。 -->
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>一般に<span class="math notranslate nohighlight">\(I(t)\)</span>は単調ではない．
+また，<span class="math notranslate nohighlight">\(I(t)\)</span>は極大値を取るとしたら1回のみで，その後は単調減少する．（単峰性）</p>
+</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{dI}{dt} = I(\beta S-\gamma),
+\]</div>
+<p>であるから <span class="math notranslate nohighlight">\(I(t)\)</span> の増減は <span class="math notranslate nohighlight">\(S(t)\)</span> の大きさで決まる：</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(S(t)&gt;\gamma/\beta\)</span> のとき：<span class="math notranslate nohighlight">\(\frac{dI}{dt}&gt;0\)</span>（増加）</p></li>
+<li><p><span class="math notranslate nohighlight">\(S(t)=\gamma/\beta\)</span> のとき：<span class="math notranslate nohighlight">\(\frac{dI}{dt}=0\)</span>（極値候補）</p></li>
+<li><p><span class="math notranslate nohighlight">\(S(t)&lt;\gamma/\beta\)</span> のとき：<span class="math notranslate nohighlight">\(\frac{dI}{dt}&lt;0\)</span>（減少）</p></li>
+</ul>
+<p>ここで <span class="math notranslate nohighlight">\(S(t)\)</span> は単調減少なので，<span class="math notranslate nohighlight">\(S(0)&gt;\gamma/\beta\)</span>であれば <span class="math notranslate nohighlight">\(I(t)\)</span> は最初増加し，ある時刻でピークを迎え，その後減少する（単峰）という形になる．</p>
+<p>もちろん<span class="math notranslate nohighlight">\(S(0)&lt;\gamma/\beta\)</span>であれば<span class="math notranslate nohighlight">\(I(t)\)</span>はピークを迎えずに減少する．</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id10">
+<h2><span class="section-number">9.4. </span>閾値理論<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<p>現実問題として，初期値では人口のほとんどは感受性者であり，そこに僅かな感染者がいる状況を考える．
+まだ感染は拡大していないので，除去された人はいないものとする．</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+S(0) &amp;\approx N,
+\\
+I(0) &amp;\ll 1,
+\\
+R(0) &amp;= 0.
+\end{split}\]</div>
+<section id="id11">
+<h3><span class="section-number">9.4.1. </span>初期段階の近似<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<p>初期は <span class="math notranslate nohighlight">\(S(t) \approx N\)</span> とみなせるので</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{dI}{dt} \approx (\beta N - \gamma) I.
+\]</div>
+<p>従って，</p>
+<div class="math notranslate nohighlight">
+\[
+R_0:=\frac{\beta N}{\gamma}
+\]</div>
+<p>とおくと</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(R_0&gt;1\)</span>：感染拡大</p></li>
+<li><p><span class="math notranslate nohighlight">\(R_0&lt;1\)</span>：感染終息</p></li>
+</ul>
+<p>を表す．</p>
+<p>この<span class="math notranslate nohighlight">\(R_0\)</span>を<span style="color:red">基本再生産数</span>と呼ぶ．</p>
+<ul class="simple">
+<li><p>接触が多い（大きい <span class="math notranslate nohighlight">\(\beta\)</span>）ほど<span class="math notranslate nohighlight">\(R_0\)</span>は大きい</p></li>
+<li><p>隔離が早い（大きい <span class="math notranslate nohighlight">\(\gamma\)</span>）ほど<span class="math notranslate nohighlight">\(R_0\)</span>は小さい</p></li>
+</ul>
+<p>→ 政策介入によって感染拡大か終息かを制御できる可能性を示唆．</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><span style="color:red"><strong>演習2</strong></span></p>
+<p>感染を拡大させないためには<span class="math notranslate nohighlight">\(R_0\)</span>を小さくすることが肝要である．
+<span class="math notranslate nohighlight">\(R_0\)</span>を小さくするためにできることには何があるか，5つ以上考えよ．</p>
+</div>
+<hr class="docutils" />
+<!-- ## ピーク条件と最終感染規模方程式 -->
+</section>
+</section>
+<section id="final-size-equation">
+<h2><span class="section-number">9.5. </span>最終感染規模方程式（Final size equation）<a class="headerlink" href="#final-size-equation" title="Link to this heading">#</a></h2>
+<!-- ### 感染ピークの条件
+
+ある時刻$t_{\text{peak}}$で感染者数$I$がピークを取るとき，$\frac{dI}{dt}(t_{\text{peak}})=0$であるから，
+$$
+\frac{dI}{dt}(t_{\text{peak}}) = I(t_{\text{peak}})\left(\beta S(t_{\text{peak}}) - \gamma\right)=0,
+$$
+より
+$$
+S(t_{\text{peak}})=\frac{\gamma}{\beta}=\frac{N}{R_0}.
+$$ -->
+<!-- ### 最終感染規模方程式（Final size equation） -->
+<p><span class="math notranslate nohighlight">\(t\to \infty\)</span>で感染が収束（<span class="math notranslate nohighlight">\(I(t)\to 0\)</span>）したときの感受性者数<span class="math notranslate nohighlight">\(S(t)\to S_{\infty}\)</span>と除去された人の数<span class="math notranslate nohighlight">\(R(t)\to R_{\infty}\)</span>を調べる．</p>
+<p><span class="math notranslate nohighlight">\(\frac{dS}{dt}\)</span>と<span class="math notranslate nohighlight">\(\frac{dR}{dt}\)</span>の微分方程式より次の微分方程式が得られる．</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{dS}{dR}=-\frac{\beta}{\gamma} S
+= - R_0 \frac{S}{N}.
+\]</div>
+<p>この微分方程式は変数分離形式なので解ける．
+保存則<span class="math notranslate nohighlight">\(S(t)+I(t)+R(t)=N\)</span>と<span class="math notranslate nohighlight">\(t\to\infty\)</span>の極限を考えれば，未知数を<span class="math notranslate nohighlight">\(S_{\infty}\)</span>のみにすることができ，次の<span style="color:red">最終感染規模方程式</span>を得る．</p>
+<div class="math notranslate nohighlight">
+\[
+\log S_\infty + \frac{\beta}{\gamma}(N-S_\infty) = \log S(0) + \frac{\beta}{\gamma}R(0).
+\tag{FSE}
+\]</div>
+<p>ここで<span class="math notranslate nohighlight">\(R(0)=0\)</span>なので</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{S_\infty}{S_0}
+= \exp\left(-\frac{\beta}{\gamma}(N-S_\infty)\right),
+\]</div>
+<p>とできる．
+これを解くことで<span class="math notranslate nohighlight">\(S_\infty\)</span>を求めることができるが，超越方程式なので数値的に解くことを試みる．</p>
+<p>SIRモデルの時間発展を全て追わなくても，</p>
+<ul class="simple">
+<li><p>最終的に感受性者がどれだけ残るか（<span class="math notranslate nohighlight">\(S_\infty\)</span>）</p></li>
+<li><p>累積感染者（除去者）数がどれくらいか（<span class="math notranslate nohighlight">\(R_\infty=N-S_\infty\)</span>）</p></li>
+</ul>
+<p>がこの方程式から求まる．</p>
+<p>特に</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\beta/\gamma = \frac{R_0}{N}\)</span> が大きいほど <span class="math notranslate nohighlight">\(S_\infty\)</span> は小さくなり，</p></li>
+<li><p>累積感染者数 <span class="math notranslate nohighlight">\(R_\infty\)</span> が大きくなる．</p></li>
+</ul>
+<section id="id12">
+<h3><span class="section-number">9.5.1. </span>数値的に最終規模方程式を解く<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">fse_residual</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">S0</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">R_init</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;FSEの左辺-右辺（=0を解く）&quot;&quot;&quot;</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">beta</span> <span class="o">/</span> <span class="n">gamma</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">S</span><span class="p">)</span> <span class="o">+</span> <span class="n">a</span><span class="o">*</span><span class="p">(</span><span class="n">N</span> <span class="o">-</span> <span class="n">S</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">S0</span><span class="p">)</span> <span class="o">+</span> <span class="n">a</span><span class="o">*</span><span class="n">R_init</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">solve_fse_bisection</span><span class="p">(</span><span class="n">S0</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">R_init</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">200</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    二分法で S_inf を解く。</span>
+<span class="sd">    S_inf は (0, S0] にある（流行でSは減るので）。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># loからhiの間で解を探す</span>
+    <span class="c1"># 下端は log のため0にできないので小さい正数</span>
+    <span class="n">lo</span> <span class="o">=</span> <span class="mf">1e-15</span> <span class="o">*</span> <span class="n">N</span>
+    <span class="n">hi</span> <span class="o">=</span> <span class="n">S0</span>
+
+    <span class="n">f_lo</span> <span class="o">=</span> <span class="n">fse_residual</span><span class="p">(</span><span class="n">lo</span><span class="p">,</span> <span class="n">S0</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">R_init</span><span class="p">)</span>
+    <span class="n">f_hi</span> <span class="o">=</span> <span class="n">fse_residual</span><span class="p">(</span><span class="n">hi</span><span class="p">,</span> <span class="n">S0</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">R_init</span><span class="p">)</span>
+
+    <span class="c1"># 通常パラメータでは f(lo)&gt;0, f(hi)&lt;=0 となり根を挟む</span>
+    <span class="c1"># もし挟めない場合は情報を出して止める</span>
+    <span class="k">if</span> <span class="n">f_lo</span> <span class="o">*</span> <span class="n">f_hi</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;二分法の区間が根を挟んでいません。&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot; f(lo)=</span><span class="si">{</span><span class="n">f_lo</span><span class="si">:</span><span class="s2">.3e</span><span class="si">}</span><span class="s2">, f(hi)=</span><span class="si">{</span><span class="n">f_hi</span><span class="si">:</span><span class="s2">.3e</span><span class="si">}</span><span class="s2">. &quot;</span>
+            <span class="s2">&quot;N,beta,gamma,S0 の設定を確認してください。&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iter</span><span class="p">):</span>
+        <span class="n">mid</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">lo</span><span class="o">+</span><span class="n">hi</span><span class="p">)</span>
+        <span class="n">f_mid</span> <span class="o">=</span> <span class="n">fse_residual</span><span class="p">(</span><span class="n">mid</span><span class="p">,</span> <span class="n">S0</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">R_init</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">f_mid</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">tol</span> <span class="ow">or</span> <span class="p">(</span><span class="n">hi</span><span class="o">-</span><span class="n">lo</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">tol</span><span class="o">*</span><span class="nb">max</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">hi</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">mid</span>
+
+        <span class="c1"># 根を挟む側を更新</span>
+        <span class="k">if</span> <span class="n">f_lo</span> <span class="o">*</span> <span class="n">f_mid</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">lo</span><span class="p">,</span> <span class="n">f_lo</span> <span class="o">=</span> <span class="n">mid</span><span class="p">,</span> <span class="n">f_mid</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">hi</span><span class="p">,</span> <span class="n">f_hi</span> <span class="o">=</span> <span class="n">mid</span><span class="p">,</span> <span class="n">f_mid</span>
+
+    <span class="k">return</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">lo</span><span class="o">+</span><span class="n">hi</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">S0</span> <span class="o">=</span> <span class="n">N</span> <span class="o">-</span> <span class="mf">0.0001</span>   <span class="c1"># 初期感染がわずか</span>
+
+<span class="n">beta</span> <span class="o">=</span> <span class="mf">0.30</span>
+<span class="n">gamma</span> <span class="o">=</span> <span class="mf">0.10</span>
+<span class="n">R_init</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+<span class="n">S_inf</span> <span class="o">=</span> <span class="n">solve_fse_bisection</span><span class="p">(</span><span class="n">S0</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">R_init</span><span class="o">=</span><span class="n">R_init</span><span class="p">)</span>
+<span class="n">R_inf</span> <span class="o">=</span> <span class="n">N</span> <span class="o">-</span> <span class="n">S_inf</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;S_inf ≈ </span><span class="si">{</span><span class="n">S_inf</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R_inf ≈ </span><span class="si">{</span><span class="n">R_inf</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;最終感染割合 R_inf/N ≈ </span><span class="si">{</span><span class="n">R_inf</span><span class="o">/</span><span class="n">N</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;beta/gamma = </span><span class="si">{</span><span class="n">beta</span><span class="o">/</span><span class="n">gamma</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>最終規模を可視化</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mf">1.0</span>       <span class="c1"># 正規化して割合で見たい場合（N=1が便利）</span>
+<span class="n">S0</span> <span class="o">=</span> <span class="n">N</span> <span class="o">-</span> <span class="mf">0.00001</span>      <span class="c1"># 初期ほぼ全員感受性（割合）</span>
+<span class="n">R_init</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+<span class="n">R0_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mi">46</span><span class="p">)</span>  <span class="c1"># 0.5〜5.0</span>
+<span class="n">Sinf_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">Rinf_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">R0</span> <span class="ow">in</span> <span class="n">R0_list</span><span class="p">:</span>
+    <span class="n">beta</span> <span class="o">=</span> <span class="n">R0</span>  <span class="c1"># gamma=1 とすれば beta/gamma=R0</span>
+    <span class="n">gamma</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="n">S_inf</span> <span class="o">=</span> <span class="n">solve_fse_bisection</span><span class="p">(</span><span class="n">S0</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">R_init</span><span class="o">=</span><span class="n">R_init</span><span class="p">)</span>
+    <span class="n">Sinf_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">S_inf</span><span class="p">)</span>
+    <span class="n">Rinf_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">N</span> <span class="o">-</span> <span class="n">S_inf</span><span class="p">)</span>
+
+<span class="n">Sinf_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Sinf_list</span><span class="p">)</span>
+<span class="n">Rinf_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Rinf_list</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">R0_list</span><span class="p">,</span> <span class="n">Sinf_list</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$S_\infty/N$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">R0_list</span><span class="p">,</span> <span class="n">Rinf_list</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$R_\infty/N = 1-S_\infty/N$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$R_0=\beta/\gamma$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;ratio&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;基本再生産数に対する最終感染規模方程式の解&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id13">
+<h2><span class="section-number">9.6. </span>SIRモデルの限界<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<p>実際の感染の動向では感染者数のピークは何度も現れる．</p>
+<p><img alt="感染者数" src="../_images/count.png" /></p>
+<p>SIRモデルでの変数<span class="math notranslate nohighlight">\(I(t)\)</span>ある時刻<span class="math notranslate nohighlight">\(t\)</span>における感染者数の<strong>総数</strong>を記述しており，その日に報告された感染者数とは厳密には一致しない．
+感染者がほぼ全て入院するものと仮定すれば，その日にいる患者数が最も<span class="math notranslate nohighlight">\(I(t)\)</span>の意味に近いだろう．</p>
+<p><img alt="患者数" src="../_images/hospital.png" /></p>
+<p>※ 日本経済新聞「チャートで見る日本の感染状況 新型コロナウイルス」1月8日閲覧．<a class="reference external" href="https://vdata.nikkei.com/newsgraphics/coronavirus-japan-chart/">https://vdata.nikkei.com/newsgraphics/coronavirus-japan-chart/</a></p>
+<p>患者数の動向を観ると何度かピークが現れていることが分かる．
+しかし，SIRモデルでは<span class="math notranslate nohighlight">\(I(t)\)</span>は単峰性を持つことから，ピークは1度しか訪れない．</p>
+<p>→ 現実のデータに合わせるにはモデルを改善する必要がある．
+（<strong>パラメタの値を変えるだけでは現実のデータには合わせられない</strong>）</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><span style="color:red"><strong>演習3</strong></span></p>
+<p>より現実に即したモデルにするには何を変えれば良いか．
+5つ以上アイデアを挙げよ．</p>
+</div>
+<!-- 
+### モデルの拡張
+
+- $\beta=\beta(t)$（時変：政策・行動変容・季節性）
+- SEIR（潜伏期）
+- 免疫減衰 SIRS
+- 空間・ネットワーク
+- 複数株
+ -->
+<!-- 
+## 実データとの比較：観測モデル → 逆問題（同定）へ
+
+観測は $I$ そのものではなく投影であり，だから逆問題になる．
+
+### 観測モデルの例
+
+例A：有病者（感染性者）に比例
+
+$$
+Y(t_k)=\rho I(t_k)+\eta_k.
+$$
+
+- $\rho$：報告率（未観測）
+- $\eta_k$：ノイズ
+
+例B：日次新規感染者（incidence）
+
+SIRの感染発生率は
+
+$$
+\text{inc}(t)=\beta\frac{S(t)I(t)}{N}.
+$$
+
+日次データなら
+
+$$
+Y_k \approx \rho \int_{t_k}^{t_{k+1}}\beta\frac{S(t)I(t)}{N},dt + \eta_k.
+$$
+
+### 同定問題（最小二乗）
+
+$$
+\min_{\beta,\gamma,\rho,I_0}
+\sum_k\left(Y_k-\hat Y_k(\beta,\gamma,\rho,I_0)\right)^2.
+$$
+
+ここで重要な注意：
+
+- 初期指数増加だけでは $\beta-\gamma$ しか分かりにくい
+- $\rho$ と $I$ は分離不能になりやすい
+  → **同定不能性**が起きる
+
+この“数学的限界”を意識した上で推定をする．
+
+---
+
+## 実装（実習）：データ読み込み → フィット → 残差
+
+### データ読み込みと前処理
+
+```python
+df = pd.read_csv("data_daily_cases.csv")
+df["date"] = pd.to_datetime(df["date"])
+df = df.sort_values("date")
+
+y = df["new_cases"].to_numpy()
+t = np.arange(len(y), dtype=float)
+
+# 7日移動平均で平滑化
+w = 7
+y_ma = np.convolve(y, np.ones(w)/w, mode="same")
+
+plt.figure(figsize=(7,3))
+plt.plot(df["date"], y, alpha=0.25, label="raw")
+plt.plot(df["date"], y_ma, label="7-day MA")
+plt.legend(); plt.grid(True, alpha=0.3)
+plt.show()
+``` -->
+<section id="id14">
+<h3><span class="section-number">9.6.1. </span>SIRの数値解<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">sir_rhs</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+    <span class="n">dS</span> <span class="o">=</span> <span class="o">-</span><span class="n">beta</span><span class="o">*</span><span class="n">S</span><span class="o">*</span><span class="n">I</span><span class="o">/</span><span class="n">N</span>
+    <span class="n">dI</span> <span class="o">=</span> <span class="n">beta</span><span class="o">*</span><span class="n">S</span><span class="o">*</span><span class="n">I</span><span class="o">/</span><span class="n">N</span> <span class="o">-</span> <span class="n">gamma</span><span class="o">*</span><span class="n">I</span>
+    <span class="n">dR</span> <span class="o">=</span> <span class="n">gamma</span><span class="o">*</span><span class="n">I</span>
+    <span class="k">return</span> <span class="n">dS</span><span class="p">,</span> <span class="n">dI</span><span class="p">,</span> <span class="n">dR</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">euler_sir</span><span class="p">(</span><span class="n">S0</span><span class="p">,</span> <span class="n">I0</span><span class="p">,</span> <span class="n">R0</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">S</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">I</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">R</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">S0</span><span class="p">,</span> <span class="n">I0</span><span class="p">,</span> <span class="n">R0</span>
+
+    <span class="n">h</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">dS</span><span class="p">,</span> <span class="n">dI</span><span class="p">,</span> <span class="n">dR</span> <span class="o">=</span> <span class="n">sir_rhs</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">I</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">R</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">beta</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+        <span class="n">S</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">S</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span><span class="o">*</span><span class="n">dS</span>
+        <span class="n">I</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">I</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span><span class="o">*</span><span class="n">dI</span>
+        <span class="n">R</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">R</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span><span class="o">*</span><span class="n">dR</span>
+
+        <span class="c1"># 数値誤差で負に落ちるのを避ける（教育上の安全策）</span>
+        <span class="n">S</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="mf">0.0</span><span class="p">)</span>
+        <span class="n">I</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">I</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="mf">0.0</span><span class="p">)</span>
+        <span class="n">R</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">R</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="mf">0.0</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">S</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">R</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">1_000_000</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="mf">0.30</span>
+<span class="n">gamma</span> <span class="o">=</span> <span class="mf">0.10</span>
+
+<span class="n">S0</span> <span class="o">=</span> <span class="n">N</span> <span class="o">-</span> <span class="mi">10</span>
+<span class="n">I0</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">R0</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># 時間軸（例：0〜160日）</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">1601</span><span class="p">)</span>  <span class="c1"># 刻み幅 h=0.1</span>
+
+<span class="c1"># ===== 数値計算 =====</span>
+<span class="n">S</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">euler_sir</span><span class="p">(</span><span class="n">S0</span><span class="p">,</span> <span class="n">I0</span><span class="p">,</span> <span class="n">R0</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+
+<span class="c1"># （任意）日次新規感染者（incidence）</span>
+<span class="n">inc</span> <span class="o">=</span> <span class="n">beta</span> <span class="o">*</span> <span class="n">S</span> <span class="o">*</span> <span class="n">I</span> <span class="o">/</span> <span class="n">N</span>
+
+<span class="c1"># ===== 可視化：S, I, R の時系列 =====</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;S(t) 感受性者&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;I(t) 感染性者&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;R(t) 除去者&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;時刻 t&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;人数&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SIRモデル（Euler）  R0=beta N/gamma=</span><span class="si">{</span><span class="n">beta</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="n">gamma</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># ===== 可視化：日次新規感染者（incidence） =====</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">inc</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;inc(t) = $\beta S I / N$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;時刻 t&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;新規感染者（モデル）&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;日次新規感染者（incidence）の時系列&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<!-- 
+### 観測：incidence を当てる
+
+```python
+from scipy.optimize import least_squares
+
+N = 1_000_000  # 有効人口（まず固定）
+
+def model_incidence_euler(params):
+    beta, gamma, rho, I0 = params
+    S0, R0_ = N - I0, 0.0
+
+    # データと同じ時刻グリッドで解く
+    t = t_data.copy()
+    S, I, R = euler_sir(S0, I0, R0_, beta, gamma, N, t)
+    inc = beta*S*I/N
+    return rho*inc
+
+def residuals(params):
+    return model_incidence_euler(params) - y_ma
+
+x0 = np.array([0.3, 0.1, 0.2, 10.0])
+lb = np.array([0.0, 0.0, 0.0, 1.0])
+ub = np.array([5.0, 5.0, 10.0, 1e6])
+
+res = least_squares(residuals, x0, bounds=(lb, ub))
+beta_hat, gamma_hat, rho_hat, I0_hat = res.x
+
+print("beta =", beta_hat)
+print("gamma =", gamma_hat)
+print("rho =", rho_hat)
+print("I0 =", I0_hat)
+print("R0 =", beta_hat/gamma_hat)
+```
+
+### フィットと残差の評価
+
+```python
+y_fit = model_incidence(res.x)
+
+plt.figure(figsize=(7,3))
+plt.plot(y_ma, label="data (MA)")
+plt.plot(y_fit, label="SIR incidence fit")
+plt.legend(); plt.grid(True, alpha=0.3)
+plt.show()
+
+plt.figure(figsize=(7,3))
+plt.plot(y_ma - y_fit)
+plt.title("residual (data - model)")
+plt.grid(True, alpha=0.3)
+plt.show()
+```
+
+ここで残差に系統的構造（複数波など）が見えれば，それは推定の失敗ではなく **モデル構造の不足**．
+
+---
+
+## まとめ
+
+- §1で「$S,I,R$は何を数えているか」を固定した
+  → 実データが直接 $I$ ではないことが分かった
+- §2でモデルを導出し，パラメータ $\beta,\gamma$ の意味が明確になった
+- §3〜§5で，解の全体像（閾値・ピーク・最終感染規模）を解析的に得た
+- §6で「SIRは単峰になりやすい」構造的理由を示した
+- §7〜§8で，観測モデルを入れて逆問題としてフィットし，残差からモデル誤差を評価した
+- 次回：モデル構造の不足を埋める（$\beta(t)$，SEIR，SIRS，空間など） -->
+<hr class="docutils" />
+<!-- 
+## 演習（レベル設定：応用数学）
+
+**演習1（解析）**
+SIRから最終感染規模方程式(FSE)を導出し，与えられたR0についてS(∞)を数値的に解け．
+
+**演習2（理論）**
+S(t)の単調性を用いて，I(t)が高々1回しか極大を持たないことを示せ．
+
+**演習3（逆問題）**
+同定で得られた(beta, gamma)が初期値x0に依存するか調べ，局所最小の可能性を議論せよ．
+
+**演習4（拡張）**
+β(t)=β0(1+a sin(2πt/T))を導入し，複数波が出ることを確認せよ（数値実験）．
+ -->
+</section>
+</section>
+<section id="id15">
+<h2><span class="section-number">9.7. </span>現実のデータを見る<a class="headerlink" href="#id15" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://idsc.tmiph.metro.tokyo.lg.jp/diseases/flu/flu/">https://idsc.tmiph.metro.tokyo.lg.jp/diseases/flu/flu/</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 取得したデータ</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="mi">161</span><span class="p">,</span> <span class="mi">278</span><span class="p">,</span> <span class="mi">416</span><span class="p">,</span> <span class="mi">818</span><span class="p">,</span> <span class="mi">1385</span><span class="p">,</span> <span class="mi">1990</span><span class="p">,</span> <span class="mi">2335</span><span class="p">,</span> <span class="mi">4333</span><span class="p">,</span>
+    <span class="mi">9926</span><span class="p">,</span> <span class="mi">12133</span><span class="p">,</span> <span class="mi">18707</span><span class="p">,</span> <span class="mi">21608</span><span class="p">,</span> <span class="mi">14947</span><span class="p">,</span> <span class="mi">10495</span><span class="p">,</span> <span class="mi">7440</span><span class="p">,</span> <span class="mi">6739</span>
+<span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>  <span class="c1"># 週インデックス（0,1,2,...）</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;o-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;data (weekly total)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;week index&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;cases&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">sir_rhs_frac</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">gamma</span><span class="p">):</span>
+    <span class="n">ds</span> <span class="o">=</span> <span class="o">-</span><span class="n">beta</span><span class="o">*</span><span class="n">s</span><span class="o">*</span><span class="n">i</span>
+    <span class="n">di</span> <span class="o">=</span> <span class="n">beta</span><span class="o">*</span><span class="n">s</span><span class="o">*</span><span class="n">i</span> <span class="o">-</span> <span class="n">gamma</span><span class="o">*</span><span class="n">i</span>
+    <span class="n">dr</span> <span class="o">=</span> <span class="n">gamma</span><span class="o">*</span><span class="n">i</span>
+    <span class="k">return</span> <span class="n">ds</span><span class="p">,</span> <span class="n">di</span><span class="p">,</span> <span class="n">dr</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">euler_sir_frac</span><span class="p">(</span><span class="n">s0</span><span class="p">,</span> <span class="n">i0</span><span class="p">,</span> <span class="n">r0</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">s0</span><span class="p">,</span> <span class="n">i0</span><span class="p">,</span> <span class="n">r0</span>
+    
+    <span class="n">h</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># 今回は 1 週刻み</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">ds</span><span class="p">,</span> <span class="n">di</span><span class="p">,</span> <span class="n">dr</span> <span class="o">=</span> <span class="n">sir_rhs_frac</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">i</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">beta</span><span class="p">,</span> <span class="n">gamma</span><span class="p">)</span>
+        <span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span><span class="o">*</span><span class="n">ds</span>
+        <span class="n">i</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span><span class="o">*</span><span class="n">di</span>
+        <span class="n">r</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">r</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span><span class="o">*</span><span class="n">dr</span>
+
+        <span class="c1"># 数値誤差の安全策</span>
+        <span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="mf">0.0</span><span class="p">)</span>
+        <span class="n">i</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="mf">0.0</span><span class="p">)</span>
+        <span class="n">r</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="mf">0.0</span><span class="p">)</span>
+
+        <span class="c1"># 3つが合計1からズレるので軽く正規化（任意）</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">i</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">r</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">total</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">/=</span> <span class="n">total</span>
+            <span class="n">i</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">/=</span> <span class="n">total</span>
+            <span class="n">r</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">/=</span> <span class="n">total</span>
+
+    <span class="k">return</span> <span class="n">s</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">r</span>
+</pre></div>
+</div>
+<p>最適化によってパラメタの値を推定する．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">least_squares</span>
+
+<span class="c1"># 週インデックス</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>  
+<span class="c1"># ↑ 週次新規を作るために s_k - s_{k+1} を使うので、1点多く解を持つ</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">predict_weekly_cases</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+    <span class="n">beta</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">i0</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="n">params</span>
+    <span class="n">i0</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">i0</span><span class="p">)</span>
+    <span class="n">s0</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">i0</span>
+    <span class="n">r0</span> <span class="o">=</span> <span class="mf">0.0</span>
+    
+    <span class="n">s</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">euler_sir_frac</span><span class="p">(</span><span class="n">s0</span><span class="p">,</span> <span class="n">i0</span><span class="p">,</span> <span class="n">r0</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+    
+    <span class="c1"># 週次新規（fraction） = s_k - s_{k+1}</span>
+    <span class="n">new_frac</span> <span class="o">=</span> <span class="n">s</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="n">y_hat</span> <span class="o">=</span> <span class="n">C</span> <span class="o">*</span> <span class="n">new_frac</span>
+    <span class="k">return</span> <span class="n">y_hat</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">r</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">residuals</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+    <span class="n">y_hat</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">predict_weekly_cases</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">y_hat</span> <span class="o">-</span> <span class="n">y</span>
+
+<span class="c1"># 初期値（雑でOK。後で改善できる）</span>
+<span class="n">beta0</span>  <span class="o">=</span> <span class="mf">0.8</span>
+<span class="n">gamma0</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="n">i00</span>    <span class="o">=</span> <span class="mf">1e-4</span>
+<span class="n">C0</span>     <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">/</span> <span class="mf">0.02</span>  <span class="c1"># 適当なスケール初期値</span>
+
+<span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">beta0</span><span class="p">,</span> <span class="n">gamma0</span><span class="p">,</span> <span class="n">i00</span><span class="p">,</span> <span class="n">C0</span><span class="p">])</span>
+
+<span class="c1"># 境界（不合理な値を防ぐ）</span>
+<span class="n">lb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1e-6</span><span class="p">,</span> <span class="mf">1e-6</span><span class="p">,</span> <span class="mf">1e-10</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
+<span class="n">ub</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">1e9</span><span class="p">])</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">least_squares</span><span class="p">(</span><span class="n">residuals</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="n">lb</span><span class="p">,</span> <span class="n">ub</span><span class="p">),</span> <span class="n">max_nfev</span><span class="o">=</span><span class="mi">20000</span><span class="p">)</span>
+
+<span class="n">beta_hat</span><span class="p">,</span> <span class="n">gamma_hat</span><span class="p">,</span> <span class="n">i0_hat</span><span class="p">,</span> <span class="n">C_hat</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">x</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== estimated parameters ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;beta  = </span><span class="si">{</span><span class="n">beta_hat</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;gamma = </span><span class="si">{</span><span class="n">gamma_hat</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;i0    = </span><span class="si">{</span><span class="n">i0_hat</span><span class="si">:</span><span class="s2">.6e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;C     = </span><span class="si">{</span><span class="n">C_hat</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R0 = beta/gamma = </span><span class="si">{</span><span class="n">beta_hat</span><span class="o">/</span><span class="n">gamma_hat</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -457,6 +1274,15 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="8_BZ.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>BZ反応のモデル</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
@@ -473,8 +1299,37 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">モデル化</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">データの取得</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">9.1. 感染症を数理モデルで捉える</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#s-t">9.1.1. <span class="math notranslate nohighlight">\(S(t)\)</span>：感受性を持つ人の数</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i-t">9.1.2. <span class="math notranslate nohighlight">\(I(t)\)</span>：感染性を持つ人の数</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#r-t-removed">9.1.3. <span class="math notranslate nohighlight">\(R(t)\)</span>：除去された人（Removed）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">9.1.4. 観測できる量</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">9.2. SIRモデルの導出</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">9.2.1. モデルの仮定（現象論）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">9.2.2. SIRモデル</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">9.3. 力学系としての基本構造（解析の入口）</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">9.3.1. 正不変性（非負性）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">9.3.2. 保存則</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">9.3.3. 単調性</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">9.4. 閾値理論</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">9.4.1. 初期段階の近似</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-size-equation">9.5. 最終感染規模方程式（Final size equation）</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">9.5.1. 数値的に最終規模方程式を解く</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">9.6. SIRモデルの限界</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">9.6.1. SIRの数値解</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">9.7. 現実のデータを見る</a></li>
 </ul>
   </nav></div>
 

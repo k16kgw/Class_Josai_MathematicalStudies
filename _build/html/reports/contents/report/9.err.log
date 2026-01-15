@@ -1,0 +1,98 @@
+Traceback (most recent call last):
+  File "/Users/kkagawa/localdoc/github/Class/.venv/lib/python3.13/site-packages/jupyter_core/utils/__init__.py", line 154, in wrapped
+    asyncio.get_running_loop()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+RuntimeError: no running event loop
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/kkagawa/localdoc/github/Class/.venv/lib/python3.13/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+    ~~~~~~~~~^
+        nb,
+        ^^^
+    ...<4 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/kkagawa/localdoc/github/Class/.venv/lib/python3.13/site-packages/nbclient/client.py", line 1319, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/kkagawa/localdoc/github/Class/.venv/lib/python3.13/site-packages/jupyter_core/utils/__init__.py", line 158, in wrapped
+    return loop.run_until_complete(inner)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.2/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/Users/kkagawa/localdoc/github/Class/.venv/lib/python3.13/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+        cell, index, execution_count=self.code_cells_executed + 1
+    )
+  File "/Users/kkagawa/localdoc/github/Class/.venv/lib/python3.13/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/kkagawa/localdoc/github/Class/.venv/lib/python3.13/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from matplotlib import rcParams
+rcParams['font.family'] = 'Hiragino Sans'
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mImportError[39m                               Traceback (most recent call last)
+[36mFile [39m[32m~/localdoc/github/Class/.venv/lib/python3.13/site-packages/pandas/__init__.py:26[39m
+[32m     24[39m [38;5;28;01mtry[39;00m:
+[32m     25[39m     [38;5;66;03m# numpy compat[39;00m
+[32m---> [39m[32m26[39m     [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mpandas[39;00m[34;01m.[39;00m[34;01mcompat[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m (
+[32m     27[39m         is_numpy_dev [38;5;28;01mas[39;00m _is_numpy_dev,  [38;5;66;03m# pyright: ignore[reportUnusedImport] # noqa: F401[39;00m
+[32m     28[39m     )
+[32m     29[39m [38;5;28;01mexcept[39;00m [38;5;167;01mImportError[39;00m [38;5;28;01mas[39;00m _err:  [38;5;66;03m# pragma: no cover[39;00m
+
+[36mFile [39m[32m~/localdoc/github/Class/.venv/lib/python3.13/site-packages/pandas/compat/__init__.py:27[39m
+[32m     17[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mpandas[39;00m[34;01m.[39;00m[34;01mcompat[39;00m[34;01m.[39;00m[34;01m_constants[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m (
+[32m     18[39m     IS64,
+[32m     19[39m     ISMUSL,
+[32m   (...)[39m[32m     25[39m     WARNING_CHECK_DISABLED,
+[32m     26[39m )
+[32m---> [39m[32m27[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mpandas[39;00m[34;01m.[39;00m[34;01mcompat[39;00m[34;01m.[39;00m[34;01mcompressors[39;00m
+[32m     28[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mpandas[39;00m[34;01m.[39;00m[34;01mcompat[39;00m[34;01m.[39;00m[34;01mnumpy[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m is_numpy_dev
+
+[36mFile [39m[32m~/localdoc/github/Class/.venv/lib/python3.13/site-packages/pandas/compat/compressors.py:7[39m
+[32m      5[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01m__future__[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m annotations
+[32m----> [39m[32m7[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mpickle[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m PickleBuffer
+[32m      9[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mpandas[39;00m[34;01m.[39;00m[34;01mcompat[39;00m[34;01m.[39;00m[34;01m_constants[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m PY310
+
+[31mImportError[39m: cannot import name 'PickleBuffer' from 'pickle' (/opt/homebrew/Cellar/python@3.13/3.13.2/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pickle.py)
+
+The above exception was the direct cause of the following exception:
+
+[31mImportError[39m                               Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 2[39m
+[32m      1[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mnumpy[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mnp[39;00m
+[32m----> [39m[32m2[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mpandas[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mpd[39;00m
+[32m      3[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mmatplotlib[39;00m[34;01m.[39;00m[34;01mpyplot[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mplt[39;00m
+[32m      4[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mmatplotlib[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m rcParams
+
+[36mFile [39m[32m~/localdoc/github/Class/.venv/lib/python3.13/site-packages/pandas/__init__.py:31[39m
+[32m     29[39m [38;5;28;01mexcept[39;00m [38;5;167;01mImportError[39;00m [38;5;28;01mas[39;00m _err:  [38;5;66;03m# pragma: no cover[39;00m
+[32m     30[39m     _module = _err.name
+[32m---> [39m[32m31[39m     [38;5;28;01mraise[39;00m [38;5;167;01mImportError[39;00m(
+[32m     32[39m         [33mf[39m[33m"[39m[33mC extension: [39m[38;5;132;01m{[39;00m_module[38;5;132;01m}[39;00m[33m not built. If you want to import [39m[33m"[39m
+[32m     33[39m         [33m"[39m[33mpandas from the source directory, you may need to run [39m[33m"[39m
+[32m     34[39m         [33m"[39m[33m'[39m[33mpython setup.py build_ext[39m[33m'[39m[33m to build the C extensions first.[39m[33m"[39m
+[32m     35[39m     ) [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01m_err[39;00m
+[32m     37[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mpandas[39;00m[34;01m.[39;00m[34;01m_config[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m (
+[32m     38[39m     get_option,
+[32m     39[39m     set_option,
+[32m   (...)[39m[32m     43[39m     options,
+[32m     44[39m )
+[32m     46[39m [38;5;66;03m# let init-time option registration happen[39;00m
+
+[31mImportError[39m: C extension: pickle not built. If you want to import pandas from the source directory, you may need to run 'python setup.py build_ext' to build the C extensions first.
+
